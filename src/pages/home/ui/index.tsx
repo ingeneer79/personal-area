@@ -1,7 +1,10 @@
+import { Header } from "@/widgets/header";
+
 export const HomePage = () => {
     return (
       <>
-        <h1>Home</h1>
+        <Header/>
+        Main
       </>
     );
   };

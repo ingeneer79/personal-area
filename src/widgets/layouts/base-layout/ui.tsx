@@ -1,9 +1,12 @@
+"use client"
 import type { PropsWithChildren } from 'react';
-import 'processes/root';
+import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
 export const BaseLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
-      <main className="main">{children}</main>
+      <Theme preset={presetGpnDefault}>
+        <main className="main">{children}</main>
+      </Theme>
     </>
   );
 };
