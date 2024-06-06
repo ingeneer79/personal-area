@@ -2,3 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    html {
+        @apply font-sans;
+    }
+}
+
+:root {
+    --sidebar-menu-selected-item-color: #0D464A;        
+}
+
+
+

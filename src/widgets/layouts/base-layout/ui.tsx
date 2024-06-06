@@ -1,12 +1,23 @@
 "use client"
+import { ConfigProvider } from 'antd';
 import type { PropsWithChildren } from 'react';
-import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
 export const BaseLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
-      <Theme preset={presetGpnDefault}>
-        <main className="main">{children}</main>
-      </Theme>
+   <ConfigProvider theme={{    
+      token: {
+        colorPrimary: '#0D464A',
+      },
+      components: {
+        Button: {
+          borderRadius: 12,
+        },      
+        Menu: {
+          itemSelectedBg: '#E6FFF4',
+        }
+      }}}>
+        {children}
+    </ConfigProvider>
     </>
   );
 };

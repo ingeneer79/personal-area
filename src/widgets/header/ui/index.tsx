@@ -1,15 +1,18 @@
 "use client"
 
-import styles from './styles.module.scss';
-import Layout from '@consta/uikit/Layout';
-import Button from '@consta/uikit/Button';
+import { PoweroffOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { Layout } from 'antd';
 
-export const Header = () => {
+import styles from './styles.module.scss';
+import { BagIcon } from './bagIcon';
+
+const { Header} = Layout;
+
+export const MainHeader = () => {
   return (
-    <header
-      className={styles.header}
-    >
-        Header
-    </header>
+    <Header style={{ display: 'flex', alignItems: 'end', backgroundColor: 'transparent' }}>
+      <Button type="primary" iconPosition='end' icon={<BagIcon/>}>Корзина</Button>
+    </Header>
   );
 };
