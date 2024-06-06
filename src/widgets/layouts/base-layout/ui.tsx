@@ -5,6 +5,7 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
    <ConfigProvider theme={{    
+      cssVar: true,
       token: {
         colorPrimary: '#0D464A',
       },
@@ -13,7 +14,7 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
           borderRadius: 12,
         },      
         Menu: {
-          itemSelectedBg: '#E6FFF4',
+          itemSelectedBg: 'var(--sidebar-menu-selected-item-color)',
         }
       }}}>
         {children}

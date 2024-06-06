@@ -1,24 +1,22 @@
-import { BaseLayout } from "@/widgets/layouts";
-import { ConfigProvider } from "antd";
-import { AppProps } from "next/app";
+import { Inter } from "next/font/google";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import "@/app/styles/index.css";
+import React, { PropsWithChildren } from "react";
+import { BaseLayout } from '../widgets/layouts/base-layout/ui';
 
-const App = ({ Component, pageProps }: AppProps) => (
-  <>
-   <ConfigProvider theme={{
-      token: {
-        // Seed Token
-        colorPrimary: '#00b96b',
-        borderRadius: 2,
+const inter = Inter({ subsets: ["latin"] });
 
-        // Alias Token
-        colorBgContainer: '#f6ffed',
-      },
-    }}>
-    <BaseLayout>
-      <Component {...pageProps} />
-    </BaseLayout>
-    </ConfigProvider>
-  </>
-);
 
-export default App;
+export const AppRoot = ({ children }: PropsWithChildren) => {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+      <AntdRegistry>
+          <BaseLayout>
+            {children}
+          </BaseLayout>
+      </AntdRegistry>                  
+      </body>
+    </html>
+  );
+}

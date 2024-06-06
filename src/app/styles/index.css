@@ -9,7 +9,8 @@
 }
 
 :root {
-    --sidebar-menu-selected-item-color: #0D464A;        
+    --sidebar-menu-selected-item-color: #E6FFF4;        
+    --ant-layout-body-bg: #ffff;
 }
 
 
