@@ -11,7 +11,8 @@
 :root {
     --sidebar-menu-selected-item-color: #E6FFF4;        
     --ant-layout-body-bg: #ffff;
+    --ant-layout-color-bg-body: #ffff;
+    --ant-layout-color-bg-header: #ffff;
+    --ant-layout-header-bg: #ffff;
 }
-
-
 

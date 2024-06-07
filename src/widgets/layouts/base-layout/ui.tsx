@@ -6,8 +6,10 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
     <>
    <ConfigProvider theme={{    
       cssVar: true,
+      
       token: {
         colorPrimary: '#0D464A',
+        colorBgContainer: '#ffffff',
       },
       components: {
         Button: {

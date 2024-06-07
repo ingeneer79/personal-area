@@ -1,7 +1,6 @@
+import { AppRoot } from "@/app";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import AppRoot from '../src/app';
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Root>
+    <AppRoot>
         {children}
-    </Root>            
+    </AppRoot>            
   );
 }
