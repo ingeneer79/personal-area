@@ -10,6 +10,8 @@
 
 :root {
     --sidebar-menu-selected-item-color: #E6FFF4;        
+    --header-bg-color: #ffff;
+
     --ant-layout-body-bg: #ffff;
     --ant-layout-color-bg-body: #ffff;
     --ant-layout-color-bg-header: #ffff;

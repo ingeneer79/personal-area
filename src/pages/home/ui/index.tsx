@@ -11,20 +11,17 @@ export const HomePage = () => {
       <Layout>
       <MainHeader/>
       <Content>
-        <Breadcrumb>
-          <Breadcrumb.Item>Главная</Breadcrumb.Item>
-          <Breadcrumb.Item>Накладные</Breadcrumb.Item>
-          <Breadcrumb.Item>Претензии</Breadcrumb.Item>
-        </Breadcrumb>
-        <Layout
-        >
+        <Layout>
           <SideBar/>
-          <Content style={{ padding: '0 24px'}}>Content</Content>
+          <Content style={{ padding: '0 24px'}}>
+            <Breadcrumb>
+              <Breadcrumb.Item>Главная</Breadcrumb.Item>
+              <Breadcrumb.Item>Накладные</Breadcrumb.Item>
+              <Breadcrumb.Item>Претензии</Breadcrumb.Item>
+            </Breadcrumb>
+          </Content>
         </Layout>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>
-
-      </Footer>
     </Layout>
     );
   };

@@ -5,14 +5,16 @@ import { Button } from 'antd';
 import { Layout } from 'antd';
 
 import './styles.module.scss';
-import { BagIcon } from './bagIcon';
+import { BagButton } from './bagButton';
 
 const { Header} = Layout;
 
 export const MainHeader = () => {
   return (
-    <Header className="header flex items-center justify-end bg-transparent" >
-      <Button type="primary" iconPosition='end' icon={<BagIcon/>}>Корзина</Button>
+    <Header className="header flex items-center justify-end bg-transparent border-b-1" >
+      <Button size="large" type="primary" iconPosition='end'  icon={<BagButton count={0}/> }>
+        Корзина
+      </Button>
     </Header>
   );
 };
