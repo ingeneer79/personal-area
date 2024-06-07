@@ -14,7 +14,10 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
       components: {
         Button: {
           borderRadius: 12,
-        },      
+        },  
+        Layout: {
+          headerBg: '#ffffff',
+        },    
         Menu: {
           itemSelectedBg: 'var(--sidebar-menu-selected-item-color)',
         }
