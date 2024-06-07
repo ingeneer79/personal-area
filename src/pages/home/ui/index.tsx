@@ -4,7 +4,6 @@ import { MainHeader } from "@/widgets/header/ui";
 import { SideBar } from "@/widgets/sidebar/ui";
 import { Breadcrumb, Layout, Menu } from "antd";
 import { Content, Footer } from "antd/es/layout/layout";
-import Sider from "antd/es/layout/Sider";
 
 export const HomePage = () => {
     return (

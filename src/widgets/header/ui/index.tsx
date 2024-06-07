@@ -11,7 +11,7 @@ const { Header} = Layout;
 
 export const MainHeader = () => {
   return (
-    <Header className="header flex items-center justify-end bg-transparent border-b-1" >
+    <Header className="header flex items-center justify-end bg-transparent border-b-2" >
       <Button size="large" type="primary" iconPosition='end'  icon={<BagButton count={0}/> }>
         Корзина
       </Button>
