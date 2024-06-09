@@ -1,5 +1,6 @@
 'use client'
 
+import { BreadcrumbWidget } from "@/widgets/Breadcrumbs";
 import { MainHeader } from "@/widgets/header/ui";
 import { SideBar } from "@/widgets/sidebar/ui";
 import { Breadcrumb, Layout, Menu } from "antd";
@@ -13,11 +14,7 @@ export const HomePage = () => {
         <Layout>
           <SideBar/>
           <Content style={{ padding: '0 24px'}}>
-            <Breadcrumb>
-              <Breadcrumb.Item>Главная</Breadcrumb.Item>
-              <Breadcrumb.Item>Накладные</Breadcrumb.Item>
-              <Breadcrumb.Item>Претензии</Breadcrumb.Item>
-            </Breadcrumb>
+          <BreadcrumbWidget></BreadcrumbWidget>         
           </Content>
         </Layout>
       </Content>

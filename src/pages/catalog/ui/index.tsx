@@ -1,5 +1,6 @@
 'use client'
 
+import { BreadcrumbWidget } from "@/widgets/Breadcrumbs";
 import { MainHeader } from "@/widgets/header/ui";
 import { SideBar } from "@/widgets/sidebar/ui";
 import { Breadcrumb, Flex, Layout, Menu } from "antd";
@@ -15,13 +16,7 @@ export const CatalogPage = () => {
           <SideBar/>
           <Content style={{ padding: '0 24px'}}>
             <Flex vertical>
-                <Breadcrumb>
-                <Breadcrumb.Item>Главная</Breadcrumb.Item>
-                <Breadcrumb.Item>Накладные</Breadcrumb.Item>
-                <Breadcrumb.Item>Претензии</Breadcrumb.Item>
-                </Breadcrumb>
-
-                Каталог
+                <BreadcrumbWidget></BreadcrumbWidget>         
             </Flex>
           </Content>
         </Layout>

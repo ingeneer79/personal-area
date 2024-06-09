@@ -1,6 +1,7 @@
 "use client"
 import { ConfigProvider } from 'antd';
 import type { PropsWithChildren } from 'react';
+import { Inter } from "next/font/google";
 export const BaseLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
@@ -13,6 +14,7 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
       components: {
         Button: {
           borderRadius: 12,
+          fontFamily: 'Inter',
         },  
         Layout: {
           headerHeight: 72,
@@ -21,7 +23,14 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
           footerBg: 'var(--header-bg-color)',
         },    
         Menu: {
+          fontFamily: 'Inter',
+          fontSize: 16,
           itemSelectedBg: 'var(--sidebar-menu-selected-item-color)',
+        },
+        Breadcrumb: {
+          fontSize: 15,
+          separatorMargin: 10,
+          fontFamily: 'Inter',
         }
       }}}>
         {children}
