@@ -1,0 +1,1 @@
+export { ConfigLayout } from './ui';

@@ -2,7 +2,7 @@
 import { ConfigProvider } from 'antd';
 import type { PropsWithChildren } from 'react';
 import { Inter } from "next/font/google";
-export const BaseLayout = ({ children }: PropsWithChildren) => {
+export const ConfigLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
    <ConfigProvider theme={{    

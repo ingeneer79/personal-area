@@ -1,1 +1,2 @@
-export { BaseLayout } from './base-layout';
+export { ConfigLayout } from './config-layout';
+export { MainLayout } from './main-layout';
