@@ -10,6 +10,11 @@ export const SideBar = () => {
             defaultSelectedKeys={['1']}
             style={{ height: '100%'}}
             items={SideBarMenuItems}
+
+            onSelect={(item) => {
+                debugger
+                
+            }}
             />
         </Sider>
     )

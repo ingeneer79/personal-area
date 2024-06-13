@@ -1,16 +1,17 @@
 'use client'
 
-import { BreadcrumbWidget } from "@/widgets/Breadcrumbs";
-import { MainHeader } from "@/widgets/header/ui";
 import { MainLayout } from "@/widgets/layouts";
-import { SideBar } from "@/widgets/sidebar/ui";
-import { Breadcrumb, Flex, Layout, Menu } from "antd";
-import { Content, Footer } from "antd/es/layout/layout";
-import Sider from "antd/es/layout/Sider";
+import { Flex, Typography } from "antd";
+import { constantsMap } from '../../../shared/model/constants';
+import Image from "next/image";
 
 export const CatalogPage = () => {
     return (
-      <MainLayout>        
+      <MainLayout>      
+        <Flex gap="middle" vertical>
+          <Typography.Text style={{fontSize: '32px'}} className="font-medium">{constantsMap.pages.catalog.mainText}</Typography.Text>     
+          <Image src="../../../public/images/banner.jfif" style={{width: '100%', height: '203px', borderRadius: '36px'}} alt=""></Image>
+        </Flex>                 
       </MainLayout>
     );
-  };
+  }
