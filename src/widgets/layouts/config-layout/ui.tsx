@@ -31,7 +31,7 @@ export const ConfigLayout = ({ children }: PropsWithChildren) => {
           fontSize: 15,
           separatorMargin: 10,
           fontFamily: 'Inter',
-        }
+        },
       }}}>
         {children}
     </ConfigProvider>
