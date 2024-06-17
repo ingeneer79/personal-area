@@ -6,7 +6,7 @@ import { TrashButton } from "./trashButton";
 export const FilterWithSearch = () => {
   return (
     <Flex gap="middle" className="w-full items-center">
-      <Flex gap="middle" className="search w-full" style={{ flex: 1 }}>
+      <Flex gap="middle" className="search w-full" style={{ flex: 1, minWidth: "300px" }}>
         <Search placeholder="Поиск" allowClear size="large" enterButton />
       </Flex>
       <Flex
@@ -17,7 +17,7 @@ export const FilterWithSearch = () => {
           borderRadius: "12px",
           backgroundColor: "var(--control-bg-color)",
           minWidth: "300px",
-          maxWidth: "700px",
+          maxWidth: "50%",
         }}
       >
         <Select
