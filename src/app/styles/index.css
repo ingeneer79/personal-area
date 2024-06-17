@@ -13,10 +13,24 @@
 :root {
     --sidebar-menu-selected-item-color: #E6FFF4;        
     --header-bg-color: #ffff;
+    --control-bg-color: #F5F5F5;
+    --control-text-color:#83858D;
 
     --ant-layout-body-bg: #ffff;
     --ant-layout-color-bg-body: #ffff;
     --ant-layout-color-bg-header: #ffff;
     --ant-layout-header-bg: #ffff;
+
+    --ant-color-bg-container: #EEEEEE;    
+
+    --ant-button-primary-shadow: 0 0 0 rgba(3, 21, 19, 0);
 }
+
+.search .ant-input-search-button {
+    background-color: var(--control-bg-color);
+    color: #0D152E;
+    border-color: var(--control-bg-color);
+    margin-left: 5px;    
+}
+
 

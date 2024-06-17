@@ -1,8 +1,10 @@
 import { Menu } from "antd"
 import Sider from "antd/es/layout/Sider"
 import { SideBarMenuItems } from "../config/menu-items"
+import { useRouter } from "next/navigation"
 
 export const SideBar = () => {
+    const router = useRouter()
     return (
         <Sider width={216}>
             <Menu
@@ -12,8 +14,11 @@ export const SideBar = () => {
             items={SideBarMenuItems}
 
             onSelect={(item) => {
-                debugger
-                
+                const path = SideBarMenuItems.find((i) => i.key === item.key)?.path
+                if (!path) {
+                    return
+                }
+                router.push(path)                
             }}
             />
         </Sider>
