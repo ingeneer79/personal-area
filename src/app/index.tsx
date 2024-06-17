@@ -4,8 +4,7 @@ import "@/app/styles/index.css";
 import React, { PropsWithChildren } from "react";
 import { ConfigLayout } from '../widgets/layouts/config-layout/ui';
 
-const inter = Inter({ subsets: ["latin"] });
-
+const inter = Inter({ subsets: ["cyrillic", "latin", "cyrillic-ext"] });
 
 export const AppRoot = ({ children }: PropsWithChildren) => {
   return (

@@ -12,8 +12,13 @@ export const SideBar = () => {
             defaultSelectedKeys={['1']}
             style={{ height: '100%'}}
             items={SideBarMenuItems}
-            onClick={(item) => {
-                router.push(SideBarMenuItems.find(i => i.key === item.key)?.path ?? '')                
+
+            onSelect={(item) => {
+                const path = SideBarMenuItems.find((i) => i.key === item.key)?.path
+                if (!path) {
+                    return
+                }
+                router.push(path)                
             }}
             />
         </Sider>
