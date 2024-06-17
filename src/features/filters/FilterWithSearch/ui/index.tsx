@@ -2,6 +2,7 @@ import { Button, Flex, Select } from "antd";
 import Search from "antd/es/input/Search";
 import { brandOptions, categoryOptions, typeOptions } from "../config";
 import { TrashButton } from "./trashButton";
+import { constantsMap } from "@/shared/model";
 
 export const FilterWithSearch = () => {
   return (
@@ -24,21 +25,21 @@ export const FilterWithSearch = () => {
           mode="multiple"
           allowClear
           style={{ width: "100%" }}
-          placeholder="Бренд"
+          placeholder={constantsMap.pages.catalog.filter.brand}
           options={brandOptions}
         />
         <Select
           mode="multiple"
           allowClear
           style={{ width: "100%" }}
-          placeholder="Тип"
+          placeholder={constantsMap.pages.catalog.filter.type}
           options={typeOptions}
         />
         <Select
           mode="multiple"
           allowClear
           style={{ width: "100%" }}
-          placeholder="Категория"
+          placeholder={constantsMap.pages.catalog.filter.category}
           options={categoryOptions}
         />
         <Button

@@ -5,6 +5,11 @@ export const constantsMap = {
         },   
         catalog: {
             mainText: 'Каталог',
+            filter: {
+                brand: 'Бренд',
+                type: 'Тип',
+                category: 'Категория',
+            }
         },   
         inbound: {
             mainText: 'Накладные',
