@@ -16,7 +16,7 @@ export const ConfigLayout = ({ children }: PropsWithChildren) => {
         Button: {
           borderRadius: 12,
           fontFamily: 'Inter',
-          primaryShadow: '0 0 0 rgba(3, 21, 19, 0)',
+          primaryShadow: '0 0 0 rgba(0, 0, 0, 0)',
         },  
         Layout: {
           headerHeight: 72,
@@ -35,12 +35,13 @@ export const ConfigLayout = ({ children }: PropsWithChildren) => {
           fontFamily: 'Inter',
         },
         Input: {
-          colorText: 'var(--control-text-color)',
-          fontSize: 16,
           colorBgContainer: 'var(--control-bg-color)',          
           borderRadius: 32,
           colorBorder: 'var(--control-bg-color)',
+          colorText: 'var(--control-text-color)',
+          fontSize: 16,
         }
+        
       }}}>
         {children}
     </ConfigProvider>
