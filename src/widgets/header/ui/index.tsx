@@ -1,6 +1,3 @@
-"use client"
-
-import { PoweroffOutlined } from '@ant-design/icons';
 import { Button, Typography } from 'antd';
 import { Layout } from 'antd';
 

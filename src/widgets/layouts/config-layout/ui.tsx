@@ -1,8 +1,5 @@
-"use client"
 import { ConfigProvider } from 'antd';
 import type { PropsWithChildren } from 'react';
-import { Inter } from "next/font/google";
-import Search from 'antd/es/input/Search';
 export const ConfigLayout = ({ children }: PropsWithChildren) => {
   return (
     <>

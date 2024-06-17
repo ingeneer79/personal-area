@@ -1,5 +1,4 @@
 'use client'
-
 import { MainLayout } from "@/widgets/layouts";
 import { Flex, Typography } from "antd";
 import { constantsMap } from '../../../shared/model/constants';

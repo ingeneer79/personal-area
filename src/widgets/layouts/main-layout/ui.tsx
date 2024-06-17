@@ -1,7 +1,6 @@
 "use client"
 import { ConfigProvider, Flex, Layout } from 'antd';
 import type { PropsWithChildren } from 'react';
-import { Inter } from "next/font/google";
 import { MainHeader } from '@/widgets/header';
 import { Content } from 'antd/es/layout/layout';
 import { SideBar } from '@/widgets/sidebar';

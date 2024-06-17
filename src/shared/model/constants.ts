@@ -6,5 +6,17 @@ export const constantsMap = {
         catalog: {
             mainText: 'Каталог',
         },   
+        inbound: {
+            mainText: 'Накладные',
+        },   
+        finances: {
+            mainText: 'Финансы',
+        },   
+        certificates: {
+            mainText: 'Сертификаты',
+        },   
+        stm: {
+            mainText: 'СТМ',
+        },
     } 
 }
