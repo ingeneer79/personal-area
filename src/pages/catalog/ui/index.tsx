@@ -11,7 +11,7 @@ export const CatalogPage = () => {
       <MainLayout>      
         <Flex gap="middle" vertical>
           <Typography.Text style={{fontSize: '32px'}} className="font-medium">{constantsMap.pages.catalog.mainText}</Typography.Text>     
-          <Image src="/images/banner.jfif" width={1600} height={203} style={{borderRadius: '36px', height: '203px'}} alt=""></Image>
+          <Image src="/images/banner.jfif" width={1600} height={203} style={{width: 'auto', borderRadius: '36px', height: '203px'}} alt=""></Image>
           <Flex>
             <Search                  
                   style={{width: '700px'}}

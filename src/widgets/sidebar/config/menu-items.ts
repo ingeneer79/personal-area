@@ -7,7 +7,7 @@ export const SideBarMenuItems = [
     {
         label: 'Каталог',
         key: '2',
-        path: '/catalog',
+        path: '/cat',
     },    
     {
         label: 'Накладные',
