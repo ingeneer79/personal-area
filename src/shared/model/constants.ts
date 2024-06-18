@@ -23,5 +23,14 @@ export const constantsMap = {
         stm: {
             mainText: 'СТМ',
         },
-    } 
+    },
+    shared: {
+        config: {
+          apiUrl: 'https://localhost:3000/api/',
+          wsUrl: 'wss://norma.nomoreparties.space/',
+          modalCloseKey: 'Escape',
+          defaultError: 'Пожалуйста, перезагрузите страницу или попробуйте позже',
+          reloadPageText: 'Перезагрузить страницу',
+        },
+    },     
 }
