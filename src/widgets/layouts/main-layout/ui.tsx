@@ -7,10 +7,10 @@ import { SideBar } from '@/widgets/sidebar';
 import { BreadcrumbWidget } from '@/widgets/Breadcrumbs';
 export const MainLayout = ({ children }: PropsWithChildren) => {
   return (
-    <Layout>
+    <Flex vertical>
       <MainHeader/>
       <Content>
-        <Layout>
+        <Flex>
           <SideBar/>
           <Content style={{ padding: '0 24px'}}>
             <Flex vertical>
@@ -18,8 +18,8 @@ export const MainLayout = ({ children }: PropsWithChildren) => {
                 {children}
             </Flex>
           </Content>
-        </Layout>
+        </Flex>
       </Content>
-    </Layout>        
+    </Flex>        
   );
 };
