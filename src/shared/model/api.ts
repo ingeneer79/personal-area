@@ -1,5 +1,5 @@
 export const apiMap = {
-    getIngredients: 'ingredients',
+    getCatalog: 'catalog',
     getUser: 'auth/user',
     patchUser: 'auth/user',
     postLogin: 'auth/login',
