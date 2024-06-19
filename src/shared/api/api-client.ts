@@ -56,4 +56,4 @@ export class ApiClient {
   }
 }
 
-export const apiClient = new ApiClient(API_URL ?? 'http://localhost:3000');
+export const apiClient = new ApiClient(API_URL);
