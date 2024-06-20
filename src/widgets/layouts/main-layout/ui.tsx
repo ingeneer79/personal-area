@@ -1,5 +1,5 @@
 "use client"
-import { ConfigProvider, Flex, Layout } from 'antd';
+import { Flex } from 'antd';
 import type { PropsWithChildren } from 'react';
 import { MainHeader } from '@/widgets/header';
 import { Content } from 'antd/es/layout/layout';

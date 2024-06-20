@@ -1,10 +1,12 @@
-import { BrandObject } from "@/entities/classifiers/model";
+import { ClassifierObject } from "@/entities/classifiers/model";
 
 export interface FiltersWithSearchState {
-    brand: BrandObject | null;
+    searchValue: string
+    selectedValues: ClassifierObject[] | null;
 }
   
 const initialState: FiltersWithSearchState = {
-    brand: null,
+    searchValue: '',
+    selectedValues: [],
 };
 

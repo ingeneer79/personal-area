@@ -1,1 +1,2 @@
-export type { BrandObject } from './types';
+export type { ClassifierObject } from './types';
+export { classifiersSlice } from './slice';
