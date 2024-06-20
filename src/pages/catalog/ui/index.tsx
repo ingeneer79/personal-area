@@ -7,15 +7,17 @@ import './styles.module.scss'
 import { FilterWithSearch } from "@/features/filters/FilterWithSearch";
 import { useEffect } from "react";
 import { useAppSelector } from "@/shared/lib";
+import { classifiersApi, useGetClassifiersQuery } from "@/entities/classifiers/api";
+import { selectClassifierById } from "@/entities/classifiers/model";
 
 export const CatalogPage = () => {
 
-    // const brandsList = useAppSelector(getBrandsList);
+    const brandsList = useAppSelector(selectClassifierById('brand'));
     const selectOptions = [
       { 
         key: 'brand', 
         label: 'Бренд', 
-        options: [] 
+        options: brandsList?.map((brand) => ({label: brand.name, value: brand.id})) 
       },      
       { 
         key: 'type', 
@@ -29,11 +31,12 @@ export const CatalogPage = () => {
       },      
     ]
 
-    /*
+    
     useEffect(() => {
-      dispatch(getClassifiers())
+      
+
     }, [])
-    */
+    
 
     return (
       <MainLayout>      
