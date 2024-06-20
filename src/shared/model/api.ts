@@ -1,4 +1,5 @@
 export const apiMap = {
+    getClassifiers: 'classifiers',
     getCatalog: 'catalog',
     getUser: 'auth/user',
     patchUser: 'auth/user',
