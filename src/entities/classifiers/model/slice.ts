@@ -3,8 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ClassifierObject } from './types';
 import {classifiersApi} from '../api/api';
 
+interface ClassifierData {
+    id: string;
+    classifiers: ClassifierObject[];
+}
+
 interface ConstructorState {
-  classifiers: Array<{ id: string; classifier: ClassifierObject }>;
+  classifiers: ClassifierData[];
 }
 
 const initialState: ConstructorState = {
@@ -18,7 +23,9 @@ export const classifiersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(classifiersApi.endpoints.getClassifiers.matchFulfilled, (state, action: PayloadAction<ClassifierObject[]>) => {
-      state.classifiers = action.payload.map((classifier) => ({ id: classifier.id.toString(), classifier }));
+      action.payload.forEach((classifier) => {
+        state.classifiers.push({id: classifier.id, classifiers: classifier})
+      })
     })
   }
 });

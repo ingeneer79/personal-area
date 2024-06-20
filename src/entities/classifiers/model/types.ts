@@ -1,5 +1,5 @@
-export interface BrandObject {
-    id: number;
+export interface ClassifierObject {
+    id: string;
     name: string;
     description: string;
 }
