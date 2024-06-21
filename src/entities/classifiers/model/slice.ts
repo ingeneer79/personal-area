@@ -1,18 +1,13 @@
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ClassifierObject } from './types';
+import { ClassifierObject, ClassifierObjectItem } from './types';
 import {classifiersApi} from '../api/api';
 
-interface ClassifierData {
-    id: string;
-    classifiers: ClassifierObject[];
-}
-
-interface ConstructorState {
+interface ClassifiersState {
   classifiers: ClassifierObject[];
 }
 
-const initialState: ConstructorState = {
+const initialState: ClassifiersState = {
   classifiers: [],
 };
 

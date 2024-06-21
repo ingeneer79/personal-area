@@ -16,20 +16,23 @@ export const CatalogPage = () => {
   const selectOptions = [
     {
       key: "brand",
-      label: "Бренд",
-      options: brandsList?.map(brand => ({
-        label: brand.name,
-        value: brand.id,
+      label: constantsMap.pages.catalog.filter.brand,
+      value: '',
+      options: brandsList?.items.map(brand => ({
+        label: brand.value,
+        value: brand.key,
       })),
     },
     {
       key: "type",
-      label: "Тип",
-      options: typesList?.map(type => ({ label: type.name, value: type.id })),
+      label: constantsMap.pages.catalog.filter.type,
+      value: '',
+      options: typesList?.items.map(type => ({ label: type.value, value: type.key })),
     },
     {
       key: "category",
-      label: "Категория",
+      label: constantsMap.pages.catalog.filter.category,
+      value: '',
       options: [],
     },
   ];
