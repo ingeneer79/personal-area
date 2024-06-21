@@ -10,8 +10,8 @@ import "./styles.module.scss";
 export const CatalogPage = () => {
   const { data: classifiers = [], isLoading } = useGetClassifiersQuery();
 
-  const brandsList = classifiers.filter(cls => cls.id === "brand");
-  const typesList = classifiers.filter(cls => cls.id === "type");
+  const brandsList = classifiers.find(cls => cls.id === "brand");
+  const typesList = classifiers.find(cls => cls.id === "type");
 
   const selectOptions = [
     {
