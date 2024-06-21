@@ -9,12 +9,12 @@ export function GET(
           id: 'brand',
           items: [
             {
-              name: "Бренд 1",
-              id: "1",
+              value: "Бренд 1",
+              key: "1",
             },
             {
-              name: "Бренд 2",
-              id: "2",
+              value: "Бренд 2",
+              key: "2",
             },
           ]
         },
@@ -22,12 +22,12 @@ export function GET(
           id: 'type',
           items: [
             {
-              label: "Тип 1",
-              value: "1",
+              value: "Тип 1",
+              key: "1",
             },
             {
-              label: "Тип 2",
-              value: "2",
+              value: "Тип 2",
+              key: "2",
             },
           ]
         },
@@ -35,12 +35,12 @@ export function GET(
           id: 'category',
           items: [
             {
-              label: "Категория 1",
-              value: "1",
+              value: "Категория 1",
+              key: "1",
             },
             {
-              label: "Категория 2",
-              value: "2",
+              value: "Категория 2",
+              key: "2",
             },
           ]
         }        

@@ -12,6 +12,7 @@ export const CatalogPage = () => {
 
   const brandsList = classifiers.find(cls => cls.id === "brand");
   const typesList = classifiers.find(cls => cls.id === "type");
+  const categoryList = classifiers.find(cls => cls.id === "category");
 
   const selectOptions = [
     {
@@ -21,23 +22,21 @@ export const CatalogPage = () => {
       options: brandsList?.items.map(brand => ({
         label: brand.value,
         value: brand.key,
-      })),
+      })) ?? [],
     },
     {
       key: "type",
       label: constantsMap.pages.catalog.filter.type,
       value: '',
-      options: typesList?.items.map(type => ({ label: type.value, value: type.key })),
+      options: typesList?.items.map(type => ({ label: type.value, value: type.key })) ?? [],
     },
     {
       key: "category",
       label: constantsMap.pages.catalog.filter.category,
       value: '',
-      options: [],
+      options: categoryList?.items.map(type => ({ label: type.value, value: type.key })) ?? [],
     },
   ];
-
-  debugger
 
   return (
     <MainLayout>

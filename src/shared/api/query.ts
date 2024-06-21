@@ -27,7 +27,7 @@ import {
     {}
   > = async (args, api, extraOptions) => {
     await mutex.waitForUnlock();
-    debugger
+    
     let result = await _baseQuery(args, api, extraOptions);
     // refresh tokens if jwt expired (403 status code)
     if (result.error && result.error.status === 403) {
