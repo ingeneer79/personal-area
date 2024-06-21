@@ -5,31 +5,37 @@ import { constantsMap } from '../../../shared/model/constants';
 import Image from "next/image";
 import './styles.module.scss'
 import { FilterWithSearch } from "@/features/filters/FilterWithSearch";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useAppSelector } from "@/shared/lib";
 import { classifiersApi, useGetClassifiersQuery } from "@/entities/classifiers/api";
 import { selectClassifierById } from "@/entities/classifiers/model";
 
 export const CatalogPage = () => {
 
-    const brandsList = useAppSelector(selectClassifierById('brand'));
-    const selectOptions = [
+    const brandsListClassifier = useAppSelector(selectClassifierById('brand'));
+    const typesListClassifier = useAppSelector(selectClassifierById('types'));
+    const categoryListClassifier = useAppSelector(selectClassifierById('category'));
+
+    const selectOptions = useMemo(() => [
       { 
         key: 'brand', 
-        label: 'Бренд', 
-        options: brandsList?.map((brand) => ({label: brand.name, value: brand.id})) 
+        label: constantsMap.pages.catalog.filter.brand, 
+        value: '',
+        options: brandsListClassifier?.items.map((brand) => ({label: brand.value, value: brand.key})) ?? []
       },      
       { 
         key: 'type', 
-        label: 'Тип', 
-        options: [] 
+        value: '',
+        label: constantsMap.pages.catalog.filter.type, 
+        options: typesListClassifier?.items.map((type) => ({label: type.value, value: type.key})) ?? [] 
       },      
       { 
         key: 'category', 
-        label: 'Категория', 
-        options: [] 
+        value: '',
+        label: constantsMap.pages.catalog.filter.category, 
+        options: categoryListClassifier?.items.map((category) => ({label: category.value, value: category.key})) ?? []   
       },      
-    ]
+    ], [brandsListClassifier, typesListClassifier, categoryListClassifier]);
 
     
     useEffect(() => {
@@ -37,13 +43,12 @@ export const CatalogPage = () => {
 
     }, [])
     
-
     return (
       <MainLayout>      
         <Flex gap="middle" vertical>
           <Typography.Text style={{fontSize: '32px'}} className="font-medium">{constantsMap.pages.catalog.mainText}</Typography.Text>     
           <Image src="/images/banner.jfif" width={1600} height={203} style={{borderRadius: '36px', height: '203px', width: '100%'}} alt=""></Image>
-          <FilterWithSearch selectOptions={selectOptions}/>
+          <FilterWithSearch selectOptions={selectOptions} onChange={() => {}}/>
         </Flex>                 
       </MainLayout>
     );
