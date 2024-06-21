@@ -26,9 +26,7 @@ export const constantsMap = {
     },
     shared: {
         config: {
-          apiUrl: 'https://localhost:3000/api/',
-          wsUrl: 'wss://norma.nomoreparties.space/',
-          modalCloseKey: 'Escape',
+          apiUrl: 'http://localhost:3000/api/',
           defaultError: 'Пожалуйста, перезагрузите страницу или попробуйте позже',
           reloadPageText: 'Перезагрузить страницу',
         },

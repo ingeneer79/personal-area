@@ -6,6 +6,7 @@ export interface SelectOption {
   
   export interface FilterWithSearchProps {
     selectOptions: SelectOption[];
+    isLoading: boolean;
     onChange?: (id: string, value: string[]) => void;
     onClearAll?: () => void;
   }

@@ -10,9 +10,9 @@ export const classifiersApi = baseApi.injectEndpoints({
         method: 'GET',
       }),
       keepUnusedDataFor: Infinity,
-      transformResponse: (response: { data: Array<ClassifierObject> }) => {
-        return response.data;
-      },
+      //transformResponse: (response: { data: Array<ClassifierObject> }) => {
+      //  return response;
+      //},
     }),
   }),
 });

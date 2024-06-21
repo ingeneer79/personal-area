@@ -4,8 +4,8 @@ import { TrashButton } from "./trashButton";
 import { FilterWithSearchProps } from "../model/types";
 import { FC } from "react";
 
-
 export const FilterWithSearch: FC<FilterWithSearchProps> = ({
+  isLoading,
   selectOptions,
   onChange,
   onClearAll
@@ -35,6 +35,7 @@ export const FilterWithSearch: FC<FilterWithSearchProps> = ({
               style={{ width: "100%" }}
               placeholder={selectOption.label}
               options={selectOption.options}
+              loading={isLoading}
               onChange={(value) => onChange?.(selectOption.key, value)}
             />
           ))

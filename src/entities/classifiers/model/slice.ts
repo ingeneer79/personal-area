@@ -9,7 +9,7 @@ interface ClassifierData {
 }
 
 interface ConstructorState {
-  classifiers: ClassifierData[];
+  classifiers: ClassifierObject[];
 }
 
 const initialState: ConstructorState = {
@@ -24,7 +24,7 @@ export const classifiersSlice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(classifiersApi.endpoints.getClassifiers.matchFulfilled, (state, action: PayloadAction<ClassifierObject[]>) => {
       action.payload.forEach((classifier) => {
-        state.classifiers.push({id: classifier.id, classifiers: classifier})
+        state.classifiers.push(classifier)
       })
     })
   }

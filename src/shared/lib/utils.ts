@@ -1,6 +1,7 @@
 import type { SerializedError } from '@reduxjs/toolkit';
-import Cookies from 'js-cookie';
+
 import { constantsMap, type ApiError } from '../model';
+import Cookies from 'js-cookie';
 
 
 export const getApiError = (error: ApiError | SerializedError) => {
