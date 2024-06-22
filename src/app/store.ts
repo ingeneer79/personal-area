@@ -3,10 +3,11 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit";
 
 import { classifiersSlice } from "../entities/classifiers/model";
 import { baseApi } from "@/shared/api";
+import { catalogFiltersSlice } from "@/widgets/filters/catalogFilter/model/slices";
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices(classifiersSlice);
+const rootReducer = combineSlices(classifiersSlice, catalogFiltersSlice);
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>;
 
