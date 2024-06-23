@@ -1,4 +1,3 @@
-"use client"
 import { Flex } from 'antd';
 import type { PropsWithChildren } from 'react';
 import { MainHeader } from '@/widgets/header';
