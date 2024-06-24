@@ -6,36 +6,15 @@ import Image from "next/image";
 import { FilterWithSearch } from "@/features/filters/FilterWithSearch";
 import { useGetClassifiersQuery } from "@/entities/classifiers/api";
 import "./styles.module.scss";
+import { getSelectOptions } from "../lib/utils";
 
 export const CatalogPage = () => {
   const { data: classifiers = [], isLoading } = useGetClassifiersQuery();
 
-  const brandsList = classifiers.find(cls => cls.id === "brand");
-  const typesList = classifiers.find(cls => cls.id === "type");
-  const categoryList = classifiers.find(cls => cls.id === "category");
-
   const selectOptions = [
-    {
-      key: "brand",
-      label: constantsMap.pages.catalog.filter.brand,
-      value: '',
-      options: brandsList?.items.map(brand => ({
-        label: brand.value,
-        value: brand.key,
-      })) ?? [],
-    },
-    {
-      key: "type",
-      label: constantsMap.pages.catalog.filter.type,
-      value: '',
-      options: typesList?.items.map(type => ({ label: type.value, value: type.key })) ?? [],
-    },
-    {
-      key: "category",
-      label: constantsMap.pages.catalog.filter.category,
-      value: '',
-      options: categoryList?.items.map(type => ({ label: type.value, value: type.key })) ?? [],
-    },
+    getSelectOptions("brand", constantsMap.pages.catalog.filter.brand, classifiers),
+    getSelectOptions("type", constantsMap.pages.catalog.filter.type, classifiers),
+    getSelectOptions("category", constantsMap.pages.catalog.filter.category, classifiers),
   ];
 
   return (
