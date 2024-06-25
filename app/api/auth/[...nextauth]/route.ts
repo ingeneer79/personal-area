@@ -41,7 +41,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user, account, profile, isNewUser }) {
       if (account) {
         // account is only available the first time this callback is called on a new session (after the user signs in)
-        token.decoded = jwtDecode(account.access_token);
+        token.decoded = jwtDecode((account as any).access_token);
         token.access_token = account.access_token;
         token.id_token = account.id_token;
         token.expires_at = account.expires_at;
@@ -51,7 +51,7 @@ export const authOptions: NextAuthOptions = {
 
       const nowTimeStamp = Math.floor(Date.now() / 1000);
 
-      if (nowTimeStamp < token.accessTokenExpired) {
+      if (nowTimeStamp < (token as any).accessTokenExpired) {
         // token has not expired yet, return it
         return token;
       } else {
