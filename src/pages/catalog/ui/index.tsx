@@ -9,7 +9,7 @@ import { getSelectOptions } from "../lib/utils";
 import { getClassifiers } from "@/entities/classifiers/api/data";
 
 
-export async function CatalogPage() {
+export function CatalogPage() {
 
     //const classifiers = await getClassifiers();
     const selectOptions: SelectOption[] = [
@@ -40,3 +40,4 @@ export async function CatalogPage() {
     );
   
 }
+export default CatalogPage;

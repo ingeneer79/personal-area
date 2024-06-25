@@ -10,3 +10,5 @@ export const HomePage = () => {
       </MainLayout>
     );
   };
+
+export default HomePage;
