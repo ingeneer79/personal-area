@@ -1,6 +1,6 @@
 import { getIdToken } from "@/shared/lib/session";
-import { authOptions } from "../[...nextauth]/route";
 import { getServerSession } from "next-auth"
+import { authOptions } from "../[...nextauth]/authOptions";
 
 
 export async function GET() {

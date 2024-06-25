@@ -1,7 +1,7 @@
 import { NextApiRequest } from "next";
 
 export function GET(
-    req: NextApiRequest,
+    // req: NextApiRequest,
   ) {
     return Response.json(
       [

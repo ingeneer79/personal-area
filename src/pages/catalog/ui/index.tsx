@@ -11,11 +11,11 @@ import { getClassifiers } from "@/entities/classifiers/api/data";
 
 export async function CatalogPage() {
 
-    const classifiers = await getClassifiers();
+    //const classifiers = await getClassifiers();
     const selectOptions: SelectOption[] = [
-      getSelectOptions("brand", constantsMap.pages.catalog.filter.brand, classifiers),
-      getSelectOptions("type", constantsMap.pages.catalog.filter.type, classifiers),
-      getSelectOptions("category", constantsMap.pages.catalog.filter.category, classifiers),      
+      //getSelectOptions("brand", constantsMap.pages.catalog.filter.brand, classifiers),
+      //getSelectOptions("type", constantsMap.pages.catalog.filter.type, classifiers),
+      //getSelectOptions("category", constantsMap.pages.catalog.filter.category, classifiers),      
     ];
 
 

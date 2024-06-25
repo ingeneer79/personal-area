@@ -1,1 +1,1 @@
-export { AppRoot } from './index'
+export { AppRoot } from './ui/index';
