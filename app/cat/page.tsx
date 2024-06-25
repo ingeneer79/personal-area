@@ -1,1 +1,2 @@
-export { Page } from '@/pages/catalog/ui/page';
+// export { CatalogPage as default } from '@/pages/catalog';
+export { CatalogPage as default } from '@/pages/catalog/ui';

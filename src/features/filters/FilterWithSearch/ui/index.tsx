@@ -1,3 +1,4 @@
+'use client'
 import { Button, Flex, Select } from "antd";
 import Search from "antd/es/input/Search";
 import { TrashButton } from "./trashButton";

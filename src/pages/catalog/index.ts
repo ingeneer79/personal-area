@@ -1,2 +1,3 @@
-export { Page } from './ui/page'
-export { CatalogPage } from './ui'
+export { CatalogPage } from "./ui"; //CatalogPage from "./ui"
+
+
