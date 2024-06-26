@@ -8,22 +8,20 @@ import TypographyWrapper from "@/shared/ui/Typography";
 import { getSelectOptions } from "../lib/utils";
 import { getClassifiers } from "@/entities/classifiers/api/data";
 
+export async function CatalogPage() {
 
-export function CatalogPage() {
-
-    //const classifiers = await getClassifiers();
+    const classifiers = await getClassifiers();
     const selectOptions: SelectOption[] = [
-      //getSelectOptions("brand", constantsMap.pages.catalog.filter.brand, classifiers),
-      //getSelectOptions("type", constantsMap.pages.catalog.filter.type, classifiers),
-      //getSelectOptions("category", constantsMap.pages.catalog.filter.category, classifiers),      
+      getSelectOptions("brand", constantsMap.pages.catalog.filter.brand, classifiers),
+      getSelectOptions("type", constantsMap.pages.catalog.filter.type, classifiers),
+      getSelectOptions("category", constantsMap.pages.catalog.filter.category, classifiers),      
     ];
-
 
     console.log(selectOptions)
   
     return (
       <MainLayout>
-        <Flex gap="middle" vertical>
+        <Flex gap="middle" vertical >
         <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
           {constantsMap.pages.catalog.mainText}
         </TypographyWrapper>

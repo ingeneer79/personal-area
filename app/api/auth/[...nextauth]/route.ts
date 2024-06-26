@@ -1,10 +1,5 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
-import KeycloakProvider from "next-auth/providers/keycloak";
-import { encrypt } from "@/shared/lib/encryptions";
-import jwt_decode, { jwtDecode } from 'jwt-decode';
+import NextAuth from "next-auth";
 import { authOptions } from "./authOptions";
-
-// this will refresh an expired access token, when needed
 
 console.log("AuthOptions: ", authOptions)
 

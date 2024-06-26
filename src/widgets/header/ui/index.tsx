@@ -19,7 +19,7 @@ export const MainHeader = () => {
     if (
       status != "loading" &&
       session &&
-      session?.error === "RefreshAccessTokenError"
+      (session as any)?.error === "RefreshAccessTokenError"
     ) {
       signOut({ callbackUrl: "/" });
     }
