@@ -6,6 +6,7 @@ import { authOptions } from "./authOptions";
 
 // this will refresh an expired access token, when needed
 
+console.log("AuthOptions: ", authOptions)
 
 const handler = NextAuth(authOptions);
 
