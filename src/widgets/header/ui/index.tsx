@@ -14,14 +14,14 @@ export const MainHeader = () => {
 
   const { data: session, status } = useSession(); 
 
-  useEffect(() => {
-    
+  useEffect(() => {    
+    debugger
     if (
-      status != "loading" &&
-      session &&
-      (session as any)?.error === "RefreshAccessTokenError"
+      status === "unauthenticated"
+      //session &&
+      //(session as any)?.error === "RefreshAccessTokenError"
     ) {
-      signOut({ callbackUrl: "/" });
+      // signIn();
     }
   }, [session, status]);
 
@@ -30,14 +30,8 @@ export const MainHeader = () => {
       <Button size="large" type="primary" iconPosition='end' icon={<BagButton count={0}/> }>
         Корзина
       </Button>
-
       <Typography.Text className="ml-3 mr-3 font-medium" >Иван Пупкин</Typography.Text> 
       <Image src='/images/user.svg'  width={48} height={48} alt=''/>
-
-      <Button size="large" type="primary" onClick={() => signIn('keycloak')}>
-        Login
-      </Button>
-
     </Header>
   );
 };
