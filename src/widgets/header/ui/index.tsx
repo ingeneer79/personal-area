@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import { Button, Typography } from 'antd';
 import { Layout } from 'antd';
 
@@ -10,19 +10,33 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 
 const { Header} = Layout;
 
-export const MainHeader = () => {
+
+function keycloakSessionLogOut(): Promise<Response | null> {
+  try {
+    return fetch(`/api/auth/logout`, { method: "GET" });
+  } catch (err) {
+    console.error(err);
+  }
+  return Promise.resolve(null)
+}
+
+export function MainHeader() {
 
   const { data: session, status } = useSession(); 
 
   useEffect(() => {    
-    debugger
-    if (
-      status === "unauthenticated"
-      //session &&
-      //(session as any)?.error === "RefreshAccessTokenError"
-    ) {
-      // signIn();
+    if ( status === "unauthenticated") {
+      // signIn('keycloak');
     }
+
+    if (
+      status != "loading" &&
+      session &&
+      (session as any)?.error === "RefreshAccessTokenError"
+    ) {
+      signOut({ callbackUrl: "/" });
+    }
+
   }, [session, status]);
 
   return (
@@ -32,6 +46,7 @@ export const MainHeader = () => {
       </Button>
       <Typography.Text className="ml-3 mr-3 font-medium" >Иван Пупкин</Typography.Text> 
       <Image src='/images/user.svg'  width={48} height={48} alt=''/>
+      <Button size="large" className='ml-3 mr-3' type="primary" onClick={() =>keycloakSessionLogOut().then(() => signOut({ callbackUrl: "/" }))}>Выйти</Button>
     </Header>
   );
 };
