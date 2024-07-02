@@ -4,7 +4,7 @@ import React from "react";
 
 type Props = {};
 
-const ProfilePage = async (props: Props) => {
+export const ProfilePage = async (props: Props) => {
   return (
     <MainLayout>
       <Flex>Профиль</Flex>
