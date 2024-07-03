@@ -37,8 +37,13 @@ export const ConfigLayout = ({ children }: PropsWithChildren) => {
           colorBorder: 'var(--control-bg-color)',
           colorText: 'var(--control-text-color)',
           fontSize: 16,
+        },
+        Checkbox: {
+          colorBgContainer: 'var(--control-bg-color)',     
+          fontSize: 16,
+          colorTextLabel: 'var(--control-bg-color)',
+          colorText: 'var(--control-filter-text-color)',
         }
-        
       }}}>
         {children}
     </ConfigProvider>

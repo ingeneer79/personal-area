@@ -36,7 +36,7 @@ export const authOptions: NextAuthOptions = {
         issuer: `${process.env.AUTH_ISSUER}`,
       }),
     ],
-  
+    // debug: true,
     callbacks: {
       async jwt({ token, user, account, profile, isNewUser }) {
         if (account) {
@@ -75,6 +75,14 @@ export const authOptions: NextAuthOptions = {
         session.error = token.error;
         return session;
       },
+
+      async signIn({ user, account, profile, email, credentials }) {
+        console.log({ user, account, profile, email, credentials });
+        return true;
+      },
+    },
+    pages: {
+      error: '/auth/error'
     },
   };
   

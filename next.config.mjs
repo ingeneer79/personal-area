@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
- 	output: 'standalone',
-	reactStrictMode: true,
 	transpilePackages: [
 		"antd",
 		"rc-util",
@@ -13,7 +11,6 @@ const nextConfig = {
 		"rc-tree",
 		"rc-table",
 	],	
-	pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx'],
-}
+};
 
 export default nextConfig;

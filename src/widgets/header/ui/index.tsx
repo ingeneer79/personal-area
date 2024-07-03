@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import { Button, Typography } from 'antd';
 import { Layout } from 'antd';
 
@@ -10,12 +10,25 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 
 const { Header} = Layout;
 
-export const MainHeader = () => {
+
+function keycloakSessionLogOut(): Promise<Response | null> {
+  try {
+    return fetch(`/api/auth/logout`, { method: "GET" });
+  } catch (err) {
+    console.error(err);
+  }
+  return Promise.resolve(null)
+}
+
+export function MainHeader() {
 
   const { data: session, status } = useSession(); 
 
-  useEffect(() => {
-    
+  useEffect(() => {    
+   if ( status === "unauthenticated") {
+        signIn('keycloak')        
+    }
+
     if (
       status != "loading" &&
       session &&
@@ -23,6 +36,7 @@ export const MainHeader = () => {
     ) {
       signOut({ callbackUrl: "/" });
     }
+
   }, [session, status]);
 
   return (
@@ -30,13 +44,13 @@ export const MainHeader = () => {
       <Button size="large" type="primary" iconPosition='end' icon={<BagButton count={0}/> }>
         Корзина
       </Button>
-
-      <Typography.Text className="ml-3 mr-3 font-medium" >Иван Пупкин</Typography.Text> 
+      <Typography.Text className="ml-3 mr-3 font-medium" >{session?.user?.name}</Typography.Text> 
       <Image src='/images/user.svg'  width={48} height={48} alt=''/>
-
-      <Button size="large" type="primary" onClick={() => signIn('keycloak')}>
-        Login
-      </Button>
+      {
+        status === "authenticated" && (
+          <Button size="large" className='ml-3 mr-3' type="primary" onClick={() =>keycloakSessionLogOut().then(() => signOut({ callbackUrl: "/" }))}>Выйти</Button>
+        )
+      }
 
     </Header>
   );
