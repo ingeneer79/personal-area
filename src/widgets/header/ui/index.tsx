@@ -25,8 +25,8 @@ export function MainHeader() {
   const { data: session, status } = useSession(); 
 
   useEffect(() => {    
-    if ( status === "unauthenticated") {
-      // signIn('keycloak');
+   if ( status === "unauthenticated") {
+        signIn('keycloak')        
     }
 
     if (
@@ -44,9 +44,14 @@ export function MainHeader() {
       <Button size="large" type="primary" iconPosition='end' icon={<BagButton count={0}/> }>
         Корзина
       </Button>
-      <Typography.Text className="ml-3 mr-3 font-medium" >Иван Пупкин</Typography.Text> 
+      <Typography.Text className="ml-3 mr-3 font-medium" >{session?.user?.name}</Typography.Text> 
       <Image src='/images/user.svg'  width={48} height={48} alt=''/>
-      <Button size="large" className='ml-3 mr-3' type="primary" onClick={() =>keycloakSessionLogOut().then(() => signOut({ callbackUrl: "/" }))}>Выйти</Button>
+      {
+        status === "authenticated" && (
+          <Button size="large" className='ml-3 mr-3' type="primary" onClick={() =>keycloakSessionLogOut().then(() => signOut({ callbackUrl: "/" }))}>Выйти</Button>
+        )
+      }
+
     </Header>
   );
 };
