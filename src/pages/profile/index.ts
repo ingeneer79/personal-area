@@ -1,3 +1,3 @@
-export { ProfilePage } from "./ui"; //CatalogPage from "./ui"
+export { ProfilePage } from "./ui/ProfilePage"; //CatalogPage from "./ui"
 
 
