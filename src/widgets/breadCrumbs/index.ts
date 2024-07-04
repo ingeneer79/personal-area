@@ -1,1 +1,1 @@
-export {BreadcrumbWidget} from './ui'
+export {BreadCrumbWidget} from './ui'

@@ -12,7 +12,7 @@ export const CheckBoxesPanelFilter: FC<CheckBoxesPanelFilterProps> = ({
     <Flex gap="middle" className="w-full items-center">
       <Flex
         gap="middle"
-      >
+      >        
         <Checkbox.Group
           options={selectOptions}
           onChange={checkedValues => onChange?.(checkedValues)}

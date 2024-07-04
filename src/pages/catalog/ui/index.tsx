@@ -9,7 +9,9 @@ import { getSelectOptions } from "../lib/utils";
 import { getClassifiers } from "@/entities/classifiers/api/data";
 import { CheckBoxesPanelFilter } from "@/widgets/filters/checkBoxesPanelFilter";
 import { SelectOption } from "@/widgets/filters/filterWithSearch/model/types";
-import { CheckBoxesPanelOption } from "@/widgets/filters/CheckBoxesPanelFilter/model/types";
+import { OrderActionsPanel } from "@/widgets/panels/actions/order/ui";
+import { CheckBoxesPanelOption } from "@/widgets/filters/checkBoxesPanelFilter/model/types";
+import { OrderActionButton } from "@/widgets/panels/actions/order";
 
 export async function CatalogPage() {
   const classifiers = await getClassifiers();
@@ -41,6 +43,37 @@ export async function CatalogPage() {
         value: item.key,
       })) ?? [];
 
+
+  const orderActionButtons: OrderActionButton[] = [
+    {
+      label: constantsMap.pages.catalog.actions.loadOrder,
+      onClick: () => {
+
+      },
+    },
+    {
+      label: constantsMap.pages.catalog.actions.downloadTemplate,
+      onClick: () => {
+
+      },
+    },
+    {
+      label: constantsMap.pages.catalog.actions.uploadByTemplate,
+      onClick: () => {
+      },
+    },
+    {
+      label: constantsMap.pages.catalog.actions.downloadPriceList,
+      onClick: () => {
+      },
+    },
+    {
+      label: constantsMap.pages.catalog.actions.sendPriceListByFTP,
+      onClick: () => {
+      },
+    }
+  ]
+
   return (
     <MainLayout>
       <Flex gap="middle" vertical>
@@ -59,6 +92,7 @@ export async function CatalogPage() {
           selectOptions={selectCheckboxesOptions}
           isLoading={false}
         />
+        <OrderActionsPanel buttons={orderActionButtons} isLoading={false} />
       </Flex>
     </MainLayout>
   );

@@ -1,6 +1,6 @@
 import { Breadcrumb } from "antd";
 
-export const BreadcrumbWidget = () => {
+export const BreadCrumbWidget = () => {
   return (
     <Breadcrumb
       separator="&#x2022;"

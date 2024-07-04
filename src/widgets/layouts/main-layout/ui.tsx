@@ -4,7 +4,8 @@ import type { PropsWithChildren } from 'react';
 import { MainHeader } from '@/widgets/header';
 import { Content } from 'antd/es/layout/layout';
 import { SideBar } from '@/widgets/sidebar';
-import { BreadcrumbWidget } from '@/widgets/Breadcrumbs';
+import { BreadCrumbWidget } from '@/widgets/breadCrumbs';
+
 export const MainLayout = ({ children }: PropsWithChildren) => {
   return (
     <Flex vertical>
@@ -14,7 +15,7 @@ export const MainLayout = ({ children }: PropsWithChildren) => {
           <SideBar/>
           <Content style={{ padding: '0 24px'}}>
             <Flex vertical>
-                <BreadcrumbWidget></BreadcrumbWidget>         
+                <BreadCrumbWidget></BreadCrumbWidget>         
                 {children}
             </Flex>
           </Content>
