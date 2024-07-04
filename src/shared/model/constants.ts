@@ -24,6 +24,13 @@ export const constantsMap = {
             mainText: 'СТМ',
         },
     },
+    widgets: {
+        header: {
+            bag: 'Корзина',
+            user: 'Пользователь',
+            logout: 'Выйти',
+        },
+    },
     shared: {
         config: {
           apiUrl: 'http://localhost:3000/api/',

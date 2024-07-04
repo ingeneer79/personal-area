@@ -22,7 +22,7 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     volumes:
       - ./keycloak:/opt/keycloak/data/import
-    command: -v start-dev --import-realm
+    command: -v start-dev
     depends_on:
       - keycloakdb
     ports:

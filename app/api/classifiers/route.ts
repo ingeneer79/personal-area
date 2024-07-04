@@ -45,7 +45,7 @@ export function GET(
           ]
         },
         {
-          id: 'fast',
+          id: 'productState',
           items: [
             {
               value: "СТМ / УСТМ",

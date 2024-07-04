@@ -7,6 +7,7 @@ import { BagButton } from './bagButton';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { constantsMap } from '@/shared/model';
 
 const { Header} = Layout;
 
@@ -25,7 +26,7 @@ export function MainHeader() {
   const { data: session, status } = useSession(); 
 
   useEffect(() => {    
-   if ( status === "unauthenticated") {
+   if (status === "unauthenticated") {
         signIn('keycloak')        
     }
 
@@ -42,16 +43,15 @@ export function MainHeader() {
   return (
     <Header className="header flex items-center justify-end bg-transparent border-b-2" >
       <Button size="large" type="primary" iconPosition='end' icon={<BagButton count={0}/> }>
-        Корзина
+        {constantsMap.widgets.header.bag}
       </Button>
       <Typography.Text className="ml-3 mr-3 font-medium" >{session?.user?.name}</Typography.Text> 
       <Image src='/images/user.svg'  width={48} height={48} alt=''/>
       {
         status === "authenticated" && (
-          <Button size="large" className='ml-3 mr-3' type="primary" onClick={() =>keycloakSessionLogOut().then(() => signOut({ callbackUrl: "/" }))}>Выйти</Button>
+          <Button size="large" className='ml-3 mr-3' type="primary" onClick={() =>keycloakSessionLogOut().then(() => signOut({ callbackUrl: "/" }))}>{constantsMap.widgets.header.logout}</Button>
         )
       }
-
     </Header>
   );
 };

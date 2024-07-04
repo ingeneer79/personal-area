@@ -1,5 +1,5 @@
 import { ClassifierObject } from "@/entities/classifiers/model";
-import { SelectOption } from "@/features/filters/FilterWithSearch/model/types";
+import { SelectOption } from "@/widgets/filters/filterWithSearch/model/types";
 import { constantsMap } from "@/shared/model";
 
 export const getSelectOptions = (name: string, key: string, classifiers: ClassifierObject[]): SelectOption => {

@@ -1,48 +1,66 @@
-import { FilterWithSearch } from "@/features/filters/FilterWithSearch";
+import { FilterWithSearch } from "@/widgets/filters/filterWithSearch";
 
 import { constantsMap } from "@/shared/model";
 import { MainLayout } from "@/widgets/layouts";
 import Image from "next/image";
-import Flex from '@/shared/ui/Flex';
+import Flex from "@/shared/ui/Flex";
 import TypographyWrapper from "@/shared/ui/Typography";
 import { getSelectOptions } from "../lib/utils";
 import { getClassifiers } from "@/entities/classifiers/api/data";
-import { CheckBoxesPanelFilter } from "@/features/filters/CheckBoxesPanelFilter";
-import { SelectOption } from "@/features/filters/FilterWithSearch/model/types";
-import { CheckBoxesPanelOption } from "@/features/filters/CheckBoxesPanelFilter/model/types";
+import { CheckBoxesPanelFilter } from "@/widgets/filters/checkBoxesPanelFilter";
+import { SelectOption } from "@/widgets/filters/filterWithSearch/model/types";
+import { CheckBoxesPanelOption } from "@/widgets/filters/CheckBoxesPanelFilter/model/types";
 
 export async function CatalogPage() {
+  const classifiers = await getClassifiers();
 
-    const classifiers = await getClassifiers();
+  const selectOptions: SelectOption[] = [
+    getSelectOptions(
+      "brand",
+      constantsMap.pages.catalog.filter.brand,
+      classifiers
+    ),
+    getSelectOptions(
+      "type",
+      constantsMap.pages.catalog.filter.type,
+      classifiers
+    ),
+    getSelectOptions(
+      "category",
+      constantsMap.pages.catalog.filter.category,
+      classifiers
+    ),
+  ];
 
-    const selectOptions: SelectOption[] = [
-      getSelectOptions("brand", constantsMap.pages.catalog.filter.brand, classifiers),
-      getSelectOptions("type", constantsMap.pages.catalog.filter.type, classifiers),
-      getSelectOptions("category", constantsMap.pages.catalog.filter.category, classifiers),      
-    ];
+  const selectCheckboxesOptions: CheckBoxesPanelOption[] =
+    classifiers
+      .find(classifier => classifier.id === "productState")
+      ?.items.map(item => ({
+        key: item.key,
+        label: item.value,
+        value: item.key,
+      })) ?? [];
 
-    const selectChekboxesOptions: CheckBoxesPanelOption[] = classifiers.find((classifier) => classifier.id === "fast")?.items.map((item) => ({key: item.key, label: item.value, value: item.key})) ?? [];
-
-    console.log(selectChekboxesOptions)
-  
-    return (
-      <MainLayout>
-        <Flex gap="middle" vertical >
+  return (
+    <MainLayout>
+      <Flex gap="middle" vertical>
         <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
           {constantsMap.pages.catalog.mainText}
         </TypographyWrapper>
-          <Image
-            src="/images/banner.jfif"
-            width={1600}
-            height={203}
-            style={{ borderRadius: "36px", height: "203px", width: "100%" }}
-            alt=""
-          ></Image>
-          <FilterWithSearch selectOptions={selectOptions} isLoading={false} />
-          <CheckBoxesPanelFilter selectOptions={selectChekboxesOptions} isLoading={false} />
-        </Flex>
-      </MainLayout>
-    );
-  
+        <Image
+          src="/images/banner.jfif"
+          width={1600}
+          height={203}
+          style={{ borderRadius: "36px", height: "203px", width: "100%" }}
+          alt=""
+        ></Image>
+        <FilterWithSearch selectOptions={selectOptions} isLoading={false} />
+        <CheckBoxesPanelFilter
+          selectOptions={selectCheckboxesOptions}
+          isLoading={false}
+        />
+      </Flex>
+    </MainLayout>
+  );
 }
 export default CatalogPage;
