@@ -1,4 +1,4 @@
-import { FilterWithSearch } from "@/widgets/filters/filterWithSearch";
+import { FilterWithSearch } from "@/widgets/filters/filter-with-search";
 
 import { constantsMap } from "@/shared/model";
 import { MainLayout } from "@/widgets/layouts";
@@ -7,11 +7,11 @@ import Flex from "@/shared/ui/Flex";
 import TypographyWrapper from "@/shared/ui/Typography";
 import { getSelectOptions } from "../lib/utils";
 import { getClassifiers } from "@/entities/classifiers/api/data";
-import { CheckBoxesPanelFilter } from "@/widgets/filters/checkBoxesPanelFilter";
-import { SelectOption } from "@/widgets/filters/filterWithSearch/model/types";
-import { OrderActionsPanel } from "@/widgets/panels/actions/order/ui";
-import { CheckBoxesPanelOption } from "@/widgets/filters/checkBoxesPanelFilter/model/types";
-import { OrderActionButton } from "@/widgets/panels/actions/order";
+import { CheckBoxesPanelFilter } from "@/widgets/filters/check-boxes-panel-filter";
+import { CheckBoxesPanelOption } from "@/widgets/filters/check-boxes-panel-filter/model/types";
+import { SelectOption } from "@/widgets/filters/filter-with-search/model/types";
+import { OrderActionsPanel } from "@/widgets/panels/order-actions";
+
 
 export async function CatalogPage() {
   const classifiers = await getClassifiers();

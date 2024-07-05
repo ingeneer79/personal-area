@@ -3,7 +3,7 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit";
 
 import { classifiersSlice } from "../entities/classifiers/model";
 import { baseApi } from "@/shared/api";
-import { catalogFiltersSlice } from "@/widgets/filters/catalogFilter/model/slices";
+import { catalogFiltersSlice } from "@/widgets/filters/catalog-filter/model/slices";
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.

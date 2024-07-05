@@ -24,6 +24,9 @@
     --control-text-color:#83858D;
     /* цвет в фильтре чекбоксов*/
     --control-filter-text-color: #105055;
+
+    /* цвет кнопок в панели управления заказом*/
+    --control-order-panel-button: #86D0AF
 }
 
 .search .ant-input-search-button {

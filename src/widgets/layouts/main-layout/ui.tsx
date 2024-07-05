@@ -4,7 +4,7 @@ import type { PropsWithChildren } from 'react';
 import { MainHeader } from '@/widgets/header';
 import { Content } from 'antd/es/layout/layout';
 import { SideBar } from '@/widgets/sidebar';
-import { BreadCrumbWidget } from '@/widgets/breadCrumbs';
+import { BreadCrumbWidget } from '@/widgets/bread-crumbs';
 
 export const MainLayout = ({ children }: PropsWithChildren) => {
   return (
