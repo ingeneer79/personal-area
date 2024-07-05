@@ -1,6 +1,6 @@
 export interface OrderActionButton {
     label: string;
-    onClick: () => void;
+    onClick?: () => void;
   }
   
   export interface OrderActionsPanelProps {
