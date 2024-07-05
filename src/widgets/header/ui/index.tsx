@@ -31,7 +31,7 @@ export function MainHeader() {
     }
 
     if (
-      status != "loading" &&
+      status != "loading" && status != "authenticated" &&
       session &&
       (session as any)?.error === "RefreshAccessTokenError"
     ) {

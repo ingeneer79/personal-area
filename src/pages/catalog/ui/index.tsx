@@ -92,7 +92,7 @@ export async function CatalogPage() {
           selectOptions={selectCheckboxesOptions}
           isLoading={false}
         />
-        <OrderActionsPanel buttons={orderActionButtons} isLoading={false} />
+        <OrderActionsPanel buttons={[]} isLoading={false} />
       </Flex>
     </MainLayout>
   );
