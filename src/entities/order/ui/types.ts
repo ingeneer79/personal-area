@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export interface OrderActionButtonProps {
+export interface OrdersActionButtonProps {
     label: string;
     icon?: ReactNode;  
     onClick?: () => void;

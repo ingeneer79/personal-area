@@ -11,6 +11,7 @@ import { CheckBoxesPanelFilter } from "@/widgets/filters/check-boxes-panel-filte
 import { CheckBoxesPanelOption } from "@/widgets/filters/check-boxes-panel-filter/model/types";
 import { SelectOption } from "@/widgets/filters/filter-with-search/model/types";
 import { OrderActionsPanel } from "@/widgets/panels/order-actions";
+import { CatalogTable } from "@/entities/order";
 
 
 export async function CatalogPage() {
@@ -63,6 +64,7 @@ export async function CatalogPage() {
           isLoading={false}
         />
         <OrderActionsPanel isLoading={false} />
+        <CatalogTable/>
       </Flex>
     </MainLayout>
   );

@@ -1,5 +1,5 @@
-export { OrderActionButton } from "./ui/action-button";
-export type { OrderActionButtonProps } from "./ui/action-button";
+export  { CatalogTable } from "./ui/catalog-table";
+export { OrdersActionButton } from "./ui/orders-action-button";
 /*
 export * from "./model/types";
 export * from "./model/slices";
