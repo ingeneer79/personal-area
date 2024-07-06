@@ -15,7 +15,9 @@ export const constantsMap = {
                 downloadTemplate: 'Скачать шаблон',
                 uploadByTemplate: 'Загрузить по шаблону',
                 downloadPriceList: 'Скачать прайс-лист',
-                sendPriceListByFTP: 'Отправить прайс-лист на FTP'
+                sendPriceListByFTP: 'Отправить прайс-лист на FTP',
+                myOrders: 'Мои заказы',
+                newOrder: 'Новый заказ',
             }
         },   
         inbound: {

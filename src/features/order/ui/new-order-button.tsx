@@ -3,7 +3,7 @@
 import { Button } from "antd";
 
 export const NewOrderButton = () => {
-    return <Button type="primary" onClick={() => {}}>Новый заказ</Button>;
+    return <Button type="primary" onClick={() => {}}>Новый заказ + </Button>;
 };
 
 export default NewOrderButton;
