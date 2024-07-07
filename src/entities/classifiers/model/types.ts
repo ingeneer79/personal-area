@@ -9,3 +9,9 @@ export interface ClassifierObject {
     description: string;
     items: ClassifierObjectItem[]
 }
+
+export interface Brand {
+    id: string;
+    value: string;
+    description: string;
+}

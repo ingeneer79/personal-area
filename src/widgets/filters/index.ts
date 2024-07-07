@@ -1,3 +1,3 @@
-export { CheckBoxesPanelFilter } from "./checkBoxesPanelFilter";
-export { FilterWithSearch } from "./filterWithSearch";
+export { CheckBoxesPanelFilter } from "./check-boxes-panel-filter";
+export { FilterWithSearch } from "./filter-with-search";
 

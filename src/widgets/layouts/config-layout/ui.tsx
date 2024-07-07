@@ -13,7 +13,9 @@ export const ConfigLayout = ({ children }: PropsWithChildren) => {
         Button: {
           borderRadius: 12,
           fontFamily: 'Inter',
+          fontSize: 16,
           primaryShadow: '0 0 0 rgba(0, 0, 0, 0)',
+          controlHeight: 48,          
         },  
         Layout: {
           headerHeight: 72,
