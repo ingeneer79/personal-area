@@ -9,7 +9,7 @@ export const MyOrdersButtonIcon = (): ReactNode => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1147_5177)">
+      <g clipPath="url(#clip0_1147_5177)">
         <path
           d="M8.0008 22H16.0008C20.0208 22 20.7408 20.39 20.9508 18.43L21.7008 10.43C21.9708 7.99 21.2708 6 17.0008 6H7.0008C2.7308 6 2.0308 7.99 2.3008 10.43L3.0508 18.43C3.2608 20.39 3.9808 22 8.0008 22Z"
           stroke="white"

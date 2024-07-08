@@ -5,8 +5,8 @@ import { FC } from "react";
 import { Button, Flex } from "antd";
 import { orderActionButtons } from "../model/buttons";
 import { OrderActionsPanelProps } from "../model/types";
-import { OrderActionButton } from "@/entities/order";
 import { MyOrdersButton, NewOrderButton } from "@/features/order";
+import { OrdersActionButton } from '@/entities/order';
 
 export const OrderActionsPanel: FC<OrderActionsPanelProps> = () => {
   return (
@@ -19,7 +19,7 @@ export const OrderActionsPanel: FC<OrderActionsPanelProps> = () => {
       {
         orderActionButtons.map((button, index) => (
           <Flex key={index} style={{ height: "48px", borderRight: "1px solid #E8E8E8" }}>
-            <OrderActionButton label={button.label} onClick={button.onClick} icon={button.icon} />            
+            <OrdersActionButton label={button.label} onClick={button.onClick} icon={button.icon} />            
           </Flex>
         ))
       }

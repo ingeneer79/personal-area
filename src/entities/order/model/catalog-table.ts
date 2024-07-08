@@ -1,4 +1,4 @@
-const CatalogTableColumns = [
+export const CatalogTableColumns = [
   {
     title: "Баркод",
     dataIndex: "barCode",

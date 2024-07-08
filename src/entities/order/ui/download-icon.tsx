@@ -9,7 +9,7 @@ export const DownloadIcon = () : ReactNode => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1138_5121)">
+      <g clipPath="url(#clip0_1138_5121)">
         <path
           d="M12 2V9L14 7"
           stroke="#86D0AF"
