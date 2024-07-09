@@ -60,6 +60,7 @@
   font-size: 16px;
   color: #888888;
   background: #ffffff;
+  background-repeat: no-repeat !important;
   border: 1px solid rgba(51, 51, 51, 0.2);
   border-radius: 0px;
   height: 57px;

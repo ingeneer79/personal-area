@@ -11,6 +11,15 @@ const nextConfig = {
 		"rc-tree",
 		"rc-table",
 	],	
+	async redirects() {
+		return [
+		  {
+			source: '/',
+			destination: '/cat',
+			permanent: true,
+		  },
+		]
+	  },	
 };
 
 export default nextConfig;
