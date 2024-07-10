@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	output: "standalone",
 	transpilePackages: [
 		"antd",
 		"rc-util",
@@ -11,6 +12,7 @@ const nextConfig = {
 		"rc-tree",
 		"rc-table",
 	],	
+	pageExtensions: ['tsx', 'mdx'],
 	async redirects() {
 		return [
 		  {

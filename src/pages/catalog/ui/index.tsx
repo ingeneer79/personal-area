@@ -5,7 +5,7 @@ import { MainLayout } from "@/widgets/layouts";
 import Image from "next/image";
 import Flex from "@/shared/ui/Flex";
 import TypographyWrapper from "@/shared/ui/Typography";
-import { getSelectOptions } from "../lib/utils";
+import getSelectOptions from "../lib/utils";
 import { getClassifiers } from "@/entities/classifiers/api/data";
 import { CheckBoxesPanelFilter } from "@/widgets/filters/check-boxes-panel-filter";
 import { CheckBoxesPanelOption } from "@/widgets/filters/check-boxes-panel-filter/model/types";

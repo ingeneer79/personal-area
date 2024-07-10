@@ -1,7 +1,7 @@
-import { NextApiRequest } from "next";
+import { NextRequest } from "next/server";
 
 export function GET(
-    req: NextApiRequest,
+    req: NextRequest,
   ) {
     return Response.json(
       [

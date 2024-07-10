@@ -1,8 +1,9 @@
-import { OrderActionButtonProps } from "@/entities/order";
+
+import { OrdersActionButtonProps } from "@/entities/order/ui/types";
 import { constantsMap } from "@/shared/model";
 
 
-export const orderActionButtons: OrderActionButtonProps[] = [
+export const orderActionButtons: OrdersActionButtonProps[] = [
     {
       label: constantsMap.pages.catalog.actions.loadOrder,
       onClick: () => {},
