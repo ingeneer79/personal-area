@@ -5,11 +5,11 @@ import React from "react";
 
 type Props = {};
 
-export const ProfilePage = async (props: Props) => {
+export async function ProfilePage(props: Props) {
   return (
     <MainLayout>
       <Flex>Профиль</Flex>
-      <FullWidthImage src="" alt="Баннер профиля" height={203}/>
+      <FullWidthImage src="/images/banner.jfif" alt="Баннер профиля" height={203}/>
     </MainLayout>
   );
 };
