@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// output: "standalone",
-	transpilePackages: [
+	output: "standalone",
+	compress: false,
+	transpilePackages: [	
 		"antd",
 		"rc-util",
 		"@babel/runtime",
@@ -12,7 +13,6 @@ const nextConfig = {
 		"rc-tree",
 		"rc-table",
 	],	
-	// pageExtensions: ['tsx', 'mdx'],
 	async redirects() {
 		return [
 		  {

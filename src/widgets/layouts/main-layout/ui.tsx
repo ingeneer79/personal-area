@@ -1,13 +1,18 @@
 'use client'
 import { Flex, Spin } from 'antd';
-import { useEffect, type PropsWithChildren } from 'react';
+import { FC, useEffect, type PropsWithChildren } from 'react';
 import { MainHeader } from '@/widgets/header';
 import { Content } from 'antd/es/layout/layout';
 import { SideBar } from '@/widgets/sidebar';
 import { BreadCrumbWidget } from '@/widgets/bread-crumbs';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
-export const MainLayout = ({ children }: PropsWithChildren) => {
+interface MainLayoutProps {
+  children: React.ReactNode
+  sessionData?: any
+}
+
+export const MainLayout: FC<MainLayoutProps> = ({ children }: PropsWithChildren) => {
   const { data: session, status } = useSession();   
 
   useEffect(() => {
