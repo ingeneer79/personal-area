@@ -8,5 +8,5 @@ export async function getClassifiers(): Promise<ClassifierObject[]> {
       throw new Error('Failed to fetch data')
     }   
     const classifiers = await res.json();
-    return Promise.resolve(classifiers.classifiers)
+    return Promise.resolve(classifiers)
   }

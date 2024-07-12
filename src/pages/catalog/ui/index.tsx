@@ -39,6 +39,11 @@ export function CatalogPage() {
   }, []);
 
   useEffect(() => {
+
+    if (!classifiers) {
+      return;
+    }
+    
     const selectOptions: SelectOption[] = [
       getSelectOptions(
         "brand",

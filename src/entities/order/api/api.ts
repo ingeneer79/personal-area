@@ -8,7 +8,7 @@ export async function getOrders(): Promise<OrderObject[]> {
     if (!res.ok) {
       throw new Error('Failed to fetch data')
     }   
-    const classifiers = await res.json();
-    return Promise.resolve(classifiers.catalog)
+    const orders = await res.json();
+    return Promise.resolve(orders)
 
   }
