@@ -1,6 +1,6 @@
 import { constantsMap } from '../../../shared/model/constants';
 import { ClassifierObject } from '../model/types';
-import { SelectOption } from '../../../widgets/filters/filter-with-search/model/types';
+import { SelectOption } from '../../../widgets/filters/catalog-filter-with-search/model/types';
 export const getSelectOptions = (name: string, key: string, classifiers: ClassifierObject[]): SelectOption => {
     const list = classifiers?.find(cls => cls.id === name);
     return {

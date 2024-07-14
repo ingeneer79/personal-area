@@ -1,9 +1,13 @@
 'use client'
-import { Button, Flex, Select } from "antd";
-import Search from "antd/es/input/Search";
+import Flex from '@/shared/ui/Flex';
+import Button from '@/shared/ui/Button';
+import Select from '@/shared/ui/Select';
+import Search from '@/shared/ui/Search';
 import { TrashButton } from "./trashButton";
 import { FilterWithSearchProps } from "../model/types";
 import { FC } from "react";
+import { useDispatch } from "react-redux";
+import { setCatalogFiltersSearchValue, setCatalogFiltersSelectedValue, setCatalogFiltersSelectedValues } from "../model/slices";
 
 export const FilterWithSearch: FC<FilterWithSearchProps> = ({
   isLoading,
@@ -11,10 +15,13 @@ export const FilterWithSearch: FC<FilterWithSearchProps> = ({
   onChange,
   onClearAll
 }) => {
+  const dispatch = useDispatch();
   return (
     <Flex gap="middle" className="w-full items-center">
       <Flex gap="middle" className="search w-full" style={{ flex: 1, minWidth: "300px" }}>
-        <Search placeholder="Поиск" allowClear size="large" enterButton />
+        <Search placeholder="Поиск" allowClear size="large" enterButton onChange={(value) => {
+          dispatch(setCatalogFiltersSearchValue(value.target.value));
+        }}/>
       </Flex>
       <Flex
         gap="middle"
@@ -37,7 +44,9 @@ export const FilterWithSearch: FC<FilterWithSearchProps> = ({
               placeholder={selectOption.label}
               options={selectOption.options}
               loading={isLoading}
-              onChange={(value) => onChange?.(selectOption.key, value)}
+              onChange={(value) => {                
+                dispatch(setCatalogFiltersSelectedValue({id: selectOption.key, items: [value]}));
+              }}
             />
           ))
         }

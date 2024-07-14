@@ -6,7 +6,7 @@ export interface ClassifierObjectItem {
 }
 export interface ClassifierObject {
     id: string;
-    description: string;
+    description?: string;
     items: ClassifierObjectItem[]
 }
 
