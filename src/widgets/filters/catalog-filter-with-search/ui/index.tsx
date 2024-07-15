@@ -5,7 +5,7 @@ import Select from '@/shared/ui/Select';
 import Search from '@/shared/ui/Search';
 import { TrashButton } from "./trashButton";
 import { FilterWithSearchProps } from "../model/types";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setCatalogFiltersSearchValue, setCatalogFiltersSelectedValue, setCatalogFiltersSelectedValues } from "../model/slices";
 
@@ -16,6 +16,7 @@ export const FilterWithSearch: FC<FilterWithSearchProps> = ({
   onClearAll
 }) => {
   const dispatch = useDispatch();
+
   return (
     <Flex gap="middle" className="w-full items-center">
       <Flex gap="middle" className="search w-full" style={{ flex: 1, minWidth: "300px" }}>
@@ -46,7 +47,7 @@ export const FilterWithSearch: FC<FilterWithSearchProps> = ({
               loading={isLoading}
               onChange={(value) => {  
                 debugger
-                dispatch(setCatalogFiltersSelectedValue({id: selectOption.key, items: selectOption.options.filter(item => value.includes(item.value))}));
+                dispatch(setCatalogFiltersSelectedValue({id: selectOption.key, values: selectOption.options.filter(item => value.includes(item.value)).map(item => item.value)}));
               }}
             />
           ))

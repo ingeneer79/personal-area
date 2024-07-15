@@ -1,4 +1,4 @@
-export { type FilterSelectOption, type FilterWithSearchProps } from "./types";
+export { type FilterSelectOption, type FilterWithSearchProps, type CatalogFilterSelectedValue } from "./types";
 export {
   getCatalogFiltersSelectedValues,
   getCatalogFiltersSearchValue,
