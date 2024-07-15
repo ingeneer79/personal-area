@@ -1,8 +1,8 @@
 import { ClassifierObject } from "@/entities/classifiers/model";
-import { SelectOption } from "@/features/filters/FilterWithSearch/model/types";
 import { constantsMap } from "@/shared/model";
+import { SelectOption } from "@/widgets/filters/filter-with-search/model/types";
 
-export const getSelectOptions = (name: string, key: string, classifiers: ClassifierObject[]): SelectOption => {
+const getSelectOptions = (name: string, key: string, classifiers: ClassifierObject[]): SelectOption => {
     const list = classifiers.find(cls => cls.id === name);
     return {
         key,
@@ -14,4 +14,6 @@ export const getSelectOptions = (name: string, key: string, classifiers: Classif
         })) ?? [],
       } 
 }
+
+export default getSelectOptions;
 

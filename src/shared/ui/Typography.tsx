@@ -1,4 +1,4 @@
-'use client';
+'use client'; 
 import { Typography } from 'antd';
 import { FC } from 'react';
 

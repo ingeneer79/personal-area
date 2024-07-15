@@ -7,6 +7,7 @@ import { BagButton } from "./bagButton";
 import Image from "next/image";
 import { useEffect } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { constantsMap } from "@/shared/model";
 
 const { Header } = Layout;
 
@@ -21,21 +22,6 @@ function keycloakSessionLogOut(): Promise<Response | null> {
 
 export function MainHeader() {
   const { data: session, status } = useSession();
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      // signIn("keycloak");
-    }
-
-    if (
-      status != "loading" &&
-      session &&
-      (session as any)?.error === "RefreshAccessTokenError"
-    ) {
-      // signOut({ callbackUrl: "/" });
-    }
-  }, [session, status]);
-
   return (
     <Header className="header flex items-center justify-end bg-transparent border-b-2">
       <Button
@@ -44,12 +30,14 @@ export function MainHeader() {
         iconPosition="end"
         icon={<BagButton count={0} />}
       >
-        Корзина
+        {constantsMap.widgets.header.bag}
       </Button>
       <Typography.Text className="ml-3 mr-3 font-medium">
         {session?.user?.name}
       </Typography.Text>
-      <Image src="/images/user.svg" width={48} height={48} alt="" />
+      {status === "authenticated" && (
+        <Image src="/images/user.svg" width={48} height={48} alt="" />
+      )}
       {status === "authenticated" && (
         <Button
           size="large"
@@ -59,7 +47,7 @@ export function MainHeader() {
             keycloakSessionLogOut().then(() => signOut({ callbackUrl: "/" }))
           }
         >
-          Выйти
+          {constantsMap.widgets.header.logout}
         </Button>
       )}
     </Header>

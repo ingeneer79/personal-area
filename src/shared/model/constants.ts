@@ -9,6 +9,15 @@ export const constantsMap = {
                 brand: 'Бренд',
                 type: 'Тип',
                 category: 'Категория',
+            },
+            actions: {
+                loadOrder: 'Загрузить заказ',
+                downloadTemplate: 'Скачать шаблон',
+                uploadByTemplate: 'Загрузить по шаблону',
+                downloadPriceList: 'Скачать прайс-лист',
+                sendPriceListByFTP: 'Отправить прайс-лист на FTP',
+                myOrders: 'Мои заказы',
+                newOrder: 'Новый заказ',
             }
         },   
         inbound: {
@@ -22,6 +31,13 @@ export const constantsMap = {
         },   
         stm: {
             mainText: 'СТМ',
+        },
+    },
+    widgets: {
+        header: {
+            bag: 'Корзина',
+            user: 'Пользователь',
+            logout: 'Выйти',
         },
     },
     shared: {
