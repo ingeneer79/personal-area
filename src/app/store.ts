@@ -3,8 +3,8 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit";
 
 import { classifiersSlice } from "../entities/classifiers/model";
 import { baseApi } from "@/shared/api";
-import { catalogFiltersSlice } from "@/widgets/filters/catalog-filter/model/slices";
 import { ordersSlice } from "@/entities/order/model/slice";
+import { catalogFiltersSlice } from "@/widgets/filters/catalog-filter-with-search/model/slices";
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
@@ -23,6 +23,7 @@ export const makeStore = () => {
     reducer: {
       rootReducer,
       [baseApi.reducerPath]: baseApi.reducer,
+      [catalogFiltersSlice.name]: catalogFiltersSlice.reducer,
     },
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.

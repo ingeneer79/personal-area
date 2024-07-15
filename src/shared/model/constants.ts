@@ -42,7 +42,7 @@ export const constantsMap = {
     },
     shared: {
         config: {
-          apiUrl: 'http://localhost:3000/api/',
+          apiUrl: 'http://localhost:4000/api',
           defaultError: 'Пожалуйста, перезагрузите страницу или попробуйте позже',
           reloadPageText: 'Перезагрузить страницу',
         },
