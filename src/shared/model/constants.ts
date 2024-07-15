@@ -37,6 +37,7 @@ export const constantsMap = {
         header: {
             bag: 'Корзина',
             user: 'Пользователь',
+            login: 'Войти',
             logout: 'Выйти',
         },
     },
