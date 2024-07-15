@@ -26,6 +26,7 @@ export const CatalogTable = () => {
   }, []);
 
   useEffect(() => {
+    debugger
     let filteredDataNew = data.filter((order: OrderObject) => {
       let filterBySearchResult = null
       if (searchFilterValue) {
@@ -45,14 +46,14 @@ export const CatalogTable = () => {
         return selectedFilterValues.filter((selectedFilterValue) => {
           const fieldValue = (order as any)[selectedFilterValue.id];
           if (fieldValue) {
-            return selectedFilterValue.items.includes(fieldValue)
+            return selectedFilterValue.items.some((item) => item.value === fieldValue);
           } 
         })
       });
     }
 
     setFilteredData(filteredDataNew);
-  }, [searchFilterValue, data, selectedFilterValues]);
+  }, [data, searchFilterValue, selectedFilterValues]);
 
   return <Table dataSource={filteredData} columns={CatalogTableColumns} />;
 };

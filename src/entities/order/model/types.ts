@@ -3,6 +3,7 @@ export interface OrderObject {
     name: string;
     typeName: string;
     nds: number;
+    brand: string;
     brandName: string;
     multiplicity: number;
     categoryName: string;

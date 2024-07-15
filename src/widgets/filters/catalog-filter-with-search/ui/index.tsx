@@ -44,8 +44,9 @@ export const FilterWithSearch: FC<FilterWithSearchProps> = ({
               placeholder={selectOption.label}
               options={selectOption.options}
               loading={isLoading}
-              onChange={(value) => {                
-                dispatch(setCatalogFiltersSelectedValue({id: selectOption.key, items: [value]}));
+              onChange={(value) => {  
+                debugger
+                dispatch(setCatalogFiltersSelectedValue({id: selectOption.key, items: selectOption.options.filter(item => value.includes(item.value))}));
               }}
             />
           ))
