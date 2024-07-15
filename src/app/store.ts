@@ -23,6 +23,7 @@ export const makeStore = () => {
     reducer: {
       rootReducer,
       [baseApi.reducerPath]: baseApi.reducer,
+      [catalogFiltersSlice.name]: catalogFiltersSlice.reducer,
     },
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.

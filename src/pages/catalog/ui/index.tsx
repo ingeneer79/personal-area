@@ -26,8 +26,6 @@ export function CatalogPage() {
     CheckBoxesPanelOption[]
   >([]);
 
-  const sel
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -102,8 +100,14 @@ export function CatalogPage() {
               alt=""
             ></Image>
             <FilterWithSearch selectOptions={selectOptions} isLoading={false} onChange={(id, values) => {
-              debugger
-              setSelectCheckboxesOptions(selectCheckboxesOptions);
+              /*
+              setSelectCheckboxesOptions(selectCheckboxesOptions.map(option => {
+                if (option.key === id) {
+                  option. = values
+                }
+                return option
+              }));
+              */
             }} 
             onClearAll={() => {
             }}/>

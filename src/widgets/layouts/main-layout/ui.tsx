@@ -1,11 +1,12 @@
 'use client'
-import { Flex, Spin } from 'antd';
+import { Spin } from 'antd';
 import { FC, useEffect, type PropsWithChildren } from 'react';
 import { MainHeader } from '@/widgets/header';
 import { Content } from 'antd/es/layout/layout';
 import { SideBar } from '@/widgets/sidebar';
 import { BreadCrumbWidget } from '@/widgets/bread-crumbs';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import Flex from '@/shared/ui/Flex';
 
 interface MainLayoutProps {
   children: React.ReactNode
@@ -46,7 +47,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }: PropsWithChildren)
       </Content>
     </Flex>        
   ) : (
-    <Flex style={{ width: '100%', height: '100vh' }}>
+    <Flex className="items-center justify-center w-full h-lvh">
       <Spin size="large" />
     </Flex>
   );
