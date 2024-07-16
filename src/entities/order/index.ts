@@ -1,6 +1,6 @@
 export  { CatalogTable } from "./ui/catalog-table";
 export { OrdersActionButton } from "./ui/orders-action-button";
-export { CatalogTableColumns } from "./model/catalog-table";
+export { QuantityControl, type QuantityControlProps } from "./ui/quantity-control";
 
 /*
 export * from "./model/types";
