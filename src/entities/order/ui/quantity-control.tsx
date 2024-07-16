@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Flex from '@/shared/ui/Flex';
-import { Button } from "antd";
+import { Button, Typography } from "antd";
 import { pad } from "../lib/utils";
 
 export interface QuantityControlProps {
@@ -11,10 +11,10 @@ export interface QuantityControlProps {
 
 export const QuantityControl: FC<QuantityControlProps> = ({quantity, onChange}) => {
     return (
-        <Flex>
-            <Button type="text" icon="minus" onClick={() => onChange(quantity - 1)}></Button>
-            {pad(quantity, 3)}
-            <Button type="text" icon="plus" onClick={() => onChange(quantity + 1)}></Button>
+        <Flex align="center" gap={"small"}>
+            <Button type="text" onClick={() => onChange(quantity - 1)}>-</Button>
+            <Typography>{quantity}</Typography>
+            <Button type="text" onClick={() => onChange(quantity + 1)}>+</Button>
         </Flex>
     );
 };

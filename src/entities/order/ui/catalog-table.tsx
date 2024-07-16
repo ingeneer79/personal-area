@@ -70,7 +70,7 @@ export const CatalogTableColumns = [
     key: "quantity",
     width: 300,    
     render: (text: string) => {
-      return <QuantityControl quantity={Number(text)} />
+      return <QuantityControl quantity={Number(text)} onChange={() => {}}/>
     },    
   },
 
