@@ -8,7 +8,7 @@ const catalog = require('./catalog.json');
 
 const { env } = require('process');
 
-const port = env.BACKEND_PORT ?? 4000;
+const port = env.BACKEND_PORT ? env.BACKEND_PORT : 4000;
 
 app.use(cors())
 
