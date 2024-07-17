@@ -1,7 +1,7 @@
 "use client";
 import { Table } from "antd";
-import { getOrders } from "../api/api";
-import { OrderObject } from "../model/types";
+import { getCatalog } from "../api/api";
+import { CatalogObject } from "../model/types";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/shared/lib";
 import { getCatalogFiltersSearchValue, getCatalogFiltersSelectedValues } from "@/widgets/filters/catalog-filter-with-search/model";
@@ -12,8 +12,8 @@ import { QuantityControl } from "./quantity-control";
 export const CatalogTable = () => {
   const searchFilterValue = useAppSelector(getCatalogFiltersSearchValue)
   const selectedFilterValues = useAppSelector(getCatalogFiltersSelectedValues)
-  const [data, setData] = useState<OrderObject[]>([]);
-  const [filteredData, setFilteredData] = useState<OrderObject[]>([]);
+  const [data, setData] = useState<CatalogObject[]>([]);
+  const [filteredData, setFilteredData] = useState<CatalogObject[]>([]);
 
   const CatalogTableColumns = [
     {
@@ -77,7 +77,7 @@ export const CatalogTable = () => {
       dataIndex: "quantity",
       key: "quantity",
       width: 300,    
-      render: (_, record: OrderObject, index: number) => {
+      render: (_text: string, record: CatalogObject, index: number) => {
         return <QuantityControl quantity={Number(record.quantity)} onChange={(value) => {
           if (value < 0) {
             return
@@ -93,7 +93,7 @@ export const CatalogTable = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await getOrders();
+        const res = await getCatalog();
         setData(res);
       } catch (err) {
         console.log(err);
@@ -105,7 +105,7 @@ export const CatalogTable = () => {
 
   useEffect(() => {
     
-    let filteredDataNew = data.filter((order: OrderObject) => {
+    let filteredDataNew = data.filter((order: CatalogObject) => {
       let filterBySearchResult = null
       if (searchFilterValue) {
         Object.entries(order).forEach(([_key, value]) => {
@@ -120,7 +120,7 @@ export const CatalogTable = () => {
     })
 
     if (selectedFilterValues?.length) {
-      filteredDataNew = filteredDataNew.filter((order: OrderObject) => {
+      filteredDataNew = filteredDataNew.filter((order: CatalogObject) => {
         return selectedFilterValues.some((selectedFilterValue) => {
           if (selectedFilterValue.values.length === 0) { 
             return true 

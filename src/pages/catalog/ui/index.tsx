@@ -9,8 +9,7 @@ import TypographyWrapper from "@/shared/ui/Typography";
 
 import { CheckBoxesPanelFilter } from "@/widgets/filters/check-boxes-panel-filter";
 import { CheckBoxesPanelOption } from "@/widgets/filters/check-boxes-panel-filter/model/types";
-import { OrderActionsPanel } from "@/widgets/panels/order-actions";
-import { CatalogTable } from "@/entities/order";
+import { CatalogTable } from "@/entities/catalog";
 import { getClassifiers } from "@/entities/classifiers/api/data";
 import { getSelectOptions } from "@/entities/classifiers/api";
 import { useEffect, useState } from "react";
@@ -19,6 +18,7 @@ import { SessionProviderWrapper } from "@/app/providers/session-provider-wrapper
 import { type FilterSelectOption } from '../../../widgets/filters/catalog-filter-with-search/model/types';
 import { useAppSelector } from "@/shared/lib";
 import { getCatalogFiltersSelectedValues } from "@/widgets/filters/catalog-filter-with-search/model";
+import { OrderActionsPanel } from "@/entities/catalog/ui/order-actions-panel";
 
 
 export function CatalogPage() {

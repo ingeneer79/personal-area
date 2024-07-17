@@ -12,12 +12,12 @@ const port = env.BACKEND_PORT ?? 4000;
 
 app.use(cors())
 
-app.get('/api/classifiers', function (req, res) {
+app.get('/ext-api/classifiers', function (req, res) {
   res.header("Content-Type",'application/json');
   res.send(JSON.stringify(data));
 })
 
-app.get('/api/catalog', function (req, res) {
+app.get('/ext-api/catalog', function (req, res) {
   res.header("Content-Type",'application/json');
   res.send(JSON.stringify(catalog));
 })

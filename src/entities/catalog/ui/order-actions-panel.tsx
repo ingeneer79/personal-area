@@ -3,10 +3,9 @@
 
 import { FC } from "react";
 import { Button, Flex } from "antd";
-import { orderActionButtons } from "../model/buttons";
-import { OrderActionsPanelProps } from "../model/types";
 import { MyOrdersButton, NewOrderButton } from "@/features/order";
-import { OrdersActionButton } from '@/entities/order';
+import { OrdersActionButton } from '@/entities/catalog';
+import { orderActionButtons, OrderActionsPanelProps } from "./types";
 
 export const OrderActionsPanel: FC<OrderActionsPanelProps> = () => {
   return (

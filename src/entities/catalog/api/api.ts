@@ -1,8 +1,8 @@
 import { apiMap, constantsMap } from "@/shared/model"
-import { OrderObject } from "../model/types"
+import { CatalogObject } from "../model/types"
 
 
-export async function getOrders(): Promise<OrderObject[]> {
+export async function getCatalog(): Promise<CatalogObject[]> {
   const res = await fetch(`${constantsMap.shared.config.apiUrl}/${apiMap.getCatalog}`)     
   // const res = await fetch(`${constantsMap.shared.config.apiUrl}`)   
     if (!res.ok) {

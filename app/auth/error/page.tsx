@@ -1,7 +1,8 @@
+'use client'
 import { constantsMap } from '@/shared/model';
 import { Button, Flex } from 'antd';
 import { signIn } from 'next-auth/react';
-'use client'
+
 const AuthErrorPage = () => {
     return <Flex>
         <h1>Ошибка авторизации</h1>

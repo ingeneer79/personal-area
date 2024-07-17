@@ -1,4 +1,4 @@
-export interface OrderObject {
+export interface CatalogObject {
     barCode: string;
     name: string;
     typeName: string;
