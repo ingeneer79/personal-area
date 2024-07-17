@@ -5,18 +5,17 @@ import Select from '@/shared/ui/Select';
 import Search from '@/shared/ui/Search';
 import { TrashButton } from "./trashButton";
 import { FilterWithSearchProps } from "../model/types";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setCatalogFiltersSearchValue, setCatalogFiltersSelectedValue, setCatalogFiltersSelectedValues } from "../model/slices";
+import { clearCatalogFilters, setCatalogFiltersSearchValue, setCatalogFiltersSelectedValue, setCatalogFiltersSelectedValues } from "../model/slices";
+import { useAppSelector } from '@/shared/lib';
 
 export const FilterWithSearch: FC<FilterWithSearchProps> = ({
   isLoading,
   selectOptions,
-  onChange,
-  onClearAll
 }) => {
   const dispatch = useDispatch();
-
+  const [selectedValues, setSelectedValues] = useState<Record<string, string[]>>({});
   return (
     <Flex gap="middle" className="w-full items-center">
       <Flex gap="middle" className="search w-full" style={{ flex: 1, minWidth: "300px" }}>
@@ -44,9 +43,11 @@ export const FilterWithSearch: FC<FilterWithSearchProps> = ({
               style={{ width: "100%" }}
               placeholder={selectOption.label}
               options={selectOption.options}
+              value={selectedValues[selectOption.key] ?? []}
               loading={isLoading}
               onChange={(value) => {  
-                debugger
+                selectedValues[selectOption.key] = value
+                setSelectedValues({...selectedValues});                  
                 dispatch(setCatalogFiltersSelectedValue({id: selectOption.key, values: selectOption.options.filter(item => value.includes(item.value)).map(item => item.value)}));
               }}
             />
@@ -56,7 +57,10 @@ export const FilterWithSearch: FC<FilterWithSearchProps> = ({
           size="large"
           type="primary"
           style={{ minWidth: "48px", background: "white", borderRadius: "8px" }}
-          onClick={onClearAll}
+          onClick={() => {
+            setSelectedValues({});
+            dispatch(clearCatalogFilters());            
+          }}
           icon={<TrashButton />}
         />
       </Flex>

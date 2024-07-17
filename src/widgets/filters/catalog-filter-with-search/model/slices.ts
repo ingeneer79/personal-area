@@ -31,6 +31,10 @@ export const catalogFiltersSlice = createSlice({
     setCatalogFiltersSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
     },
+    clearCatalogFilters: (state) => {
+      state.searchValue = '';
+      state.selectedValues = [];
+    }    
   },      
 });
 
@@ -38,6 +42,7 @@ export const {
   setCatalogFiltersSelectedValues,
   setCatalogFiltersSelectedValue,
   setCatalogFiltersSearchValue,
+  clearCatalogFilters,
 } = catalogFiltersSlice.actions;
 
 export default catalogFiltersSlice.reducer;

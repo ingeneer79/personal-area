@@ -17,11 +17,13 @@ import { useEffect, useState } from "react";
 import { ClassifierObject } from "@/entities/classifiers/model";
 import { SessionProviderWrapper } from "@/app/providers/session-provider-wrapper";
 import { type FilterSelectOption } from '../../../widgets/filters/catalog-filter-with-search/model/types';
+import { useAppSelector } from "@/shared/lib";
+import { getCatalogFiltersSelectedValues } from "@/widgets/filters/catalog-filter-with-search/model";
 
 
 export function CatalogPage() {
   const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
-  const [selectOptions, setSelectOptions] = useState<FilterSelectOption[]>([]);
+  const [filterSelectOptions, setFilterSelectOptions] = useState<FilterSelectOption[]>([]);
   const [selectCheckboxesOptions, setSelectCheckboxesOptions] = useState<
     CheckBoxesPanelOption[]
   >([]);
@@ -49,7 +51,8 @@ export function CatalogPage() {
       return;
     }
     
-    const selectOptions: FilterSelectOption[] = [
+    // 
+    const catalogFilterSelectOptions: FilterSelectOption[] = [
       getSelectOptions(
         "brand",
         constantsMap.pages.catalog.filter.brand,
@@ -67,7 +70,7 @@ export function CatalogPage() {
       ),
     ];
 
-    setSelectOptions(selectOptions);
+    setFilterSelectOptions(catalogFilterSelectOptions);
 
     const selectCheckboxesOptions: CheckBoxesPanelOption[] =
       classifiers
@@ -79,12 +82,12 @@ export function CatalogPage() {
         })) ?? [];
 
     setSelectCheckboxesOptions(selectCheckboxesOptions);
-  }, [classifiers]);
+  }, [classifiers]);  
 
   return (
     <SessionProviderWrapper>
       <MainLayout>
-        {selectOptions && selectCheckboxesOptions && (
+        {filterSelectOptions && selectCheckboxesOptions && (
           <Flex gap="middle" vertical>
             <TypographyWrapper
               style={{ fontSize: "32px" }}
@@ -99,18 +102,7 @@ export function CatalogPage() {
               style={{ borderRadius: "36px", height: "203px", width: "100%" }}
               alt=""
             ></Image>
-            <FilterWithSearch selectOptions={selectOptions} isLoading={false} onChange={(id, values) => {
-              /*
-              setSelectCheckboxesOptions(selectCheckboxesOptions.map(option => {
-                if (option.key === id) {
-                  option. = values
-                }
-                return option
-              }));
-              */
-            }} 
-            onClearAll={() => {
-            }}/>
+            <FilterWithSearch selectOptions={filterSelectOptions} isLoading={false} />
             <CheckBoxesPanelFilter
               selectOptions={selectCheckboxesOptions}
               isLoading={false}

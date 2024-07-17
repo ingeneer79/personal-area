@@ -10,10 +10,11 @@ export interface QuantityControlProps {
 
 
 export const QuantityControl: FC<QuantityControlProps> = ({quantity, onChange}) => {
+    const quantityValue = pad(quantity, 3);
     return (
         <Flex align="center" gap={"small"}>
             <Button type="text" onClick={() => onChange(quantity - 1)}>-</Button>
-            <Typography>{quantity}</Typography>
+            <Typography>{quantityValue}</Typography>
             <Button type="text" onClick={() => onChange(quantity + 1)}>+</Button>
         </Flex>
     );
