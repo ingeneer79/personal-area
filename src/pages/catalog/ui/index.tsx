@@ -96,7 +96,7 @@ export function CatalogPage() {
               {constantsMap.pages.catalog.mainText}
             </TypographyWrapper>
             <Image
-              src="/images/banner.jfif"
+              src="/images/banner.jpeg"
               width={1600}
               height={203}
               style={{ borderRadius: "36px", height: "203px", width: "100%" }}
