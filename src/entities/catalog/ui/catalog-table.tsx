@@ -127,7 +127,7 @@ export const CatalogTable = () => {
           }
           const fieldValue = (order as any)[selectedFilterValue.id];
           if (fieldValue) {
-            return selectedFilterValue.values.some((item) => String(item) === String(fieldValue));
+            return selectedFilterValue.values.some((item: string) => String(item) === String(fieldValue));
           } 
         })
       });

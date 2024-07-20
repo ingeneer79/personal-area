@@ -1,27 +1,42 @@
-'use client'
-import Flex from '@/shared/ui/Flex';
-import Button from '@/shared/ui/Button';
-import Select from '@/shared/ui/Select';
-import Search from '@/shared/ui/Search';
+"use client";
+import Flex from "@/shared/ui/Flex";
+import Button from "@/shared/ui/Button";
+import Select from "@/shared/ui/Select";
+import Search from "@/shared/ui/Search";
 import { TrashButton } from "./trashButton";
 import { FilterWithSearchProps } from "../model/types";
 import { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { clearCatalogFilters, setCatalogFiltersSearchValue, setCatalogFiltersSelectedValue, setCatalogFiltersSelectedValues } from "../model/slices";
-import { useAppSelector } from '@/shared/lib';
+import {
+  clearCatalogFilters,
+  setCatalogFiltersSearchValue,
+  setCatalogFiltersSelectedValue,
+  setCatalogFiltersSelectedValues,
+} from "../model/slices";
+import { useAppSelector } from "@/shared/lib";
+import { FiltersPanel } from "@/shared/ui/custom/filters-panel";
 
 export const FilterWithSearch: FC<FilterWithSearchProps> = ({
   isLoading,
-  selectOptions,
+  filterOptions,
 }) => {
   const dispatch = useDispatch();
-  const [selectedValues, setSelectedValues] = useState<Record<string, string[]>>({});
   return (
     <Flex gap="middle" className="w-full items-center">
-      <Flex gap="middle" className="search w-full" style={{ flex: 1, minWidth: "300px" }}>
-        <Search placeholder="Поиск" allowClear size="large" enterButton onChange={(value) => {
-          dispatch(setCatalogFiltersSearchValue(value.target.value));
-        }}/>
+      <Flex
+        gap="middle"
+        className="search w-full"
+        style={{ flex: 1, minWidth: "300px" }}
+      >
+        <Search
+          placeholder="Поиск"
+          allowClear
+          size="large"
+          enterButton
+          onChange={value => {
+            dispatch(setCatalogFiltersSearchValue(value.target.value));
+          }}
+        />
       </Flex>
       <Flex
         gap="middle"
@@ -34,35 +49,13 @@ export const FilterWithSearch: FC<FilterWithSearchProps> = ({
           maxWidth: "50%",
         }}
       >
-        {
-          selectOptions?.map((selectOption) => (
-            <Select
-              key={selectOption.key}
-              mode="multiple"
-              allowClear
-              style={{ width: "100%" }}
-              placeholder={selectOption.label}
-              options={selectOption.options}
-              value={selectedValues[selectOption.key] ?? []}
-              loading={isLoading}
-              onChange={(value) => {  
-                selectedValues[selectOption.key] = value
-                setSelectedValues({...selectedValues});                  
-                dispatch(setCatalogFiltersSelectedValue({id: selectOption.key, values: selectOption.options.filter(item => value.includes(item.value)).map(item => item.value)}));
-              }}
-            />
-          ))
-        }
-        <Button
-          size="large"
-          type="primary"
-          style={{ minWidth: "48px", background: "white", borderRadius: "8px" }}
-          onClick={() => {
-            setSelectedValues({});
-            dispatch(clearCatalogFilters());            
+        <FiltersPanel
+          onChange={selectOption => {
+            dispatch(setCatalogFiltersSelectedValue(selectOption));
           }}
-          icon={<TrashButton />}
-        />
+          isLoading={isLoading}
+          filterComponents={filterOptions}
+        ></FiltersPanel>
       </Flex>
     </Flex>
   );

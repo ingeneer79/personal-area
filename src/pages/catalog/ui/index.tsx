@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { FilterWithSearch } from "@/widgets/filters/catalog-filter-with-search";
 
 import { constantsMap } from "@/shared/model";
@@ -15,15 +15,16 @@ import { getSelectOptions } from "@/entities/classifiers/api";
 import { useEffect, useState } from "react";
 import { ClassifierObject } from "@/entities/classifiers/model";
 import { SessionProviderWrapper } from "@/app/providers/session-provider-wrapper";
-import { type FilterSelectOption } from '../../../widgets/filters/catalog-filter-with-search/model/types';
 import { useAppSelector } from "@/shared/lib";
 import { getCatalogFiltersSelectedValues } from "@/widgets/filters/catalog-filter-with-search/model";
 import { OrderActionsPanel } from "@/entities/catalog/ui/order-actions-panel";
-
+import { FiltersPanelComponentProperties } from "@/shared/ui/custom/filters-panel/model";
 
 export function CatalogPage() {
   const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
-  const [filterSelectOptions, setFilterSelectOptions] = useState<FilterSelectOption[]>([]);
+  const [filterSelectOptions, setFilterSelectOptions] = useState<
+    FiltersPanelComponentProperties[]
+  >([]);
   const [selectCheckboxesOptions, setSelectCheckboxesOptions] = useState<
     CheckBoxesPanelOption[]
   >([]);
@@ -46,13 +47,12 @@ export function CatalogPage() {
   }, [classifiers]);
 
   useEffect(() => {
-
     if (!classifiers) {
       return;
     }
-    
-    // 
-    const catalogFilterSelectOptions: FilterSelectOption[] = [
+
+    //
+    const catalogFilterSelectOptions: FiltersPanelComponentProperties[] = [
       getSelectOptions(
         "brand",
         constantsMap.pages.catalog.filter.brand,
@@ -70,7 +70,7 @@ export function CatalogPage() {
       ),
     ];
 
-    setFilterSelectOptions(catalogFilterSelectOptions);
+    setFilterSelectOptions([...catalogFilterSelectOptions]);
 
     const selectCheckboxesOptions: CheckBoxesPanelOption[] =
       classifiers
@@ -82,35 +82,37 @@ export function CatalogPage() {
         })) ?? [];
 
     setSelectCheckboxesOptions(selectCheckboxesOptions);
-  }, [classifiers]);  
+  }, [classifiers]);
 
   return (
     <SessionProviderWrapper>
       <MainLayout>
-        {filterSelectOptions && selectCheckboxesOptions && (
-          <Flex gap="middle" vertical>
-            <TypographyWrapper
-              style={{ fontSize: "32px" }}
-              className="font-medium"
-            >
-              {constantsMap.pages.catalog.mainText}
-            </TypographyWrapper>
-            <Image
-              src="/images/banner.jpeg"
-              width={1600}
-              height={203}
-              style={{ borderRadius: "36px", height: "203px", width: "100%" }}
-              alt=""
-            ></Image>
-            <FilterWithSearch selectOptions={filterSelectOptions} isLoading={false} />
+        <Flex gap="middle" vertical>
+          <TypographyWrapper
+            style={{ fontSize: "32px" }}
+            className="font-medium"
+          >
+            {constantsMap.pages.catalog.mainText}
+          </TypographyWrapper>
+          <Image
+            src="/images/banner.jpeg"
+            width={1600}
+            height={203}
+            style={{ borderRadius: "36px", height: "203px", width: "100%" }}
+            alt=""
+          ></Image>
+          {filterSelectOptions.length > 0 && (
+            <FilterWithSearch filterOptions={filterSelectOptions} />
+          )}
+          {selectCheckboxesOptions.length > 0 && (
             <CheckBoxesPanelFilter
               selectOptions={selectCheckboxesOptions}
               isLoading={false}
             />
-            <OrderActionsPanel isLoading={false} />
-            <CatalogTable />
-          </Flex>
-        )}
+          )}
+          <OrderActionsPanel isLoading={false} />
+          <CatalogTable />
+        </Flex>
       </MainLayout>
     </SessionProviderWrapper>
   );
