@@ -12,7 +12,7 @@ export const BreadCrumbWidget = () => {
         },
         {
           title: "Накладные",
-          path: "/inbound",
+          path: "/waybills",
         },
         {
           title: "Претензии",

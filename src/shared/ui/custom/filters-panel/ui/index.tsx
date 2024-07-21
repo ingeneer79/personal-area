@@ -1,10 +1,10 @@
 'use client'
-import Flex from '@/shared/ui/Flex';
-import Button from '@/shared/ui/Button';
-import Select from '@/shared/ui/Select';
+import Flex from '@/shared/ui/flex';
+import Button from '@/shared/ui/button';
+import Select from '@/shared/ui/select';
 import { FC, useState } from "react";
 import { FiltersPanelProps } from '../model';
-import { TrashButton } from './trashButton';
+import { TrashButton } from './trash-button';
 
 
 export const FiltersPanel: FC<FiltersPanelProps> = ({

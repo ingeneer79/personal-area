@@ -1,11 +1,10 @@
-import { RootState } from "@/app/store";
+import { FilterSelectedValue } from "@/shared/model/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ClassifierObject } from "@/entities/classifiers/model";
-import { CatalogFilterSelectedValue } from "./types";
+
 
 interface ICatalogFiltersStore {
   searchValue: string
-  selectedValues: CatalogFilterSelectedValue[]
+  selectedValues: FilterSelectedValue[]
 }
 
 const initialState: ICatalogFiltersStore = {
@@ -17,10 +16,10 @@ export const catalogFiltersSlice = createSlice({
   name: "catalogFiltersStore",
   initialState,
   reducers: {
-    setCatalogFiltersSelectedValues: (state, action: PayloadAction<CatalogFilterSelectedValue[]>) => {
+    setCatalogFiltersSelectedValues: (state, action: PayloadAction<FilterSelectedValue[]>) => {
       state.selectedValues = action.payload;
     },
-    setCatalogFiltersSelectedValue: (state, action: PayloadAction<CatalogFilterSelectedValue>) => {
+    setCatalogFiltersSelectedValue: (state, action: PayloadAction<FilterSelectedValue>) => {
       const index = state.selectedValues.findIndex(item => item.id === action.payload.id);
       if (index !== -1) {
         state.selectedValues[index] = action.payload;

@@ -12,7 +12,7 @@ export const SideBarMenuItems = [
     {
         label: 'Накладные',
         key: '3',
-        path: '/inbound',
+        path: '/waybills',
     },    
     {
         label: 'Финансы',

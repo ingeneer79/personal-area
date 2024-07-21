@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Flex from '@/shared/ui/Flex';
+import Flex from '@/shared/ui/flex';
 import { Button, Typography } from "antd";
 import { pad } from "../lib/utils";
 

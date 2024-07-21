@@ -1,11 +1,11 @@
 "use client";
-import { FilterWithSearch } from "@/widgets/filters/catalog-filter-with-search";
+import { CatalogFilterWithSearch } from "@/widgets/filters/catalog-filter-with-search";
 
 import { constantsMap } from "@/shared/model";
 import { MainLayout } from "@/widgets/layouts";
 import Image from "next/image";
-import Flex from "@/shared/ui/Flex";
-import TypographyWrapper from "@/shared/ui/Typography";
+import Flex from "@/shared/ui/flex";
+import TypographyWrapper from "@/shared/ui/typography";
 
 import { CheckBoxesPanelFilter } from "@/widgets/filters/check-boxes-panel-filter";
 import { CheckBoxesPanelOption } from "@/widgets/filters/check-boxes-panel-filter/model/types";
@@ -15,10 +15,8 @@ import { getSelectOptions } from "@/entities/classifiers/api";
 import { useEffect, useState } from "react";
 import { ClassifierObject } from "@/entities/classifiers/model";
 import { SessionProviderWrapper } from "@/app/providers/session-provider-wrapper";
-import { useAppSelector } from "@/shared/lib";
-import { getCatalogFiltersSelectedValues } from "@/widgets/filters/catalog-filter-with-search/model";
-import { OrderActionsPanel } from "@/entities/catalog/ui/order-actions-panel";
 import { FiltersPanelComponentProperties } from "@/shared/ui/custom/filters-panel/model";
+import { CatalogOrderActionsPanel } from "@/entities/catalog/ui/order-actions-panel";
 
 export function CatalogPage() {
   const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
@@ -102,7 +100,7 @@ export function CatalogPage() {
             alt=""
           ></Image>
           {filterSelectOptions.length > 0 && (
-            <FilterWithSearch filterOptions={filterSelectOptions} />
+            <CatalogFilterWithSearch filterComponents={filterSelectOptions} />
           )}
           {selectCheckboxesOptions.length > 0 && (
             <CheckBoxesPanelFilter
@@ -110,7 +108,7 @@ export function CatalogPage() {
               isLoading={false}
             />
           )}
-          <OrderActionsPanel isLoading={false} />
+          <CatalogOrderActionsPanel isLoading={false} />
           <CatalogTable />
         </Flex>
       </MainLayout>

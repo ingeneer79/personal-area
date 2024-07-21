@@ -1,24 +1,18 @@
 "use client";
-import Flex from "@/shared/ui/Flex";
-import Button from "@/shared/ui/Button";
-import Select from "@/shared/ui/Select";
-import Search from "@/shared/ui/Search";
-import { TrashButton } from "./trashButton";
-import { FilterWithSearchProps } from "../model/types";
-import { FC, useEffect, useState } from "react";
+import Flex from "@/shared/ui/flex";
+import Search from "@/shared/ui/search";
+import { FC } from "react";
 import { useDispatch } from "react-redux";
 import {
-  clearCatalogFilters,
   setCatalogFiltersSearchValue,
   setCatalogFiltersSelectedValue,
-  setCatalogFiltersSelectedValues,
 } from "../model/slices";
-import { useAppSelector } from "@/shared/lib";
 import { FiltersPanel } from "@/shared/ui/custom/filters-panel";
+import { FilterWithSearchProps } from "../model/types";
 
-export const FilterWithSearch: FC<FilterWithSearchProps> = ({
+export const CatalogFilterWithSearch: FC<FilterWithSearchProps> = ({
   isLoading,
-  filterOptions,
+  filterComponents,
 }) => {
   const dispatch = useDispatch();
   return (
@@ -53,8 +47,7 @@ export const FilterWithSearch: FC<FilterWithSearchProps> = ({
           onChange={selectOption => {
             dispatch(setCatalogFiltersSelectedValue(selectOption));
           }}
-          isLoading={isLoading}
-          filterComponents={filterOptions}
+          filterComponents={filterComponents}
         ></FiltersPanel>
       </Flex>
     </Flex>

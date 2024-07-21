@@ -3,6 +3,23 @@ export const constantsMap = {
         home: {
             mainText: 'Главная',
         },   
+        wayBills: {
+            mainText: '',
+            filter: {
+                brand: 'Бренд',
+                type: 'Тип',
+                category: 'Категория',
+            },
+            actions: {
+                loadOrder: 'Загрузить заказ',
+                downloadTemplate: 'Скачать шаблон',
+                uploadByTemplate: 'Загрузить по шаблону',
+                downloadPriceList: 'Скачать прайс-лист',
+                sendPriceListByFTP: 'Отправить прайс-лист на FTP',
+                myOrders: 'Мои заказы',
+                newOrder: 'Новый заказ',
+            }
+        },   
         catalog: {
             mainText: 'Каталог',
             filter: {
@@ -20,7 +37,7 @@ export const constantsMap = {
                 newOrder: 'Новый заказ',
             }
         },   
-        inbound: {
+        waybills: {
             mainText: 'Накладные',
         },   
         finances: {

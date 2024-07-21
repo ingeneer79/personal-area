@@ -1,6 +1,6 @@
 'use client'
 import { constantsMap } from '@/shared/model';
-import TypographyWrapper from '@/shared/ui/Typography';
+import TypographyWrapper from '@/shared/ui/typography';
 import { Button, Card, Flex } from 'antd';
 import { signIn } from 'next-auth/react';
 const AuthErrorPage = () => {

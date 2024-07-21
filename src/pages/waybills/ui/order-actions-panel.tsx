@@ -2,12 +2,11 @@
 'use client'
 
 import { FC } from "react";
-import { Button, Flex } from "antd";
-import { MyOrdersButton, NewOrderButton } from "@/features/order";
+import { Flex } from "antd";
 import { OrdersActionButton } from '@/entities/catalog';
 import { orderActionButtons, OrderActionsPanelProps } from "./types";
 
-export const CatalogOrderActionsPanel: FC<OrderActionsPanelProps> = () => {
+export const WaybillsOrderActionsPanel: FC<OrderActionsPanelProps> = () => {
   return (
     <Flex gap="middle" className="w-full items-center">
       <Flex
@@ -23,10 +22,6 @@ export const CatalogOrderActionsPanel: FC<OrderActionsPanelProps> = () => {
         ))
       }
       </Flex>
-      <Flex flex={0} gap={"middle"} align="center" style={{ height: "48px" }}>
-          <MyOrdersButton />
-          <NewOrderButton />
-        </Flex>
     </Flex>
   );
 };

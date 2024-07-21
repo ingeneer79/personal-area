@@ -6,7 +6,7 @@ import { Content } from 'antd/es/layout/layout';
 import { SideBar } from '@/widgets/sidebar';
 import { BreadCrumbWidget } from '@/widgets/bread-crumbs';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import Flex from '@/shared/ui/Flex';
+import Flex from '@/shared/ui/flex';
 
 interface MainLayoutProps {
   children: React.ReactNode

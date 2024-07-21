@@ -2,7 +2,7 @@ export const navigationMap = {
     home: '/',
     personalArea: '/personal-area',
     catalog: '/cat',
-    inbound: '/inbound',
+    waybills: '/waybills',
     finances: '/finances',
     certificates: '/certificates',
     СТМ: '/stm',

@@ -15,9 +15,8 @@ export interface FiltersPanelComponentProperties {
   }
   
   export interface FiltersPanelProps {
-    searchValue?: string;
     filterComponents: FiltersPanelComponentProperties[];
-    isLoading: boolean;
+    isLoading?: boolean;
     onChange?: (selectOption : FiltersPanelComponentSelectedValue) => void;
     onClearAll?: () => void;
   }
