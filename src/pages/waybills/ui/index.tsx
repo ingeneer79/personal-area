@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { constantsMap } from "@/shared/model";
 import { MainLayout } from "@/widgets/layouts";
@@ -15,9 +15,7 @@ import { WaybillsOrderActionsPanel } from "@/entities/waybills/ui/order-actions-
 import { useEffect, useState } from "react";
 import { ClassifierObject } from "@/entities/classifiers/model";
 
-
 export function WaybillsPage() {
-
   const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
   const [filterSelectOptions, setFilterSelectOptions] = useState<
     FiltersPanelComponentProperties[]
@@ -35,63 +33,58 @@ export function WaybillsPage() {
     fetchData();
     console.log(classifiers);
   }, []);
-  
+
   useEffect(() => {
     if (!classifiers) {
       return;
-    }  
+    }
 
     const catalogFilterSelectOptions: FiltersPanelComponentProperties[] = [
       {
         key: constantsMap.pages.wayBills.filter.address.id,
         label: constantsMap.pages.wayBills.filter.address.title,
-        options:[]
+        options: [],
       },
       {
         key: constantsMap.pages.wayBills.filter.waybillNumber.id,
         label: constantsMap.pages.wayBills.filter.waybillNumber.title,
-        options:[]
+        options: [],
       },
       {
         key: constantsMap.pages.wayBills.filter.period.id,
         label: constantsMap.pages.wayBills.filter.period.title,
-        options:[]
+        options: [],
       },
       {
         key: constantsMap.pages.wayBills.filter.marking.id,
         label: constantsMap.pages.wayBills.filter.marking.title,
-        options:[]
+        options: [],
       },
       getSelectOptions(
         constantsMap.pages.wayBills.filter.markingStatus.classifierId,
         constantsMap.pages.wayBills.filter.markingStatus.title,
         classifiers
       ),
-    ];      
+    ];
 
     setFilterSelectOptions([...catalogFilterSelectOptions]);
   }, [classifiers]);
 
-  
   return (
-    <SessionProviderWrapper>
-      <MainLayout>
-        {filterSelectOptions && (
-          <Flex gap="middle" vertical>
-            <TypographyWrapper
-              style={{ fontSize: "32px" }}
-              className="font-medium"
-            >
-              {constantsMap.pages.wayBills.mainText}
-            </TypographyWrapper>
+    filterSelectOptions && (
+      <Flex gap="middle" vertical>
+        <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
+          {constantsMap.pages.wayBills.mainText}
+        </TypographyWrapper>
 
-            <WaybillsFilter filterComponents={filterSelectOptions} isLoading={false} />
-            <WaybillsOrderActionsPanel />
-            <WayBillsTable/>
-          </Flex>
-        )}
-      </MainLayout>
-    </SessionProviderWrapper>
+        <WaybillsFilter
+          filterComponents={filterSelectOptions}
+          isLoading={false}
+        />
+        <WaybillsOrderActionsPanel />
+        <WayBillsTable />
+      </Flex>
+    )
   );
 }
 export default WaybillsPage;

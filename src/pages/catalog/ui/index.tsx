@@ -40,9 +40,6 @@ export function CatalogPage() {
     console.log(classifiers);
   }, []);
 
-  useEffect(() => {
-    console.log(classifiers);
-  }, [classifiers]);
 
   useEffect(() => {
     if (!classifiers) {
@@ -83,8 +80,6 @@ export function CatalogPage() {
   }, [classifiers]);
 
   return (
-    <SessionProviderWrapper>
-      <MainLayout>
         <Flex gap="middle" vertical>
           <TypographyWrapper
             style={{ fontSize: "32px" }}
@@ -111,8 +106,6 @@ export function CatalogPage() {
           <CatalogOrderActionsPanel isLoading={false} />
           <CatalogTable />
         </Flex>
-      </MainLayout>
-    </SessionProviderWrapper>
   );
 }
 export default CatalogPage;
