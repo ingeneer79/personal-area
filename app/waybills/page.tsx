@@ -1,0 +1,1 @@
+export { WaybillsPage as default } from '@/pages/waybills/ui';

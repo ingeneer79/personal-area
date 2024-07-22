@@ -3,11 +3,11 @@
     "id": "brand",
     "items": [
       {
-        "value": "Бренд 1",
+        "value": "Vitamir",
         "key": "1"
       },
       {
-        "value": "Бренд 2",
+        "value": "Vitamir2",
         "key": "2"
       }
     ]
@@ -16,11 +16,11 @@
     "id": "type",
     "items": [
       {
-        "value": "Тип 1",
+        "value": "БАД",
         "key": "1"
       },
       {
-        "value": "Тип 2",
+        "value": "Лекарство",
         "key": "2"
       }
     ]
@@ -29,11 +29,11 @@
     "id": "category",
     "items": [
       {
-        "value": "Категория 1",
+        "value": "Женское",
         "key": "1"
       },
       {
-        "value": "Категория 2",
+        "value": "Мужское",
         "key": "2"
       }
     ]
@@ -68,6 +68,49 @@
       {
         "value": "Категории",
         "key": "7"
+      }
+    ]
+  },
+  {
+    "id": "wayBillStatus",
+    "items": [
+      {
+        "value": "Ожидает подтверждения",
+        "key": "1"
+      },
+      {
+        "value": "Подтверждено",
+        "key": "2"
+      },
+      {
+        "value": "Отменено",
+        "key": "3"
+      }
+    ]
+  },
+  {
+    "id": "wayBillOwner",
+    "items": [
+      {
+        "value": "OOO",
+        "key": "1"
+      }
+    ]
+  },
+  {
+    "id": "markStatus",
+    "items": [
+      {
+        "value": "Ожидает подтверждения",
+        "key": "1"
+      },
+      {
+        "value": "Подтверждено",
+        "key": "2"
+      },
+      {
+        "value": "Отменено",
+        "key": "3"
       }
     ]
   }

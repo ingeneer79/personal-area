@@ -1,15 +1,9 @@
-
-
-export interface FilterSelectOption {
-  key: string;
-  label: string;
-  value: string;
-  options: { label: string; value: string }[];
-}
+import { FiltersPanelComponentProperties, FiltersPanelComponentSelectedValue } from "@/shared/ui/custom/filters-panel/model";
 
 export interface FilterWithSearchProps {
-  selectOptions: FilterSelectOption[];
-  isLoading: boolean;
-  onChange?: (id: string, value: string[]) => void;
-  onClearAll?: () => void;
-}
+    searchValue?: string;
+    filterComponents: FiltersPanelComponentProperties[];
+    isLoading?: boolean;
+    onChange?: (selectOption : FiltersPanelComponentSelectedValue) => void;
+    onClearAll?: () => void;
+  }

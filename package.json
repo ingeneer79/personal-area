@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "server": "json-server --watch database.json",
-    "dev": "next dev",
+    "server": "node server/app.js",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev -p 3001",
     "dev-test": "next dev -H 192.168.79.113",
     "build": "next build",
     "start": "next start",

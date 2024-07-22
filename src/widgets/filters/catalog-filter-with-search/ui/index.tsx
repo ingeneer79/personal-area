@@ -1,27 +1,36 @@
-'use client'
-import Flex from '@/shared/ui/Flex';
-import Button from '@/shared/ui/Button';
-import Select from '@/shared/ui/Select';
-import Search from '@/shared/ui/Search';
-import { TrashButton } from "./trashButton";
-import { FilterWithSearchProps } from "../model/types";
+"use client";
+import Flex from "@/shared/ui/flex";
+import Search from "@/shared/ui/search";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
-import { setCatalogFiltersSearchValue, setCatalogFiltersSelectedValue, setCatalogFiltersSelectedValues } from "../model/slices";
+import {
+  setCatalogFiltersSearchValue,
+  setCatalogFiltersSelectedValue,
+} from "../model/slices";
+import { FiltersPanel } from "@/shared/ui/custom/filters-panel";
+import { FilterWithSearchProps } from "../model/types";
 
-export const FilterWithSearch: FC<FilterWithSearchProps> = ({
+export const CatalogFilterWithSearch: FC<FilterWithSearchProps> = ({
   isLoading,
-  selectOptions,
-  onChange,
-  onClearAll
+  filterComponents,
 }) => {
   const dispatch = useDispatch();
   return (
     <Flex gap="middle" className="w-full items-center">
-      <Flex gap="middle" className="search w-full" style={{ flex: 1, minWidth: "300px" }}>
-        <Search placeholder="Поиск" allowClear size="large" enterButton onChange={(value) => {
-          dispatch(setCatalogFiltersSearchValue(value.target.value));
-        }}/>
+      <Flex
+        gap="middle"
+        className="search w-full"
+        style={{ flex: 1, minWidth: "300px" }}
+      >
+        <Search
+          placeholder="Поиск"
+          allowClear
+          size="large"
+          enterButton
+          onChange={value => {
+            dispatch(setCatalogFiltersSearchValue(value.target.value));
+          }}
+        />
       </Flex>
       <Flex
         gap="middle"
@@ -34,29 +43,12 @@ export const FilterWithSearch: FC<FilterWithSearchProps> = ({
           maxWidth: "50%",
         }}
       >
-        {
-          selectOptions?.map((selectOption) => (
-            <Select
-              key={selectOption.key}
-              mode="multiple"
-              allowClear
-              style={{ width: "100%" }}
-              placeholder={selectOption.label}
-              options={selectOption.options}
-              loading={isLoading}
-              onChange={(value) => {                
-                dispatch(setCatalogFiltersSelectedValue({id: selectOption.key, items: [value]}));
-              }}
-            />
-          ))
-        }
-        <Button
-          size="large"
-          type="primary"
-          style={{ minWidth: "48px", background: "white", borderRadius: "8px" }}
-          onClick={onClearAll}
-          icon={<TrashButton />}
-        />
+        <FiltersPanel
+          onChange={selectOption => {
+            dispatch(setCatalogFiltersSelectedValue(selectOption));
+          }}
+          filterComponents={filterComponents}
+        ></FiltersPanel>
       </Flex>
     </Flex>
   );
