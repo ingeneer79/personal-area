@@ -1,6 +1,7 @@
 export const apiMap = {
     getClassifiers: 'classifiers',
     getCatalog: 'catalog',
+    getWaybills: 'waybills',
     getUser: 'auth/user',
     patchUser: 'auth/user',
     postLogin: 'auth/login',

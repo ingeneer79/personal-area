@@ -1,12 +1,12 @@
 [
     {
-        "id": 1,
-        "status": 1,
-        "wayBillNumber": "12345",
+        "id": "1",
+        "statusId": 1,
+        "waybillNumber": "12345",
         "date": "2022-01-01",
         "sum": 1000,
-        "mark": 1,
+        "markingId": 1,
         "ownerId": 1,
-        "markStatus": 1
+        "markStatusId": 1
     }
 ]

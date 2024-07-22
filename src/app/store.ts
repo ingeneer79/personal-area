@@ -5,10 +5,11 @@ import { classifiersSlice } from "../entities/classifiers/model";
 import { baseApi } from "@/shared/api";
 import { ordersSlice } from "@/entities/catalog/model/slice";
 import { catalogFiltersSlice } from "@/widgets/filters/catalog-filter-with-search/model/slices";
+import { waybillsFiltersSlice } from "@/widgets/filters/waybills-filter/model/slices";
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices(classifiersSlice, ordersSlice, catalogFiltersSlice, {
+const rootReducer = combineSlices(classifiersSlice, ordersSlice, catalogFiltersSlice, waybillsFiltersSlice, {
   
 });
 // Infer the `RootState` type from the root reducer
@@ -24,6 +25,7 @@ export const makeStore = () => {
       rootReducer,
       [baseApi.reducerPath]: baseApi.reducer,
       [catalogFiltersSlice.name]: catalogFiltersSlice.reducer,
+      [waybillsFiltersSlice.name]: waybillsFiltersSlice.reducer,
     },
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.

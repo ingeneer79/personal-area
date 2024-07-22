@@ -52,18 +52,18 @@ export function CatalogPage() {
     //
     const catalogFilterSelectOptions: FiltersPanelComponentProperties[] = [
       getSelectOptions(
-        "brand",
-        constantsMap.pages.catalog.filter.brand,
+        constantsMap.pages.catalog.filter.brand.classifierId,
+        constantsMap.pages.catalog.filter.brand.title,
         classifiers
       ),
       getSelectOptions(
-        "type",
-        constantsMap.pages.catalog.filter.type,
+        constantsMap.pages.catalog.filter.type.classifierId,
+        constantsMap.pages.catalog.filter.type.title,
         classifiers
       ),
       getSelectOptions(
-        "category",
-        constantsMap.pages.catalog.filter.category,
+        constantsMap.pages.catalog.filter.category.classifierId,
+        constantsMap.pages.catalog.filter.category.title,
         classifiers
       ),
     ];

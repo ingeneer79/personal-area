@@ -1,9 +1,9 @@
 import { Button } from "antd";
 import { FC } from "react";
-import { OrdersActionButtonProps } from "./types";
 import { DownloadIcon } from "@/shared/ui/icons/download-icon";
+import { WaybillsActionButtonProps } from "./types";
 
-export const OrdersActionButton: FC<OrdersActionButtonProps> = ({
+export const WaybillsActionButton: FC<WaybillsActionButtonProps> = ({
   label,
   icon,
   onClick,

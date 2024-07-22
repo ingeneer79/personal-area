@@ -5,7 +5,7 @@ export interface FiltersPanelComponentProperties {
     label: string;
     width?: number;
     type?: "select" | "date" | "checkbox";
-    value: string;
+    value?: string;
     options: { label: string; value: string }[];
   }
   

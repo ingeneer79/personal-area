@@ -3,10 +3,11 @@
 
 import { FC } from "react";
 import { Flex } from "antd";
-import { OrdersActionButton } from '@/entities/catalog';
-import { orderActionButtons, OrderActionsPanelProps } from "./types";
 
-export const WaybillsOrderActionsPanel: FC<OrderActionsPanelProps> = () => {
+import { WaybillsActionButton } from "@/entities/waybills/ui/waybills-action-button";
+import { waybillsActionButtons } from "@/entities/waybills/ui/types";
+
+export const WaybillsOrderActionsPanel: FC = () => {
   return (
     <Flex gap="middle" className="w-full items-center">
       <Flex
@@ -15,9 +16,9 @@ export const WaybillsOrderActionsPanel: FC<OrderActionsPanelProps> = () => {
         flex={1}
       >        
       {
-        orderActionButtons.map((button, index) => (
+        waybillsActionButtons.map((button, index) => (
           <Flex key={index} style={{ height: "48px", borderRight: "1px solid #E8E8E8" }}>
-            <OrdersActionButton label={button.label} onClick={button.onClick} icon={button.icon} />            
+            <WaybillsActionButton label={button.label} onClick={button.onClick} icon={button.icon} />            
           </Flex>
         ))
       }
