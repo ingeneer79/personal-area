@@ -1,12 +1,10 @@
 "use client";
 
 import { constantsMap } from "@/shared/model";
-import { MainLayout } from "@/widgets/layouts";
 import Flex from "@/shared/ui/flex";
 import TypographyWrapper from "@/shared/ui/typography";
 
 import { getClassifiers } from "@/entities/classifiers/api/data";
-import { SessionProviderWrapper } from "@/app/providers/session-provider-wrapper";
 import { FiltersPanelComponentProperties } from "@/shared/ui/custom/filters-panel/model";
 import { getSelectOptions } from "@/entities/classifiers/api";
 import { WayBillsTable } from "@/entities/waybills/ui/waybills-table";
@@ -14,6 +12,7 @@ import { WaybillsFilter } from "@/widgets/filters";
 import { WaybillsOrderActionsPanel } from "@/entities/waybills/ui/order-actions-panel";
 import { useEffect, useState } from "react";
 import { ClassifierObject } from "@/entities/classifiers/model";
+import { StoreProvider } from "../../../app/providers/store-provider";
 
 export function WaybillsPage() {
   const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
@@ -71,20 +70,25 @@ export function WaybillsPage() {
   }, [classifiers]);
 
   return (
-    filterSelectOptions && (
-      <Flex gap="middle" vertical>
-        <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
-          {constantsMap.pages.wayBills.mainText}
-        </TypographyWrapper>
+    <StoreProvider>
+      {filterSelectOptions && (
+        <Flex gap="middle" vertical>
+          <TypographyWrapper
+            style={{ fontSize: "32px" }}
+            className="font-medium"
+          >
+            {constantsMap.pages.wayBills.mainText}
+          </TypographyWrapper>
 
-        <WaybillsFilter
-          filterComponents={filterSelectOptions}
-          isLoading={false}
-        />
-        <WaybillsOrderActionsPanel />
-        <WayBillsTable />
-      </Flex>
-    )
+          <WaybillsFilter
+            filterComponents={filterSelectOptions}
+            isLoading={false}
+          />
+          <WaybillsOrderActionsPanel />
+          <WayBillsTable />
+        </Flex>
+      )}
+    </StoreProvider>
   );
 }
 export default WaybillsPage;
