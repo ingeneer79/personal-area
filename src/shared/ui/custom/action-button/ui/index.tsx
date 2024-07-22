@@ -1,9 +1,10 @@
 import { Button } from "antd";
 import { FC } from "react";
-import { OrdersActionButtonProps } from "./types";
-import { DownloadIcon } from "@/shared/ui/icons/download-icon";
 
-export const OrdersActionButton: FC<OrdersActionButtonProps> = ({
+import { DownloadIcon } from "@/shared/ui/icons/download-icon";
+import { ActionButtonProps } from "../model/types";
+
+export const ActionButton: FC<ActionButtonProps> = ({
   label,
   icon,
   onClick,

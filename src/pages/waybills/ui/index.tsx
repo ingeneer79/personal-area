@@ -12,42 +12,71 @@ import { getSelectOptions } from "@/entities/classifiers/api";
 import { WayBillsTable } from "@/entities/waybills/ui/waybills-table";
 import { WaybillsFilter } from "@/widgets/filters";
 import { WaybillsOrderActionsPanel } from "@/entities/waybills/ui/order-actions-panel";
+import { useEffect, useState } from "react";
+import { ClassifierObject } from "@/entities/classifiers/model";
 
 
-export async function WaybillsPage() {
-  const classifiers = await getClassifiers();
+export function WaybillsPage() {
 
-  const catalogFilterSelectOptions: FiltersPanelComponentProperties[] = [
-    {
-      key: constantsMap.pages.wayBills.filter.address.id,
-      label: constantsMap.pages.wayBills.filter.address.title,
-      options:[]
-    },
-    {
-      key: constantsMap.pages.wayBills.filter.waybillNumber.id,
-      label: constantsMap.pages.wayBills.filter.waybillNumber.title,
-      options:[]
-    },
-    {
-      key: constantsMap.pages.wayBills.filter.period.id,
-      label: constantsMap.pages.wayBills.filter.period.title,
-      options:[]
-    },
-    {
-      key: constantsMap.pages.wayBills.filter.marking.id,
-      label: constantsMap.pages.wayBills.filter.marking.title,
-      options:[]
-    },
-    getSelectOptions(
-      constantsMap.pages.wayBills.filter.markingStatus.classifierId,
-      constantsMap.pages.wayBills.filter.markingStatus.title,
-      classifiers
-    ),
-  ];  
+  const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
+  const [filterSelectOptions, setFilterSelectOptions] = useState<
+    FiltersPanelComponentProperties[]
+  >([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await getClassifiers();
+        setClassifiers(res);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchData();
+    console.log(classifiers);
+  }, []);
+  
+  useEffect(() => {
+    if (!classifiers) {
+      return;
+    }  
+
+    const catalogFilterSelectOptions: FiltersPanelComponentProperties[] = [
+      {
+        key: constantsMap.pages.wayBills.filter.address.id,
+        label: constantsMap.pages.wayBills.filter.address.title,
+        options:[]
+      },
+      {
+        key: constantsMap.pages.wayBills.filter.waybillNumber.id,
+        label: constantsMap.pages.wayBills.filter.waybillNumber.title,
+        options:[]
+      },
+      {
+        key: constantsMap.pages.wayBills.filter.period.id,
+        label: constantsMap.pages.wayBills.filter.period.title,
+        options:[]
+      },
+      {
+        key: constantsMap.pages.wayBills.filter.marking.id,
+        label: constantsMap.pages.wayBills.filter.marking.title,
+        options:[]
+      },
+      getSelectOptions(
+        constantsMap.pages.wayBills.filter.markingStatus.classifierId,
+        constantsMap.pages.wayBills.filter.markingStatus.title,
+        classifiers
+      ),
+    ];      
+
+    setFilterSelectOptions([...catalogFilterSelectOptions]);
+  }, [classifiers]);
+
+  
   return (
     <SessionProviderWrapper>
       <MainLayout>
-        {catalogFilterSelectOptions && (
+        {filterSelectOptions && (
           <Flex gap="middle" vertical>
             <TypographyWrapper
               style={{ fontSize: "32px" }}
@@ -56,7 +85,7 @@ export async function WaybillsPage() {
               {constantsMap.pages.wayBills.mainText}
             </TypographyWrapper>
 
-            <WaybillsFilter filterComponents={catalogFilterSelectOptions} isLoading={false} />
+            <WaybillsFilter filterComponents={filterSelectOptions} isLoading={false} />
             <WaybillsOrderActionsPanel />
             <WayBillsTable/>
           </Flex>

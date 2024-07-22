@@ -4,8 +4,8 @@
 import { FC } from "react";
 import { Flex } from "antd";
 
-import { WaybillsActionButton } from "@/entities/waybills/ui/waybills-action-button";
 import { waybillsActionButtons } from "@/entities/waybills/ui/types";
+import { ActionButton } from "@/shared/ui/custom/action-button";
 
 export const WaybillsOrderActionsPanel: FC = () => {
   return (
@@ -18,7 +18,7 @@ export const WaybillsOrderActionsPanel: FC = () => {
       {
         waybillsActionButtons.map((button, index) => (
           <Flex key={index} style={{ height: "48px", borderRight: "1px solid #E8E8E8" }}>
-            <WaybillsActionButton label={button.label} onClick={button.onClick} icon={button.icon} />            
+            <ActionButton label={button.label} onClick={button.onClick} icon={button.icon} />            
           </Flex>
         ))
       }
