@@ -69,6 +69,12 @@ export const constantsMap = {
         },   
         finances: {
             mainText: 'Финансы',
+            actions: {
+                requestVerification: 'Запросить акт сверки',
+                sendVerification: 'Отправить акт сверки',
+                debtAmount: 'Сумма дебиторской задолженности',
+                overdueDebtAmount: "Сумма просроченной дебиторской задолженности"
+            }
         },   
         certificates: {
             mainText: 'Сертификаты',
