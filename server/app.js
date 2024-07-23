@@ -6,6 +6,7 @@ const app = express();
 const classifiersData = require('./classifiers.json');
 const waybillsData = require('./waybills.json');
 const catalogData = require('./catalog.json');
+const profileData = require('./profile.json');
 
 const { env } = require('process');
 
@@ -27,6 +28,11 @@ app.get('/ext-api/waybills', function (req, res) {
 app.get('/ext-api/catalog', function (req, res) {
   res.header("Content-Type",'application/json');
   res.send(JSON.stringify(catalogData));
+})
+
+app.get('/ext-api/profile', function (req, res) {
+  res.header("Content-Type",'application/json');
+  res.send(JSON.stringify(profileData));
 })
 
 app.listen(port, function(req, res) {
