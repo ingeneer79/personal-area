@@ -17,7 +17,7 @@ export const SideBarMenuItems = [
     {
         label: 'Финансы',
         key: '4',
-        path: '/finances',
+        path: '/finance',
     },    
     {
         label: 'Сертификаты',

@@ -11,7 +11,7 @@ export const FinancePage: FC = () => {
     <StoreProvider>
       <Flex gap="middle" vertical>
         <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
-          {constantsMap.pages.wayBills.mainText}
+          {constantsMap.pages.finance.mainText}
         </TypographyWrapper>
         <FinanceFilter isLoading={false} />
         <FinanceActionsPanel isLoading={false} />
