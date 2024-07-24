@@ -21,10 +21,7 @@ const ContactButton = ({ icon, contact, contactType }: Props) => {
   return (
     <Button
       icon={icon}
-      onClick={(e) => {
-        console.log('onClick работает')
-        handleClick();
-      }}
+      onClick={(e) => handleClick()}
       style={{ border: "none", background: "rgb(245, 245, 247)" }}
     />
   );

@@ -1,5 +1,6 @@
 "use client";
-
+ 
+import './styles.scss';
 import Flex from "@/shared/ui/flex";
 import TypographyWrapper from "@/shared/ui/typography";
 import FullWidthImage from "@/widgets/FullWidthImage/ui/FullWidthImage";
