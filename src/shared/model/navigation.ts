@@ -3,7 +3,7 @@ export const navigationMap = {
     personalArea: '/personal-area',
     catalog: '/cat',
     waybills: '/waybills',
-    finances: '/finances',
+    finances: '/finance',
     certificates: '/certificates',
     СТМ: '/stm',
     error404: '/not-found',

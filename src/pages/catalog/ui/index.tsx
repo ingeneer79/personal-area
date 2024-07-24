@@ -1,8 +1,7 @@
 "use client";
-import { CatalogFilterWithSearch } from "@/widgets/filters/catalog-filter-with-search";
+import { CatalogFilterWithSearch } from "@/entities/catalog/ui/catalog-filter-with-search";
 
 import { constantsMap } from "@/shared/model";
-import { MainLayout } from "@/widgets/layouts";
 import Image from "next/image";
 import Flex from "@/shared/ui/flex";
 import TypographyWrapper from "@/shared/ui/typography";
@@ -14,9 +13,9 @@ import { getClassifiers } from "@/entities/classifiers/api/data";
 import { getSelectOptions } from "@/entities/classifiers/api";
 import { useEffect, useState } from "react";
 import { ClassifierObject } from "@/entities/classifiers/model";
-import { SessionProviderWrapper } from "@/app/providers/session-provider-wrapper";
 import { FiltersPanelComponentProperties } from "@/shared/ui/custom/filters-panel/model";
 import { CatalogOrderActionsPanel } from "@/entities/catalog/ui/order-actions-panel";
+import { StoreProvider } from "@/app/providers/store-provider";
 
 export function CatalogPage() {
   const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
@@ -41,10 +40,6 @@ export function CatalogPage() {
   }, []);
 
   useEffect(() => {
-    console.log(classifiers);
-  }, [classifiers]);
-
-  useEffect(() => {
     if (!classifiers) {
       return;
     }
@@ -52,18 +47,18 @@ export function CatalogPage() {
     //
     const catalogFilterSelectOptions: FiltersPanelComponentProperties[] = [
       getSelectOptions(
-        "brand",
-        constantsMap.pages.catalog.filter.brand,
+        constantsMap.pages.catalog.filter.brand.classifierId,
+        constantsMap.pages.catalog.filter.brand.title,
         classifiers
       ),
       getSelectOptions(
-        "type",
-        constantsMap.pages.catalog.filter.type,
+        constantsMap.pages.catalog.filter.type.classifierId,
+        constantsMap.pages.catalog.filter.type.title,
         classifiers
       ),
       getSelectOptions(
-        "category",
-        constantsMap.pages.catalog.filter.category,
+        constantsMap.pages.catalog.filter.category.classifierId,
+        constantsMap.pages.catalog.filter.category.title,
         classifiers
       ),
     ];
@@ -83,36 +78,31 @@ export function CatalogPage() {
   }, [classifiers]);
 
   return (
-    <SessionProviderWrapper>
-      <MainLayout>
-        <Flex gap="middle" vertical>
-          <TypographyWrapper
-            style={{ fontSize: "32px" }}
-            className="font-medium"
-          >
-            {constantsMap.pages.catalog.mainText}
-          </TypographyWrapper>
-          <Image
-            src="/images/banner.jpeg"
-            width={1600}
-            height={203}
-            style={{ borderRadius: "36px", height: "203px", width: "100%" }}
-            alt=""
-          ></Image>
-          {filterSelectOptions.length > 0 && (
-            <CatalogFilterWithSearch filterComponents={filterSelectOptions} />
-          )}
-          {selectCheckboxesOptions.length > 0 && (
-            <CheckBoxesPanelFilter
-              selectOptions={selectCheckboxesOptions}
-              isLoading={false}
-            />
-          )}
-          <CatalogOrderActionsPanel isLoading={false} />
-          <CatalogTable />
-        </Flex>
-      </MainLayout>
-    </SessionProviderWrapper>
+    <StoreProvider>
+      <Flex gap="middle" vertical>
+        <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
+          {constantsMap.pages.catalog.mainText}
+        </TypographyWrapper>
+        <Image
+          src="/images/banner.jpeg"
+          width={1600}
+          height={203}
+          style={{ borderRadius: "36px", height: "203px", width: "100%" }}
+          alt=""
+        ></Image>
+        {filterSelectOptions.length > 0 && (
+          <CatalogFilterWithSearch filterComponents={filterSelectOptions} />
+        )}
+        {selectCheckboxesOptions.length > 0 && (
+          <CheckBoxesPanelFilter
+            selectOptions={selectCheckboxesOptions}
+            isLoading={false}
+          />
+        )}
+        <CatalogOrderActionsPanel isLoading={false} />
+        <CatalogTable />
+      </Flex>
+    </StoreProvider>
   );
 }
 export default CatalogPage;

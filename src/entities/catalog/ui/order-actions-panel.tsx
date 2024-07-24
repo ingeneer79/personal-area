@@ -4,8 +4,8 @@
 import { FC } from "react";
 import { Button, Flex } from "antd";
 import { MyOrdersButton, NewOrderButton } from "@/features/order";
-import { OrdersActionButton } from '@/entities/catalog';
 import { orderActionButtons, OrderActionsPanelProps } from "./types";
+import { ActionButton } from "@/shared/ui/custom/action-button";
 
 export const CatalogOrderActionsPanel: FC<OrderActionsPanelProps> = () => {
   return (
@@ -18,7 +18,7 @@ export const CatalogOrderActionsPanel: FC<OrderActionsPanelProps> = () => {
       {
         orderActionButtons.map((button, index) => (
           <Flex key={index} style={{ height: "48px", borderRight: "1px solid #E8E8E8" }}>
-            <OrdersActionButton label={button.label} onClick={button.onClick} icon={button.icon} />            
+            <ActionButton label={button.label} onClick={button.onClick} icon={button.icon} />            
           </Flex>
         ))
       }

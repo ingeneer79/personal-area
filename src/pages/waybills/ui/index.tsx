@@ -1,66 +1,93 @@
-
+"use client";
 
 import { constantsMap } from "@/shared/model";
-import { MainLayout } from "@/widgets/layouts";
-import Image from "next/image";
 import Flex from "@/shared/ui/flex";
 import TypographyWrapper from "@/shared/ui/typography";
 
-import { CheckBoxesPanelFilter } from "@/widgets/filters/check-boxes-panel-filter";
-import { CatalogTable } from "@/entities/catalog";
 import { getClassifiers } from "@/entities/classifiers/api/data";
-import { SessionProviderWrapper } from "@/app/providers/session-provider-wrapper";
-import { FiltersPanel } from "@/shared/ui/custom/filters-panel";
-import { WaybillsOrderActionsPanel } from "./order-actions-panel";
 import { FiltersPanelComponentProperties } from "@/shared/ui/custom/filters-panel/model";
 import { getSelectOptions } from "@/entities/classifiers/api";
+import { WayBillsTable } from "@/entities/waybills/ui/waybills-table";
+import { useEffect, useState } from "react";
+import { ClassifierObject } from "@/entities/classifiers/model";
+import { StoreProvider } from "../../../app/providers/store-provider";
+import { WaybillsOrderActionsPanel } from "@/entities/waybills/ui/waybills-actions-panel";
+import { WaybillsFilter } from "@/entities/waybills/ui/waybills-filter";
 
+export function WaybillsPage() {
+  const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
+  const [filterSelectOptions, setFilterSelectOptions] = useState<
+    FiltersPanelComponentProperties[]
+  >([]);
 
-export async function WaybillsPage() {
-  const classifiers = await getClassifiers();
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await getClassifiers();
+        setClassifiers(res);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchData();
+    console.log(classifiers);
+  }, []);
 
-  const catalogFilterSelectOptions: FiltersPanelComponentProperties[] = [
-    getSelectOptions(
-      "brand",
-      constantsMap.pages.catalog.filter.brand,
-      classifiers
-    ),
-    getSelectOptions(
-      "type",
-      constantsMap.pages.catalog.filter.type,
-      classifiers
-    ),
-    getSelectOptions(
-      "category",
-      constantsMap.pages.catalog.filter.category,
-      classifiers
-    ),
-  ];  
+  useEffect(() => {
+    if (!classifiers) {
+      return;
+    }
+
+    const catalogFilterSelectOptions: FiltersPanelComponentProperties[] = [
+      {
+        key: constantsMap.pages.wayBills.filter.address.id,
+        label: constantsMap.pages.wayBills.filter.address.title,
+        options: [],
+      },
+      {
+        key: constantsMap.pages.wayBills.filter.waybillNumber.id,
+        label: constantsMap.pages.wayBills.filter.waybillNumber.title,
+        options: [],
+      },
+      {
+        key: constantsMap.pages.wayBills.filter.period.id,
+        label: constantsMap.pages.wayBills.filter.period.title,
+        options: [],
+      },
+      {
+        key: constantsMap.pages.wayBills.filter.marking.id,
+        label: constantsMap.pages.wayBills.filter.marking.title,
+        options: [],
+      },
+      getSelectOptions(
+        constantsMap.pages.wayBills.filter.markingStatus.classifierId,
+        constantsMap.pages.wayBills.filter.markingStatus.title,
+        classifiers
+      ),
+    ];
+
+    setFilterSelectOptions([...catalogFilterSelectOptions]);
+  }, [classifiers]);
+
   return (
-    <SessionProviderWrapper>
-      <MainLayout>
-        {catalogFilterSelectOptions && (
-          <Flex gap="middle" vertical>
-            <TypographyWrapper
-              style={{ fontSize: "32px" }}
-              className="font-medium"
-            >
-              {constantsMap.pages.catalog.mainText}
-            </TypographyWrapper>
-            <Image
-              src="/images/banner.jpeg"
-              width={1600}
-              height={203}
-              style={{ borderRadius: "36px", height: "203px", width: "100%" }}
-              alt=""
-            ></Image>
-            <FiltersPanel filterComponents={catalogFilterSelectOptions} isLoading={false} />
-            <WaybillsOrderActionsPanel isLoading={false} />
-            <CatalogTable />
-          </Flex>
-        )}
-      </MainLayout>
-    </SessionProviderWrapper>
+    <StoreProvider>
+      {filterSelectOptions && (
+        <Flex gap="middle" vertical>
+          <TypographyWrapper
+            style={{ fontSize: "32px" }}
+            className="font-medium"
+          >
+            {constantsMap.pages.wayBills.mainText}
+          </TypographyWrapper>
+          <WaybillsFilter
+            filterComponents={filterSelectOptions}
+            isLoading={false}
+          />
+          <WaybillsOrderActionsPanel />
+          <WayBillsTable />
+        </Flex>
+      )}
+    </StoreProvider>
   );
 }
 export default WaybillsPage;

@@ -1,14 +1,9 @@
 
 import { constantsMap } from "@/shared/model";
+import { ActionButtonProps } from "@/shared/ui/custom/action-button";
 import { ReactNode } from "react";
 
-export interface OrdersActionButtonProps {
-  label: string;
-  icon?: ReactNode;  
-  onClick?: () => void;
-}
-
-export const orderActionButtons: OrdersActionButtonProps[] = [
+export const orderActionButtons: ActionButtonProps[] = [
   {
     label: constantsMap.pages.catalog.actions.loadOrder,
     onClick: () => {},

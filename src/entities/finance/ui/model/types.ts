@@ -1,20 +1,14 @@
 
 import { constantsMap } from "@/shared/model";
-import { ReactNode } from "react";
+import { ActionButtonProps } from '@/shared/ui/custom/action-button';
 
-export interface OrdersActionButtonProps {
-  label: string;
-  icon?: ReactNode;  
-  onClick?: () => void;
-}
-
-export const orderActionButtons: OrdersActionButtonProps[] = [
+export const financeActionButtons: ActionButtonProps[] = [
   {
-    label: constantsMap.pages.catalog.actions.loadOrder,
+    label: constantsMap.pages.finance.actions.requestVerification,
     onClick: () => {},
   },
   {
-    label: constantsMap.pages.catalog.actions.downloadTemplate,
+    label: constantsMap.pages.finance.actions.requestVerification,
     // onClick: () => {},      
   },
   {
@@ -32,8 +26,7 @@ export const orderActionButtons: OrdersActionButtonProps[] = [
 ]  
 
   
-export interface OrderActionsPanelProps {
-  // buttons: OrderActionButton[];
+export interface FinanceActionsPanelProps {
   isLoading: boolean;
 }
 

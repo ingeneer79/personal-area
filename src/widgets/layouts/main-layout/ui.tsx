@@ -31,7 +31,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }: PropsWithChildren)
     }
   }, [session, status]);
 
-  return  status === "authenticated" && session?.user ? (
+  return status === "authenticated" && session?.user ? (
     <Flex vertical>
       <MainHeader/>
       <Content>

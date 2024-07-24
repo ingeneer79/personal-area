@@ -4,8 +4,9 @@ import { getCatalog } from "../api/api";
 import { CatalogObject } from "../model/types";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/shared/lib";
-import { getCatalogFiltersSearchValue, getCatalogFiltersSelectedValues } from "@/widgets/filters/catalog-filter-with-search/model";
+import { getCatalogFiltersSearchValue, getCatalogFiltersSelectedValues } from "@/entities/catalog/ui/catalog-filter-with-search/model";
 import { QuantityControl } from "./quantity-control";
+import { FilterSelectedValue } from "@/shared/model/types";
 
 
 
@@ -121,13 +122,13 @@ export const CatalogTable = () => {
 
     if (selectedFilterValues?.length) {
       filteredDataNew = filteredDataNew.filter((order: CatalogObject) => {
-        return selectedFilterValues.some((selectedFilterValue) => {
-          if (selectedFilterValue.values.length === 0) { 
+        return selectedFilterValues.some((selectedFilterValue: FilterSelectedValue) => {
+          if ((selectedFilterValue.values as string[]).length === 0) { 
             return true 
           }
           const fieldValue = (order as any)[selectedFilterValue.id];
           if (fieldValue) {
-            return selectedFilterValue.values.some((item: string) => String(item) === String(fieldValue));
+            return (selectedFilterValue.values as string[]).some((item: string) => String(item) === String(fieldValue));
           } 
         })
       });

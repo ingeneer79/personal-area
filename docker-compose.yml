@@ -5,7 +5,7 @@ services:
     depends_on:
       - nodejs
     container_name: next-app
-    env_file: .env.local    
+    env_file: .env
     build:    
       context: .
       dockerfile: Dockerfile
