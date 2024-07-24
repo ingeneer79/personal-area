@@ -2,7 +2,7 @@ export const SideBarMenuItems = [
     {
         label: 'Личный кабинет',
         key: '1',
-        path: '/personal-area',
+        path: '/profile',
     },
     {
         label: 'Каталог',
