@@ -8,11 +8,11 @@ import { getClassifiers } from "@/entities/classifiers/api/data";
 import { FiltersPanelComponentProperties } from "@/shared/ui/custom/filters-panel/model";
 import { getSelectOptions } from "@/entities/classifiers/api";
 import { WayBillsTable } from "@/entities/waybills/ui/waybills-table";
-import { WaybillsFilter } from "@/widgets/filters";
-import { WaybillsOrderActionsPanel } from "@/entities/waybills/ui/order-actions-panel";
 import { useEffect, useState } from "react";
 import { ClassifierObject } from "@/entities/classifiers/model";
 import { StoreProvider } from "../../../app/providers/store-provider";
+import { WaybillsOrderActionsPanel } from "@/entities/waybills/ui/waybills-actions-panel";
+import { WaybillsFilter } from "@/entities/waybills/ui/waybills-filter";
 
 export function WaybillsPage() {
   const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
@@ -79,7 +79,6 @@ export function WaybillsPage() {
           >
             {constantsMap.pages.wayBills.mainText}
           </TypographyWrapper>
-
           <WaybillsFilter
             filterComponents={filterSelectOptions}
             isLoading={false}

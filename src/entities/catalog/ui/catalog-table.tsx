@@ -4,7 +4,7 @@ import { getCatalog } from "../api/api";
 import { CatalogObject } from "../model/types";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/shared/lib";
-import { getCatalogFiltersSearchValue, getCatalogFiltersSelectedValues } from "@/widgets/filters/catalog-filter-with-search/model";
+import { getCatalogFiltersSearchValue, getCatalogFiltersSelectedValues } from "@/entities/catalog/ui/catalog-filter-with-search/model";
 import { QuantityControl } from "./quantity-control";
 import { FilterSelectedValue } from "@/shared/model/types";
 

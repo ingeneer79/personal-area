@@ -21,3 +21,5 @@ export const ActionButton: FC<ActionButtonProps> = ({
     </Button>
   );
 };
+
+export default ActionButton

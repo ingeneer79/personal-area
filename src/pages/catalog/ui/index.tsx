@@ -1,5 +1,5 @@
 "use client";
-import { CatalogFilterWithSearch } from "@/widgets/filters/catalog-filter-with-search";
+import { CatalogFilterWithSearch } from "@/entities/catalog/ui/catalog-filter-with-search";
 
 import { constantsMap } from "@/shared/model";
 import Image from "next/image";

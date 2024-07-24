@@ -67,7 +67,7 @@ export const constantsMap = {
                 newOrder: 'Новый заказ',
             }
         },   
-        finances: {
+        finance: {
             mainText: 'Финансы',
             actions: {
                 requestVerification: 'Запросить акт сверки',

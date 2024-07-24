@@ -4,14 +4,20 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import { classifiersSlice } from "../entities/classifiers/model";
 import { baseApi } from "@/shared/api";
 import { ordersSlice } from "@/entities/catalog/model/slice";
-import { catalogFiltersSlice } from "@/widgets/filters/catalog-filter-with-search/model/slices";
-import { waybillsFiltersSlice } from "@/widgets/filters/waybills-filter/model/slices";
+import { catalogFiltersSlice } from "@/entities/catalog/ui/catalog-filter-with-search/model/slices";
+import { waybillsFiltersSlice } from "@/entities/waybills/ui/waybills-filter/model/slices";
+import { financeFiltersSlice } from "@/entities/finance/ui/finance-filter/model/slices";
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices(classifiersSlice, ordersSlice, catalogFiltersSlice, waybillsFiltersSlice, {
-  
-});
+const rootReducer = combineSlices(
+  classifiersSlice,
+  ordersSlice,
+  catalogFiltersSlice,
+  waybillsFiltersSlice,
+  financeFiltersSlice,
+  {}
+);
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>;
 
@@ -26,10 +32,11 @@ export const makeStore = () => {
       [baseApi.reducerPath]: baseApi.reducer,
       [catalogFiltersSlice.name]: catalogFiltersSlice.reducer,
       [waybillsFiltersSlice.name]: waybillsFiltersSlice.reducer,
+      [financeFiltersSlice.name]: financeFiltersSlice.reducer,
     },
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.
-    middleware: (getDefaultMiddleware) =>
+    middleware: getDefaultMiddleware =>
       getDefaultMiddleware().concat(baseApi.middleware),
   });
 };

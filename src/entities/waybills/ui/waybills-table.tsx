@@ -3,7 +3,7 @@ import { Table } from "antd";
 
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/shared/lib";
-import { getCatalogFiltersSelectedValues } from "@/widgets/filters/catalog-filter-with-search/model";
+import { getCatalogFiltersSelectedValues } from "@/entities/catalog/ui/catalog-filter-with-search/model";
 import { WaybillObject } from "../model/types";
 import { WaybillActionsControl } from "./waybills-actions-control";
 import { getWaybills } from "../api";
