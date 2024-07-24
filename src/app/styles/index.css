@@ -26,7 +26,14 @@
     --control-filter-text-color: #105055;
 
     /* цвет кнопок в панели управления заказом*/
-    --control-order-panel-button: #86D0AF
+    --control-order-panel-button: #86D0AF;
+
+    /* переменные для текстов */
+    --text-color-span: rgba(0, 0, 0, 0.5);
+
+    /* переменные цвета фона контейнеров */
+    --bg-color-gray: 'rgb(245, 245, 247)';
+    
 }
 
 .search .ant-input-search-button {
