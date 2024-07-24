@@ -15,7 +15,7 @@ import translateType from "./translate-type";
 
 export function ProfilePage() {
   return (
-    <MainLayout>
+    <>
       <FullWidthImage
         src="/images/banner.jpeg"
         alt="Баннер профиля"
@@ -33,7 +33,7 @@ export function ProfilePage() {
         }}
       >
         <TypographyWrapper
-          className="mb-4 mt-9 font-bold text-"
+          className="mb-4 mt-9 font-bold"
           style={{
             fontSize: "32px",
             lineHeight: "var(--heading-font-line-height)",
@@ -58,7 +58,7 @@ export function ProfilePage() {
           ))}
         </Space>
       </Flex>
-    </MainLayout>
+    </>
   );
 }
 
