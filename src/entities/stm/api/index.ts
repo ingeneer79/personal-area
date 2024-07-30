@@ -1,1 +1,1 @@
-export { getCatalog } from "./api";
+export { getStm } from "./api";
