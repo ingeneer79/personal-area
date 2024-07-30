@@ -15,18 +15,23 @@ export const SideBarMenuItems = [
         path: '/waybills',
     },    
     {
-        label: 'Финансы',
+        label: 'Претензии',
         key: '4',
+        path: '/petitions',
+    },    
+    {
+        label: 'Финансы',
+        key: '5',
         path: '/finance',
     },    
     {
         label: 'Сертификаты',
-        key: '5',
+        key: '6',
         path: '/certificates',
     },    
     {
         label: 'СТМ',
-        key: '6',
+        key: '7',
         path: '/stm',
     },    
 ]
