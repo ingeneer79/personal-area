@@ -28,7 +28,8 @@ export const constantsMap = {
                     id: 'markingStatus',
                     title: 'Статус маркировки',
                     classifierId: 'markingStatus',
-                }
+                },
+
             },
             actions: {
                 downloadAll: 'Скачать все',
@@ -81,6 +82,25 @@ export const constantsMap = {
         },   
         stm: {
             mainText: 'СТМ',
+            actions: {
+                viewCatalog: 'Просмотреть каталог',
+                downloadStmCatalog: 'Скачать каталог СТМ',
+                feedback: 'Обратная связь',
+                exportExcel: 'Выгрузить в EXCEL',
+            },
+            filter: {
+                form: {
+                    id: 'form',
+                    title: 'Форма выпуска',
+                    classifierId: 'form',
+                },
+                category: {
+                    id: 'category',
+                    title: 'Категории',
+                    classifierId: 'category',
+                }
+
+            }
         },
     },
     widgets: {

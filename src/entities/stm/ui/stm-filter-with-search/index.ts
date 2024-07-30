@@ -1,0 +1,2 @@
+export { CatalogFilterWithSearch } from "./ui";
+

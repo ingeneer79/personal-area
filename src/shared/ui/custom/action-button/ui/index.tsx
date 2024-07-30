@@ -11,11 +11,11 @@ export const ActionButton: FC<ActionButtonProps> = ({
 }) => {
   return (
     <Button
-      className="px-0"
+      className="p-0 mr-4"
       type="text"
       icon={icon ?? <DownloadIcon></DownloadIcon>}
       onClick={onClick}
-      style={{ color: "var(--control-order-panel-button)", fontWeight: 500, fontSize: "12px", paddingLeft: 0, height: "48px" }}
+      style={{ color: "var(--control-order-panel-button)", fontWeight: 500, fontSize: "12px", height: "48px" }}
     >
       {label}
     </Button>

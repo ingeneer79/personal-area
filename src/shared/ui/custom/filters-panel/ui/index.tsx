@@ -33,7 +33,7 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({
               loading={isLoading}
               onChange={(value) => {  
                 selectedValues[filterComponent.key] = value
-                setSelectedValues({...selectedValues});                  
+                setSelectedValues({...selectedValues});
                 onChange?.({id: filterComponent.key, values: filterComponent.options.filter(item => (value as string[]).includes(item.value)).map(item => item.value)});
               }}
             />

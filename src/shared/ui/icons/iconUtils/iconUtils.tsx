@@ -3,6 +3,7 @@ import { IconEdit } from "../Icon-edit";
 import { IconLocation } from "../icon-location";
 import { IconPhone } from "../Icon-phone";
 import { IconEmail } from "../Icon-profile";
+import IconAdd from "../icon-add";
 
 // Объект сопоставления названий и компонентов иконок
 const icons = {
@@ -13,6 +14,7 @@ const icons = {
   телефон: IconPhone,
   почта: IconEmail,
   адрес: IconLocation,
+  add: IconAdd
 };
 
 // Функция для получения компонента иконки по названию
