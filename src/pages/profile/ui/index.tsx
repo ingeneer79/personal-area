@@ -13,9 +13,11 @@ import { getIcon } from "@/shared/ui/icons/iconUtils/iconUtils";
 import { profileConfig } from '@/entities/profile/model';
 import { UserContactPlank } from '@/entities/profile/ui';
 import translateType from '@/entities/profile/model/translate-type';
+import { useSession } from 'next-auth/react';
 
 
 export function ProfilePage() {
+  const { data: session, status } = useSession();
   return (
     <>
       <FullWidthImage
@@ -45,7 +47,7 @@ export function ProfilePage() {
         </TypographyWrapper>
         <UserPlank
           userImage='/images/user.png'
-          userName={`${profileConfig.firstName} ${profileConfig.lastName}`}
+          userName={`${session?.user?.name}`}
           editCallBack={() => {
             console.log("callback works");
           }}
