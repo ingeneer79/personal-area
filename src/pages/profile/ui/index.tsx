@@ -7,11 +7,13 @@ import FullWidthImage from "@/widgets/FullWidthImage/ui/FullWidthImage";
 import { MainLayout } from "@/widgets/layouts";
 import React from "react";
 import { UserPlank } from "@/widgets/user-plank";
-import { profileConfig } from "../model/profileConfig";
+
 import Space from "@/shared/ui/space";
-import UserContactPlank from "@/entities/profile/ui/UserContactPlank";
 import { getIcon } from "@/shared/ui/icons/iconUtils/iconUtils";
-import translateType from "./translate-type";
+import { profileConfig } from '@/entities/profile/model';
+import { UserContactPlank } from '@/entities/profile/ui';
+import translateType from '@/entities/profile/model/translate-type';
+
 
 export function ProfilePage() {
   return (

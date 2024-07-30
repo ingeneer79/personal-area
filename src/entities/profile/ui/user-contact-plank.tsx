@@ -6,13 +6,13 @@ import Button from '@/shared/ui/button'
 import React from 'react'
 import ContactButton from '@/shared/ui/contact-button'
 
-type Props = {
+export type UserContactPlankProps = {
     icon: React.ReactElement,
     contactSign: "Телефон" | "Почта" | "Адрес",
     contact: string
 }
 
-const UserContactPlank = ({icon, contactSign, contact}: Props) => {
+export const UserContactPlank = ({icon, contactSign, contact}: UserContactPlankProps) => {
   return (
     <Space className='p-2' direction="horizontal" size={10}>
       <ContactButton contactType={contactSign} contact={contact} icon={icon} />
