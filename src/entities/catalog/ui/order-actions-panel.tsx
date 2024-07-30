@@ -4,10 +4,35 @@
 import { FC } from "react";
 import { Flex } from "antd";
 import { MyOrdersButton, NewOrderButton } from "@/features/order";
-import { orderActionButtons, OrderActionsPanelProps } from "./types";
-import { ActionButton } from "@/shared/ui/custom/action-button";
+import { OrderActionsPanelProps } from "./types";
+import { ActionButton, ActionButtonProps } from "@/shared/ui/custom/action-button";
+import { constantsMap } from "@/shared/model";
 
 export const CatalogOrderActionsPanel: FC<OrderActionsPanelProps> = () => {
+
+  const orderActionButtons: ActionButtonProps[] = [
+    {
+      label: constantsMap.pages.catalog.actions.loadOrder,
+      onClick: () => {},
+    },
+    {
+      label: constantsMap.pages.catalog.actions.downloadTemplate,
+      // onClick: () => {},      
+    },
+    {
+      label: constantsMap.pages.catalog.actions.uploadByTemplate,
+      // onClick: () => {},      
+    },
+    {
+      label: constantsMap.pages.catalog.actions.downloadPriceList,
+      // onClick: () => {},      
+    },
+    {
+      label: constantsMap.pages.catalog.actions.sendPriceListByFTP,
+      // onClick: () => {},      
+    }
+  ]  
+  
   return (
     <Flex gap="middle" className="w-full items-center">
       <Flex
