@@ -1,4 +1,4 @@
-const translateType = (type: string) => {
+export const translateType = (type: string) => {
   switch (type) {
     case "phone":
       return "Телефон";
