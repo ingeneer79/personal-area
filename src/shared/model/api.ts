@@ -1,6 +1,7 @@
 export const apiMap = {
     getClassifiers: 'classifiers',
     getCatalog: 'catalog',
+    getStm: 'stm',
     getWaybills: 'waybills',
     getUser: 'auth/user',
     patchUser: 'auth/user',
@@ -13,4 +14,5 @@ export const apiMap = {
     postOrder: 'orders',
     getStreamingOrders: 'orders/all',
     getStreamingUserOrders: 'orders',
+  
   };

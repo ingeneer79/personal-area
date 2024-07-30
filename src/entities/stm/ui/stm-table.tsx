@@ -1,11 +1,10 @@
 "use client";
-import { Table } from "antd";
-import { getCatalog } from "../api/api";
+import { Table, TableColumnProps, TableColumnsType } from "antd";
+import { getStm } from "../api";
 import { CatalogObject } from "../model/types";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/shared/lib";
 import { getCatalogFiltersSearchValue, getCatalogFiltersSelectedValues } from "@/entities/catalog/ui/catalog-filter-with-search/model";
-import { QuantityControl } from "./quantity-control";
 import { FilterSelectedValue } from "@/shared/model/types";
 
 
@@ -16,7 +15,7 @@ export const StmTable = () => {
   const [data, setData] = useState<CatalogObject[]>([]);
   const [filteredData, setFilteredData] = useState<CatalogObject[]>([]);
 
-  const CatalogTableColumns = [
+  const CatalogTableColumns: TableColumnsType = [
     {
       title: "Наименование",
       dataIndex: "name",
@@ -48,10 +47,12 @@ export const StmTable = () => {
       key: "quantity",
     }
   ];  
+
+  
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await getCatalog();
+        const res = await getStm();
         setData(res);
       } catch (err) {
         console.log(err);
