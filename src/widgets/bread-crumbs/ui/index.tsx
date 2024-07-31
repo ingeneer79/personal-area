@@ -1,24 +1,15 @@
 import { Breadcrumb } from "antd";
+import { BreadCrumbWidgetProps } from "../model";
+import { FC } from "react";
 
-export const BreadCrumbWidget = () => {
+
+
+export const BreadCrumbWidget: FC<BreadCrumbWidgetProps> = ({items}) => {
   return (
     <Breadcrumb
       separator="&#x2022;"
       style={{ margin: "16px 0" }}
-      items={[
-        {
-          title: "Главная",
-          path: "/main",
-        },
-        {
-          title: "Накладные",
-          path: "/waybills",
-        },
-        {
-          title: "Претензии",
-          path: "/petitions",
-        },
-      ]}
+      items={items}
     ></Breadcrumb>
   );
 };

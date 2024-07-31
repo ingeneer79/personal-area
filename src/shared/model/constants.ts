@@ -5,6 +5,12 @@ export const constantsMap = {
         },   
         wayBills: {
             mainText: 'Накладные',
+            breadCrumbs: [
+                {
+                    title: 'Главная',
+                    href: '/',
+                }
+            ],
             filter: {
                 address: {
                     id: 'address',
@@ -41,6 +47,12 @@ export const constantsMap = {
         },   
         catalog: {
             mainText: 'Каталог',
+            breadCrumbs: [
+                {
+                    title: 'Главная',
+                    href: '/',
+                }
+            ],
             filter: {
                 brand: {
                     id: 'brand',
@@ -70,6 +82,12 @@ export const constantsMap = {
         },   
         finance: {
             mainText: 'Финансы',
+            breadCrumbs: [
+                {
+                    title: 'Главная',
+                    href: '/',
+                }
+            ],
             actions: {
                 requestVerification: 'Запросить акт сверки',
                 sendVerification: 'Отправить акт сверки',
@@ -79,9 +97,21 @@ export const constantsMap = {
         },   
         certificates: {
             mainText: 'Сертификаты',
+            breadCrumbs: [
+                {
+                    title: 'Главная',
+                    href: '/',
+                }
+            ],
         },   
         stm: {
             mainText: 'СТМ',
+            breadCrumbs: [
+                {
+                    title: 'Главная',
+                    href: '/',
+                }
+            ],
             actions: {
                 viewCatalog: 'Просмотреть каталог',
                 downloadStmCatalog: 'Скачать каталог СТМ',

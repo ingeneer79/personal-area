@@ -16,6 +16,7 @@ import { ClassifierObject } from "@/entities/classifiers/model";
 import { FiltersPanelComponentProperties } from "@/shared/ui/custom/filters-panel/model";
 import { CatalogOrderActionsPanel } from "@/entities/catalog/ui/order-actions-panel";
 import { StoreProvider } from "@/app/providers/store-provider";
+import { BreadCrumbWidget } from "@/widgets/bread-crumbs";
 
 export function CatalogPage() {
   const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
@@ -80,6 +81,7 @@ export function CatalogPage() {
   return (
     <StoreProvider>
       <Flex gap="middle" vertical>
+        <BreadCrumbWidget items={constantsMap.pages.catalog.breadCrumbs}></BreadCrumbWidget>            
         <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
           {constantsMap.pages.catalog.mainText}
         </TypographyWrapper>
