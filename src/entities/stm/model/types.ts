@@ -1,23 +1,5 @@
-export interface CatalogObject {
-    barCode: string;
-    name: string;
-    typeName: string;
-    nds: number;
-    brand: string;
-    brandName: string;
-    multiplicity: number;
-    categoryName: string;
-    components: string;
-    priceWithNds: number;
-    orc: number;
-    sum: number;
-    quantity: number;
-}
-
-
 import { constantsMap } from "@/shared/model";
 import { ActionButtonProps } from "@/shared/ui/custom/action-button";
-import { ReactNode } from "react";
 
 export const orderActionButtons: ActionButtonProps[] = [
   {
@@ -49,4 +31,20 @@ export interface OrderActionsPanelProps {
 }
 
 
+export interface StmObject {
+  key: string;
+  name: string;
+  form: string;
+  categoryName: string;
+  packaging: string;
+  quantity: number;
+  technicalRegulationInfo: string;
+  activeIngredients: string;
+  fullComposition: string;
+  applicationArea: string;
+  marketingInfo: string;
+  registrationNumber: string;
+  registrationYear: number;
+  registrationName: string;
+}
   

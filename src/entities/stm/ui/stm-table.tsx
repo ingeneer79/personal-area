@@ -1,21 +1,32 @@
 "use client";
-import { Table, TableColumnProps, TableColumnsType } from "antd";
-import { getStm } from "../api";
-import { CatalogObject } from "../model/types";
+import { Table } from "antd";
+import { getStm } from "../api/api";
+import { StmObject } from "../model/types";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/shared/lib";
 import { getCatalogFiltersSearchValue, getCatalogFiltersSelectedValues } from "@/entities/catalog/ui/catalog-filter-with-search/model";
 import { FilterSelectedValue } from "@/shared/model/types";
+import mockTableData from "../model/mockTableData";
 
 
 
 export const StmTable = () => {
   const searchFilterValue = useAppSelector(getCatalogFiltersSearchValue)
   const selectedFilterValues = useAppSelector(getCatalogFiltersSelectedValues)
-  const [data, setData] = useState<CatalogObject[]>([]);
-  const [filteredData, setFilteredData] = useState<CatalogObject[]>([]);
+  const [data, setData] = useState<StmObject[]>([]);
+  const [filteredData, setFilteredData] = useState<StmObject[]>([]);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<Array<string | number>>([]);
 
-  const CatalogTableColumns: TableColumnsType = [
+  const onSelectChange = (newSelectedRowKeys: any) => {
+    setSelectedRowKeys(newSelectedRowKeys);
+  };
+
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: onSelectChange,
+  };
+
+  const CatalogTableColumns = [
     {
       title: "Наименование",
       dataIndex: "name",
@@ -23,8 +34,8 @@ export const StmTable = () => {
     },
     {
       title: "Категория",
-      dataIndex: "category",
-      key: "category",
+      dataIndex: "categoryName",
+      key: "categoryName",
     },
     {
       title: "Форма выпуска",
@@ -37,16 +48,26 @@ export const StmTable = () => {
       key: "packaging",
     },
     {
-      title: "Кратность",
-      dataIndex: "multiplicity",
-      key: "multiplicity",
-    },
-    {
       title: "Выбор кратности",
       dataIndex: "quantity",
       key: "quantity",
     }
-  ];  
+  ];
+  
+  const expandedRowRender = (record: StmObject) => {
+    return (
+      <div>
+        <p>№ СГР: {record.registrationNumber || "Нет данных"}</p>
+        <p>Год СГР: {record.registrationYear || "Нет данных"}</p>
+        <p>Наименование по СГР: {record.registrationName || "Нет данных"}</p>
+        <p>Информация о техническом регламенте: {record.technicalRegulationInfo || "Нет данных"}</p>
+        <p>Активные вещества: {record.activeIngredients || "Нет данных"}</p>
+        <p>Полный состав: {record.fullComposition || "Нет данных"}</p>
+        <p>Область применения: {record.applicationArea || "Нет данных"}</p>
+        <p>Маркетинговая информация: {record.marketingInfo || "Нет данных"}</p>
+      </div>
+    );
+  };
 
   
   useEffect(() => {
@@ -64,7 +85,7 @@ export const StmTable = () => {
 
   useEffect(() => {
     
-    let filteredDataNew = data.filter((order: CatalogObject) => {
+    let filteredDataNew = data.filter((order: StmObject) => {
       let filterBySearchResult = null
       if (searchFilterValue) {
         Object.entries(order).forEach(([_key, value]) => {
@@ -79,7 +100,7 @@ export const StmTable = () => {
     })
 
     if (selectedFilterValues?.length) {
-      filteredDataNew = filteredDataNew.filter((order: CatalogObject) => {
+      filteredDataNew = filteredDataNew.filter((order: StmObject) => {
         return selectedFilterValues.some((selectedFilterValue: FilterSelectedValue) => {
           if ((selectedFilterValue.values as string[]).length === 0) { 
             return true 
@@ -95,5 +116,5 @@ export const StmTable = () => {
     setFilteredData(filteredDataNew);
   }, [data, searchFilterValue, selectedFilterValues]);
 
-  return <Table dataSource={filteredData} columns={CatalogTableColumns} />;
+  return <Table dataSource={mockTableData} columns={CatalogTableColumns} rowKey={(record) => record.key} expandable={{expandedRowRender}} rowSelection={rowSelection}/>;
 };
