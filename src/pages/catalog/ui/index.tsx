@@ -89,7 +89,7 @@ export function CatalogPage() {
           src="/images/banner.jpeg"
           width={1600}
           height={203}
-          style={{ borderRadius: "36px", height: "203px", width: "100%" }}
+          style={{ borderRadius: "36px", maxHeight: "203px", width: "100%", objectFit: "cover" }}
           alt=""
         ></Image>
         {filterSelectOptions.length > 0 && (
