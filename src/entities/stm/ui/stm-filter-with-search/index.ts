@@ -1,2 +1,2 @@
-export { CatalogFilterWithSearch } from "./ui";
+export { StmFilterWithSearch } from "./ui";
 
