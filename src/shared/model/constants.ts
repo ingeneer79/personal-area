@@ -9,6 +9,10 @@ export const constantsMap = {
                 {
                     title: 'Главная',
                     href: '/',
+                },
+                {
+                    title: 'Накладные',
+                    href: '/waybills',
                 }
             ],
             filter: {
@@ -51,6 +55,10 @@ export const constantsMap = {
                 {
                     title: 'Главная',
                     href: '/',
+                },
+                {
+                    title: 'Каталог',
+                    href: '/cat',
                 }
             ],
             filter: {
@@ -86,7 +94,11 @@ export const constantsMap = {
                 {
                     title: 'Главная',
                     href: '/',
-                }
+                },            
+                {
+                    title: 'Финансы',
+                    href: '/finance',
+                }                
             ],
             actions: {
                 requestVerification: 'Запросить акт сверки',
@@ -101,7 +113,11 @@ export const constantsMap = {
                 {
                     title: 'Главная',
                     href: '/',
-                }
+                },
+                {
+                    title: 'Сертификаты',
+                    href: '/certificates',
+                }                     
             ],
         },   
         stm: {
@@ -110,7 +126,11 @@ export const constantsMap = {
                 {
                     title: 'Главная',
                     href: '/',
-                }
+                },
+                {
+                    title: 'СТМ',
+                    href: '/stm',
+                }                   
             ],
             actions: {
                 viewCatalog: 'Просмотреть каталог',
