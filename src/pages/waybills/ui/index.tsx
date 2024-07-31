@@ -13,6 +13,7 @@ import { ClassifierObject } from "@/entities/classifiers/model";
 import { StoreProvider } from "../../../app/providers/store-provider";
 import { WaybillsOrderActionsPanel } from "@/entities/waybills/ui/waybills-actions-panel";
 import { WaybillsFilter } from "@/entities/waybills/ui/waybills-filter";
+import { BreadCrumbWidget } from "@/widgets/bread-crumbs";
 
 export function WaybillsPage() {
   const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
@@ -70,9 +71,10 @@ export function WaybillsPage() {
   }, [classifiers]);
 
   return (
-    <StoreProvider>
+    <StoreProvider>      
       {filterSelectOptions && (
         <Flex gap="middle" vertical>
+          <BreadCrumbWidget items={constantsMap.pages.wayBills.breadCrumbs}></BreadCrumbWidget>         
           <TypographyWrapper
             style={{ fontSize: "32px" }}
             className="font-medium"

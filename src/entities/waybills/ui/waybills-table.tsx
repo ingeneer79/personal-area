@@ -1,5 +1,5 @@
 "use client";
-import { Table } from "antd";
+import { Flex, Table } from "antd";
 
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/shared/lib";
@@ -7,6 +7,7 @@ import { getCatalogFiltersSelectedValues } from "@/entities/catalog/ui/catalog-f
 import { WaybillObject } from "../model/types";
 import { WaybillActionsControl } from "./waybills-actions-control";
 import { getWaybills } from "../api";
+import style from 'styled-jsx/style';
 
 
 export const WayBillsTable = () => {
@@ -54,9 +55,19 @@ export const WayBillsTable = () => {
       title: "Действия",
       dataIndex: "actions",
       key: "actions",
-      width: 300,    
+      width: 193,    
       render: (_text: string, record: WaybillObject, index: number) => {
-        return <WaybillActionsControl buttons={[{onClick: () => console.log('test')}]} />
+        return (
+          <WaybillActionsControl buttons={[{
+            onClick: () => console.log('test')
+          },
+          {
+            onClick: () => console.log('test')
+          },
+          {
+            onClick: () => console.log('test')
+          }]} />
+        )
       },    
     },
   

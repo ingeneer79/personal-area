@@ -39,7 +39,6 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }: PropsWithChildren)
           <SideBar/>
           <Content style={{ padding: '0 24px'}}>
             <Flex vertical>
-                <BreadCrumbWidget></BreadCrumbWidget>         
                 {children}
             </Flex>
           </Content>

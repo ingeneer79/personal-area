@@ -14,6 +14,7 @@ import { FiltersPanelComponentProperties } from "@/shared/ui/custom/filters-pane
 import { StmOrderActionsPanel } from "@/entities/stm/ui/order-actions-panel";
 import { StoreProvider } from "@/app/providers/store-provider";
 import { StmTable } from "@/entities/stm/ui/stm-table";
+import { BreadCrumbWidget } from "@/widgets/bread-crumbs";
 
 export function StmPage() {
   const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
@@ -74,6 +75,7 @@ export function StmPage() {
   return (
     <StoreProvider>
       <Flex gap="middle" vertical>
+        <BreadCrumbWidget items={constantsMap.pages.stm.breadCrumbs}></BreadCrumbWidget>                 
         <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
           {constantsMap.pages.stm.mainText}
         </TypographyWrapper>
