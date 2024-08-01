@@ -85,7 +85,7 @@ export function MainHeader() {
       >
         {constantsMap.widgets.header.bag}
       </Button>
-      <UserName session={session} />
+      <UserName />
       {status === "authenticated" && (
         <Image src="/images/user.svg" width={48} height={48} alt="" />
       )}

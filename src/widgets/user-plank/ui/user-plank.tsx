@@ -1,20 +1,20 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import React from "react";
 import Flex from "@/shared/ui/flex";
 import Image from "next/image";
-import TypographyWrapper from "@/shared/ui/typography";
 import { Button } from "@/shared/ui";
-import { getIcon } from "@/shared/ui/icons/iconUtils/iconUtils";
 import { UserData, UserName } from "@/entities/user";
+import { iconsMap } from '../../../shared/model/icons';
+import { useAppSelector } from "@/shared/lib";
 
 type Props = {
   userImage: string;
-  session?: UserData;
   editCallBack?: () => void;
 };
 
-export const UserPlank = ({ userImage, editCallBack, session }: Props) => {
+export const UserPlank = ({ userImage, editCallBack }: Props) => {
+  const session = useAppSelector(state => state.userStore); 
   return (
     <Flex
       className="w-full rounded-2xl py-2 px-4 items-center"
@@ -28,11 +28,11 @@ export const UserPlank = ({ userImage, editCallBack, session }: Props) => {
         alt={"Портрет пользователя"}
         priority={false}
       />
-      <UserName session={session}/>
+      <UserName/>
       {editCallBack ? (
         <Button
           size="middle"
-          icon={getIcon("edit")}
+          icon={<iconsMap.IconEdit/>}
           onClick={editCallBack}
           style={{ border: "none" }}
         />

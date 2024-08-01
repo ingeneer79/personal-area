@@ -1,4 +1,6 @@
-const IconAdd = () => {
+import { ReactNode } from "react";
+
+const IconAdd = () : ReactNode => {
   return (
     <svg
       width="24"
