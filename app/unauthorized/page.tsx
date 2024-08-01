@@ -1,1 +1,1 @@
-export {UnauthorizedPage as default} from "@/pages/unauthorized-page/ui";
+export {UnauthorizedPage as default} from "@/fsd-pages/unauthorized-page/ui";

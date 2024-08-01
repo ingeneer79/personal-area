@@ -1,1 +1,1 @@
-export {StmPage as default} from '@/pages/stm/ui'
+export {StmPage as default} from '@/fsd-pages/stm/ui'

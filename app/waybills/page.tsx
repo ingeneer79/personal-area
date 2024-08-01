@@ -1,1 +1,1 @@
-export { WaybillsPage as default } from '@/pages/waybills/ui';
+export { WaybillsPage as default } from '@/fsd-pages/waybills/ui';

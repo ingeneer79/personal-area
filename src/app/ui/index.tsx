@@ -13,17 +13,17 @@ const inter = Inter({ subsets: ["cyrillic", "latin", "cyrillic-ext"] });
 export const AppRoot = ({ children }: PropsWithChildren) => {
   return (
     <SessionProviderWrapper>
-      <StoreProvider>
         <AntdRegistry>
           <ConfigLayout>
             <html lang="en">
               <body className={inter.className}>
-                <MainLayout>{children}</MainLayout>
+                <StoreProvider>
+                  <MainLayout>{children}</MainLayout>
+                </StoreProvider>                
               </body>
             </html>
           </ConfigLayout>
         </AntdRegistry>
-      </StoreProvider>
     </SessionProviderWrapper>
   );
 };

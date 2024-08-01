@@ -1,2 +1,2 @@
 
-export { FinancePage as default } from '@/pages/finance/ui';
+export { FinancePage as default } from '@/fsd-pages/finance/ui';

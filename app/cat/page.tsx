@@ -1,1 +1,1 @@
-export { CatalogPage as default } from '@/pages/catalog/ui';
+export { CatalogPage as default } from '@/fsd-pages/catalog/ui';

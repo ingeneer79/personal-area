@@ -7,6 +7,7 @@ import { Button } from "@/shared/ui";
 import { UserData, UserName } from "@/entities/user";
 import { iconsMap } from '../../../shared/model/icons';
 import { useAppSelector } from "@/shared/lib";
+import { StoreProvider } from "@/app/providers/store-provider";
 
 type Props = {
   userImage: string;
@@ -14,7 +15,6 @@ type Props = {
 };
 
 export const UserPlank = ({ userImage, editCallBack }: Props) => {
-  const session = useAppSelector(state => state.userStore); 
   return (
     <Flex
       className="w-full rounded-2xl py-2 px-4 items-center"

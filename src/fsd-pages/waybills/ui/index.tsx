@@ -71,7 +71,7 @@ export function WaybillsPage() {
   }, [classifiers]);
 
   return (
-    <StoreProvider>      
+    <>      
       {filterSelectOptions && (
         <Flex gap="middle" vertical>
           <BreadCrumbWidget items={constantsMap.pages.wayBills.breadCrumbs}></BreadCrumbWidget>         
@@ -89,7 +89,7 @@ export function WaybillsPage() {
           <WayBillsTable />
         </Flex>
       )}
-    </StoreProvider>
+    </>
   );
 }
 export default WaybillsPage;

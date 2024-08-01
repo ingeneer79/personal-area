@@ -1,1 +1,1 @@
-export { HomePage as default } from '@/pages/home/ui';
+export { HomePage as default } from '@/fsd-pages/home/ui';

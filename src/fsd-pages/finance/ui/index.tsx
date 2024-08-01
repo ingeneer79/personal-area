@@ -10,7 +10,7 @@ import { financeActionButtons } from '../../../entities/finance/ui/model/types';
 
 export const FinancePage: FC = () => {
   return (
-    <StoreProvider>
+    <>
       <Flex gap="middle" vertical>
         <BreadCrumbWidget items={constantsMap.pages.finance.breadCrumbs}></BreadCrumbWidget>                                 
         <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
@@ -19,7 +19,7 @@ export const FinancePage: FC = () => {
         <FinanceFilter isLoading={false} />
         <FinanceActionsPanel isLoading={false} />
       </Flex>
-    </StoreProvider>
+    </>
   );
 };
 

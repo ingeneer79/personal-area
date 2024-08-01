@@ -1,24 +1,22 @@
 "use client";
-import { CatalogFilterWithSearch } from "@/entities/catalog/ui/catalog-filter-with-search";
+import { StmFilterWithSearch } from "@/entities/stm/ui/stm-filter-with-search/ui/index";
 
 import { constantsMap } from "@/shared/model";
-import Image from "next/image";
 import Flex from "@/shared/ui/flex";
 import TypographyWrapper from "@/shared/ui/typography";
 
-import { CheckBoxesPanelFilter } from "@/widgets/filters/check-boxes-panel-filter";
 import { CheckBoxesPanelOption } from "@/widgets/filters/check-boxes-panel-filter/model/types";
-import { CatalogTable } from "@/entities/catalog";
 import { getClassifiers } from "@/entities/classifiers/api/data";
 import { getSelectOptions } from "@/entities/classifiers/api";
 import { useEffect, useState } from "react";
 import { ClassifierObject } from "@/entities/classifiers/model";
 import { FiltersPanelComponentProperties } from "@/shared/ui/custom/filters-panel/model";
-import { CatalogOrderActionsPanel } from "@/entities/catalog/ui/order-actions-panel";
+import { StmOrderActionsPanel } from "@/entities/stm/ui/order-actions-panel";
 import { StoreProvider } from "@/app/providers/store-provider";
+import { StmTable } from "@/entities/stm/ui/stm-table";
 import { BreadCrumbWidget } from "@/widgets/bread-crumbs";
 
-export function CatalogPage() {
+export function StmPage() {
   const [classifiers, setClassifiers] = useState<ClassifierObject[]>([]);
   const [filterSelectOptions, setFilterSelectOptions] = useState<
     FiltersPanelComponentProperties[]
@@ -48,18 +46,13 @@ export function CatalogPage() {
     //
     const catalogFilterSelectOptions: FiltersPanelComponentProperties[] = [
       getSelectOptions(
-        constantsMap.pages.catalog.filter.brand.classifierId,
-        constantsMap.pages.catalog.filter.brand.title,
+        constantsMap.pages.stm.filter.form.classifierId,
+        constantsMap.pages.stm.filter.form.title,
         classifiers
       ),
       getSelectOptions(
-        constantsMap.pages.catalog.filter.type.classifierId,
-        constantsMap.pages.catalog.filter.type.title,
-        classifiers
-      ),
-      getSelectOptions(
-        constantsMap.pages.catalog.filter.category.classifierId,
-        constantsMap.pages.catalog.filter.category.title,
+        constantsMap.pages.stm.filter.category.classifierId,
+        constantsMap.pages.stm.filter.category.title,
         classifiers
       ),
     ];
@@ -76,35 +69,25 @@ export function CatalogPage() {
         })) ?? [];
 
     setSelectCheckboxesOptions(selectCheckboxesOptions);
+    console.log(selectCheckboxesOptions)
   }, [classifiers]);
 
   return (
-    <StoreProvider>
+    <>
       <Flex gap="middle" vertical>
-        <BreadCrumbWidget items={constantsMap.pages.catalog.breadCrumbs}></BreadCrumbWidget>            
+        <BreadCrumbWidget items={constantsMap.pages.stm.breadCrumbs}></BreadCrumbWidget>                 
         <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
-          {constantsMap.pages.catalog.mainText}
+          {constantsMap.pages.stm.mainText}
         </TypographyWrapper>
-        <Image
-          src="/images/banner.jpeg"
-          width={1600}
-          height={203}
-          style={{ borderRadius: "36px", maxHeight: "203px", width: "100%", objectFit: "cover" }}
-          alt=""
-        ></Image>
         {filterSelectOptions.length > 0 && (
-          <CatalogFilterWithSearch filterComponents={filterSelectOptions} />
+          <StmFilterWithSearch filterComponents={filterSelectOptions} />
         )}
-        {selectCheckboxesOptions.length > 0 && (
-          <CheckBoxesPanelFilter
-            selectOptions={selectCheckboxesOptions}
-            isLoading={false}
-          />
-        )}
-        <CatalogOrderActionsPanel isLoading={false} />
-        <CatalogTable />
+        <StmOrderActionsPanel isLoading={false} />
+        <StmTable />
       </Flex>
-    </StoreProvider>
+    </>
   );
 }
-export default CatalogPage;
+export default StmPage;
+
+
