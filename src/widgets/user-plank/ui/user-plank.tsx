@@ -4,10 +4,8 @@ import React from "react";
 import Flex from "@/shared/ui/flex";
 import Image from "next/image";
 import { Button } from "@/shared/ui";
-import { UserData, UserName } from "@/entities/user";
+import { UserName } from "@/entities/user";
 import { iconsMap } from '../../../shared/model/icons';
-import { useAppSelector } from "@/shared/lib";
-import { StoreProvider } from "@/app/providers/store-provider";
 
 type Props = {
   userImage: string;
