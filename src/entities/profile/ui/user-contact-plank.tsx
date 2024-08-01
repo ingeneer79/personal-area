@@ -7,8 +7,8 @@ import React from 'react'
 import ContactButton from '@/shared/ui/contact-button'
 
 export type UserContactPlankProps = {
-    icon: React.ReactElement,
-    contactSign: "Телефон" | "Почта" | "Адрес",
+    icon: React.ReactNode,
+    contactSign: "Телефон" | "Почта" | "Адрес" | undefined,
     contact: string
 }
 

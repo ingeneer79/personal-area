@@ -5,7 +5,7 @@ import { FC } from "react";
 import { useDispatch } from "react-redux";
 import { FiltersPanel } from "@/shared/ui/custom/filters-panel";
 import { FilterWithSearchProps } from "../model/types";
-import { setWaybillsFiltersSelectedValue } from "../model/slices";
+import { setWaybillsFiltersSelectedValue } from "../model/slice";
 
 export const WaybillsFilter: FC<FilterWithSearchProps> = ({
   isLoading,

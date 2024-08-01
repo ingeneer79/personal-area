@@ -3,9 +3,9 @@
 import { Button } from "antd";
 import React from "react";
 type Props = {
-  icon: React.ReactElement;
+  icon: React.ReactNode;
   contact: string;
-  contactType: "Телефон" | "Почта" | "Адрес";
+  contactType: "Телефон" | "Почта" | "Адрес" | undefined;
 };
 
 const ContactButton = ({ icon, contact, contactType }: Props) => {
@@ -22,7 +22,7 @@ const ContactButton = ({ icon, contact, contactType }: Props) => {
     <Button
       icon={icon}
       onClick={(e) => handleClick()}
-      style={{ border: "none", background: "rgb(245, 245, 247)" }}
+      style={{ border: "none", background: "var(--bg-color-gray)" }}
     />
   );
 };

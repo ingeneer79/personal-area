@@ -5,7 +5,7 @@ import { FC } from "react";
 import { useDispatch } from "react-redux";
 import {
   setFinanceFiltersSearchValue,
-} from "../model/slices";
+} from "../model/slice";
 import { FilterWithSearchProps } from "../model/types";
 
 export const FinanceFilter: FC<FilterWithSearchProps> = ({

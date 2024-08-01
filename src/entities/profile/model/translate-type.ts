@@ -7,7 +7,7 @@ export const translateType = (type: string) => {
     case "address":
       return "Адрес";
     default:
-      return type;
+      return undefined;
   }
 };
 

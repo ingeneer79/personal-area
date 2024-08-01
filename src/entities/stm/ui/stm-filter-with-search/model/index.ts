@@ -5,4 +5,4 @@ export {
 export {
   setCatalogFiltersSelectedValues,
   setCatalogFiltersSearchValue,
-} from "./slices";
+} from "./slice";

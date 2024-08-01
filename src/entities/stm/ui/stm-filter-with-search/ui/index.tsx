@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import {
   setCatalogFiltersSearchValue,
   setCatalogFiltersSelectedValue,
-} from "../model/slices";
+} from "../model/slice";
 import { FiltersPanel } from "@/shared/ui/custom/filters-panel";
 import { FilterWithSearchProps } from "../model/types";
 

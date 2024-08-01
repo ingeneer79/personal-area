@@ -2,6 +2,7 @@ import type { SerializedError } from '@reduxjs/toolkit';
 
 import { constantsMap, type ApiError } from '../model';
 import Cookies from 'js-cookie';
+import { profileIcons } from '../model/icons';
 
 
 export const getApiError = (error: ApiError | SerializedError) => {
@@ -61,4 +62,12 @@ export const formatDate = (date: string) => {
       minute: '2-digit',
     })}`;
   }
+};
+
+export const getProfileIcon = (iconName: keyof typeof profileIcons): React.ReactNode => {
+  const IconComponent = profileIcons[iconName];
+  if (!IconComponent) {
+    console.log(`Иконка ${iconName} не найдена. Иконки находятся в файле iconUtils.ts`);
+  }
+  return IconComponent();
 };

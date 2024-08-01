@@ -3,4 +3,4 @@ export {
 } from "./selectors";
 export {
   setFinanceFiltersSearchValue,
-} from "./slices";
+} from "./slice";

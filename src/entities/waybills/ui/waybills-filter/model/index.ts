@@ -3,4 +3,4 @@ export {
 } from "./selectors";
 export {
   setWaybillsFiltersSelectedValues,
-} from "./slices";
+} from "./slice";

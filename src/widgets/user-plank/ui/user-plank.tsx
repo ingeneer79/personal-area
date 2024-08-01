@@ -6,18 +6,19 @@ import Image from "next/image";
 import TypographyWrapper from "@/shared/ui/typography";
 import { Button } from "@/shared/ui";
 import { getIcon } from "@/shared/ui/icons/iconUtils/iconUtils";
+import { UserData, UserName } from "@/entities/user";
 
 type Props = {
   userImage: string;
-  userName: string;
+  session?: UserData;
   editCallBack?: () => void;
 };
 
-export const UserPlank = ({ userImage, userName, editCallBack }: Props) => {
+export const UserPlank = ({ userImage, editCallBack, session }: Props) => {
   return (
     <Flex
       className="w-full rounded-2xl py-2 px-4 items-center"
-      style={{ backgroundColor: "rgba(245, 245, 247, 1)" }}
+      style={{ backgroundColor: "var(--bg-color-gray)" }}
     >
       <Image
         className="w-16 h-16 rounded-full object-cover mr-4"
@@ -27,9 +28,7 @@ export const UserPlank = ({ userImage, userName, editCallBack }: Props) => {
         alt={"Портрет пользователя"}
         priority={false}
       />
-      <TypographyWrapper className="mr-auto text-base font-medium">
-        {userName}
-      </TypographyWrapper>
+      <UserName session={session}/>
       {editCallBack ? (
         <Button
           size="middle"
