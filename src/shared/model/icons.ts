@@ -23,6 +23,7 @@ import { IconEdit } from "../ui/icons/Icon-edit";
 import { IconLocation } from "../ui/icons/icon-location";
 import { IconPhone } from "../ui/icons/Icon-phone";
 import { IconEmail } from "../ui/icons/Icon-profile";
+import { ExpandIcon } from "../ui/icons/expand-icon";
 
    
   
@@ -31,7 +32,8 @@ export const iconsMap = {
     IconPhone: IconPhone,
     IconEmail: IconEmail,
     IconLocation: IconLocation,
-    IconAdd: IconAdd
+    IconAdd: IconAdd,
+    IconExpand: ExpandIcon
 };
 
 
