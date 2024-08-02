@@ -82,7 +82,7 @@ export function CatalogPage() {
     <>
       <Flex gap="middle" vertical>
         <BreadCrumbWidget items={constantsMap.pages.catalog.breadCrumbs}></BreadCrumbWidget>            
-        <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
+        <TypographyWrapper style={{ fontSize: "var(--size-text-3xl)" }} className="font-medium">
           {constantsMap.pages.catalog.mainText}
         </TypographyWrapper>
         <Image
