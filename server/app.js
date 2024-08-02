@@ -20,6 +20,11 @@ app.get('/ext-api/:name', function (req, res) {
   readJson(`./${req.params.name}.json`, res);
 })
 
+app.post('/keycloak-api/create-user', function (req, res) {
+  
+})
+
+
 
 app.listen(port, function(req, res) {
   console.log(`Server is running at port ${port}`);

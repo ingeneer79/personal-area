@@ -18,8 +18,8 @@ export const WaybillsFilter: FC<FilterWithSearchProps> = ({
         gap="middle"
         style={{
           flex: 1,
-          padding: "12px",
-          borderRadius: "12px",
+          padding: "var(--space-s)",
+          borderRadius: "var(--space-s)",
           backgroundColor: "var(--control-bg-color)",
           minWidth: "300px",
         }}

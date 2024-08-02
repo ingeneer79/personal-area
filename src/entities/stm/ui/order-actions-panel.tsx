@@ -21,13 +21,13 @@ export const StmOrderActionsPanel: FC<OrderActionsPanelProps> = () => {
       >        
       {
         orderActionButtons.map((button, index) => (
-          <Flex key={index} style={{ height: "48px", borderRight: "1px solid #E8E8E8" }}>
+          <Flex key={index} style={{ height: "var(--space-4xl)", borderRight: "1px solid #E8E8E8" }}>
             <ActionButton label={button.label} onClick={button.onClick} icon={button.icon} />            
           </Flex>
         ))
       }
       </Flex>
-      <Flex flex={0} gap={"middle"} align="center" style={{ height: "48px" }}>
+      <Flex flex={0} gap={"middle"} align="center" style={{ height: "var(--space-4xl)" }}>
           <Button icon={<iconsMap.IconAdd/>} iconPosition="end" type="primary">Отправить запрос</Button>
       </Flex>
     </Flex>

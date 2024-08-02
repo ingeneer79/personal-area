@@ -15,7 +15,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
       type="text"
       icon={icon ?? <DownloadIcon></DownloadIcon>}
       onClick={onClick}
-      style={{ color: "var(--control-order-panel-button)", fontWeight: 500, fontSize: "12px", height: "48px" }}
+      style={{ color: "var(--control-order-panel-button)", fontWeight: 500, fontSize: "12px", height: "var(--space-4xl)" }}
     >
       {label}
     </Button>

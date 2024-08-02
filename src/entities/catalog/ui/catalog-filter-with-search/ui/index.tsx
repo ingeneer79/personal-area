@@ -36,8 +36,8 @@ export const CatalogFilterWithSearch: FC<FilterWithSearchProps> = ({
         gap="middle"
         style={{
           flex: 1,
-          padding: "12px",
-          borderRadius: "12px",
+          padding: "var(--size-text-xs)",
+          borderRadius: "var(--size-text-xs)",
           backgroundColor: "var(--control-bg-color)",
           minWidth: "300px",
           maxWidth: "50%",

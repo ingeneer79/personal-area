@@ -42,7 +42,7 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({
         <Button
           size="large"
           type="primary"
-          style={{ minWidth: "48px", background: "white", borderRadius: "8px" }}
+          style={{ minWidth: "var(--space-4xl)", background: "white", borderRadius: "var(--space-xs)" }}
           onClick={() => {
             setSelectedValues({});
             onClearAll?.();
