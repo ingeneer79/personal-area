@@ -12,7 +12,6 @@ export const ConfigLayout = ({ children }: PropsWithChildren) => {
       components: {
         Button: {
           borderRadius: 12,
-          fontFamily: 'Inter',
           fontSize: 16,
           primaryShadow: '0 0 0 rgba(0, 0, 0, 0)',
           controlHeight: 48,          
@@ -24,14 +23,12 @@ export const ConfigLayout = ({ children }: PropsWithChildren) => {
           footerBg: 'var(--header-bg-color)',
         },    
         Menu: {
-          fontFamily: 'Inter',
           fontSize: 16,
           itemSelectedBg: 'var(--sidebar-menu-selected-item-color)',
         },
         Breadcrumb: {
           fontSize: 15,
           separatorMargin: 10,
-          fontFamily: 'Inter',
         },
         Input: {
           colorBgContainer: 'var(--control-bg-color)',          
