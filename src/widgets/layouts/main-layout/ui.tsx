@@ -37,7 +37,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }: PropsWithChildren)
       <Content>
         <Flex>
           <SideBar/>
-          <Content style={{ padding: '0 24px'}}>
+          <Content style={{ padding: '0 24px', maxHeight: '100vh', overflow: 'auto'}}>
             <Flex vertical>
                 {children}
             </Flex>
