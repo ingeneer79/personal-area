@@ -13,7 +13,7 @@ export const FinancePage: FC = () => {
     <>
       <Flex gap="middle" vertical>
         <BreadCrumbWidget items={constantsMap.pages.finance.breadCrumbs}></BreadCrumbWidget>                                 
-        <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
+        <TypographyWrapper style={{ fontSize: "var(--size-text-3xl)" }} className="font-medium">
           {constantsMap.pages.finance.mainText}
         </TypographyWrapper>
         <FinanceFilter isLoading={false} />

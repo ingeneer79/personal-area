@@ -76,7 +76,7 @@ export function StmPage() {
     <>
       <Flex gap="middle" vertical>
         <BreadCrumbWidget items={constantsMap.pages.stm.breadCrumbs}></BreadCrumbWidget>                 
-        <TypographyWrapper style={{ fontSize: "32px" }} className="font-medium">
+        <TypographyWrapper style={{ fontSize: "var(--size-text-3xl)" }} className="font-medium">
           {constantsMap.pages.stm.mainText}
         </TypographyWrapper>
         {filterSelectOptions.length > 0 && (

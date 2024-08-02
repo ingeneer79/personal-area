@@ -33,13 +33,13 @@ export function ProfilePage() {
           margin: "0 auto",
           alignItems: "start",
           flexDirection: "column",
-          gap: "16px",
+          gap: "var(--space-m)",
         }}
       >
         <TypographyWrapper
           className="mb-4 mt-9 font-bold"
           style={{
-            fontSize: "32px",
+            fontSize: "var(--size-text-3xl)",
             lineHeight: "var(--heading-font-line-height)",
           }}
         >

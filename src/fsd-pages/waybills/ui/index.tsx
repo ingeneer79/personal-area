@@ -76,7 +76,7 @@ export function WaybillsPage() {
         <Flex gap="middle" vertical>
           <BreadCrumbWidget items={constantsMap.pages.wayBills.breadCrumbs}></BreadCrumbWidget>         
           <TypographyWrapper
-            style={{ fontSize: "32px" }}
+            style={{ fontSize: "var(--size-text-3xl)" }}
             className="font-medium"
           >
             {constantsMap.pages.wayBills.mainText}
