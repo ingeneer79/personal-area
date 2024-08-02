@@ -1,52 +1,10 @@
-import { NextRequest } from "next/server";
+import { getServerSession } from "next-auth/next";
+import { getAccessToken, getExtData } from "@/shared/lib/session";
+import { apiMap, constantsMap } from "@/shared/model";
+import { authOptions } from "../auth/[...nextauth]/authOptions";
+import { NextRequest, NextResponse } from "next/server";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export function GET(
-    req: NextRequest,
-  ) {
-    return Response.json(
-      [
-       {
-        barCode: '1234567890123',
-        name: 'Витамин Д',
-        typeName: 'БАД',
-        nds: 50,
-        brandName: 'Vitamir',
-        multiplicity: 100060,
-        categoryName: 'Женское',
-        components: 'AAAAAAA',
-        priceWithNds: 200,
-        orc: 390,
-        sum: 1000,
-        quantity: 0,        
-       },
-       {
-        barCode: '1234567890123',
-        name: 'Витамин Д',
-        typeName: 'БАД',
-        nds: 50,
-        brandName: 'Vitamir',
-        multiplicity: 100060,
-        categoryName: 'Женское',
-        components: 'AAAAAAA',
-        priceWithNds: 200,
-        orc: 390,
-        sum: 1000,
-        quantity: 0,        
-       },
-       {
-        barCode: '1234567890123',
-        name: 'Витамин Д',
-        typeName: 'БАД',
-        nds: 50,
-        brandName: 'Vitamir',
-        multiplicity: 100060,
-        categoryName: 'Женское',
-        components: 'AAAAAAA',
-        priceWithNds: 200,
-        orc: 390,
-        sum: 1000,
-        quantity: 0,        
-       }       
-      ]
-    )
-  }
+export async function GET(req: NextRequest, res: NextResponse) {
+  return getExtData(req, res, apiMap.getCatalog);
+}

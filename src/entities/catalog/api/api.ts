@@ -3,7 +3,7 @@ import { CatalogObject } from "../model/types"
 
 
 export async function getCatalog(): Promise<CatalogObject[]> {
-  const res = await fetch(`${constantsMap.shared.config.apiUrl}/${apiMap.getCatalog}`)     
+  const res = await fetch(`/api/${apiMap.getCatalog}`)     
   // const res = await fetch(`${constantsMap.shared.config.apiUrl}`)   
     if (!res.ok) {
       throw new Error('Failed to fetch data')
