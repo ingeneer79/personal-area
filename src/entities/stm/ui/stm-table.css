@@ -67,4 +67,7 @@
     flex: 2;
     color: black;
   }
-  
+
+  .right {
+    padding-left: 7%;
+  }

@@ -1,0 +1,1 @@
+export { CertificatesPage as default } from '@/fsd-pages/certificates/ui'

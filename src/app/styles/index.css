@@ -26,7 +26,7 @@
     --control-filter-text-color: #105055;
 
     /* цвет кнопок в панели управления заказом*/
-    --control-order-panel-button: #86D0AF;
+    --control-order-panel-button: rgb(131, 133, 141);
 
     /* переменные для текстов */
     --text-color-span: rgba(0, 0, 0, 0.5);

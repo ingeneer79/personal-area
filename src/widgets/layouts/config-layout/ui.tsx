@@ -44,6 +44,7 @@ export const ConfigLayout = ({ children }: PropsWithChildren) => {
           colorText: 'var(--control-filter-text-color)',
         },
         Table: {
+          headerBg: '#f5f5f5',
           rowExpandedBg: '#f5f5f5',
           rowHoverBg: '#f2f2f2',
           rowSelectedHoverBg: 'rgba(0,0,0, 0.05)',
