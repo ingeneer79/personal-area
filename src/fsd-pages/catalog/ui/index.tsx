@@ -85,13 +85,6 @@ export function CatalogPage() {
         <TypographyWrapper style={{ fontSize: "var(--size-text-3xl)" }} className="font-medium">
           {constantsMap.pages.catalog.mainText}
         </TypographyWrapper>
-        <Image
-          src="/images/banner.jpeg"
-          width={1600}
-          height={203}
-          style={{ borderRadius: "36px", maxHeight: "203px", width: "100%", objectFit: "cover" }}
-          alt=""
-        ></Image>
         {filterSelectOptions.length > 0 && (
           <CatalogFilterWithSearch filterComponents={filterSelectOptions} />
         )}

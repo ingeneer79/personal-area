@@ -58,7 +58,7 @@ export const constantsMap = {
                 },
                 {
                     title: 'Каталог',
-                    href: '/cat',
+                    href: '/catalog',
                 }
             ],
             filter: {
@@ -88,6 +88,43 @@ export const constantsMap = {
                 newOrder: 'Новый заказ',
             }
         },   
+        petitions: {
+            mainText: 'Претензии',
+            breadCrumbs: [
+                {
+                    title: 'Главная',
+                    href: '/',
+                },
+                {
+                    title: 'Претензии',
+                    href: '/petitions',
+                }
+            ],
+            filter: {
+                period: {
+                    id: 'period',
+                    title: 'Период',
+                    type: 'date-range',
+                },
+                status: {
+                    id: 'petitionStatus',
+                    title: 'Статус',
+                    classifierId: 'petitionStatus',
+                },
+                deliveryAddress: {
+                    id: 'deliveryAddress',
+                    title: 'Адрес доставки',
+                    classifierId: 'deliveryAddress',
+                },                
+            },
+            actions: {
+                documents: 'Возвратные документы',
+                print: 'Распечатать претензию (и)',
+                exportToExcel: 'Выгрузить в  EXCEL',
+                reject: 'Отозвать претензию (и)',
+                newPetition: 'Новая претензия',
+            }
+        },           
         finance: {
             mainText: 'Финансы',
             breadCrumbs: [

@@ -1,7 +1,8 @@
 export const navigationMap = {
     home: '/',
     personalArea: '/personal-area',
-    catalog: '/cat',
+    petitions: '/petitions',
+    catalog: '/catalog',
     waybills: '/waybills',
     finances: '/finance',
     certificates: '/certificates',

@@ -1,0 +1,1 @@
+export { PetitionsPage as default } from '@/fsd-pages/petitions/ui';
