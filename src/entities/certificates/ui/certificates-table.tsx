@@ -12,6 +12,7 @@ import {
 import { FilterSelectedValue } from "@/shared/model/types";
 import tableData from "../model/mockTableData";
 import { ExpandIcon } from "@/shared/ui/icons/expand-icon";
+import Typography from "@/shared/ui/typography";
 
 export const CertificatesTable = () => {
   const searchFilterValue = useAppSelector(getCatalogFiltersSearchValue);
@@ -131,7 +132,7 @@ export const CertificatesTable = () => {
     {
       title: "Действия",
       key: "actions",
-      render: () => <a href="#">Открыть СГР / РУ</a>, // Replace with the correct action
+      render: () => <Typography >Открыть СГР / РУ </Typography>
     },
   ];
 
@@ -157,7 +158,7 @@ export const CertificatesTable = () => {
           </div>
         </div>
       ) : (
-        <p>нет данных</p>
+        <Typography className="table__no-data">нет данных</Typography>
       )}
     </div>
   );

@@ -1,29 +1,10 @@
-/*
-import {
-    Eye,
-    Pencil,
-    MenuSquare,
-    Newspaper,
-    Menu,
-    User,
-    X,
-    Coins,
-    Lock,
-    Trash2,
-    GripVertical,
-    ArrowLeft,
-    EyeOff,
-    LogIn,
-    CheckCheck,
-    XCircle,
-  } from 'lucide-react';
-*/
 import IconAdd from "../ui/icons/icon-add";
 import { IconEdit } from "../ui/icons/Icon-edit";
 import { IconLocation } from "../ui/icons/icon-location";
 import { IconPhone } from "../ui/icons/Icon-phone";
 import { IconEmail } from "../ui/icons/Icon-profile";
 import { ExpandIcon } from "../ui/icons/expand-icon";
+import { IconEye } from "../ui/icons/icon-eye";
 
    
   
@@ -33,7 +14,8 @@ export const iconsMap = {
     IconEmail: IconEmail,
     IconLocation: IconLocation,
     IconAdd: IconAdd,
-    IconExpand: ExpandIcon
+    IconExpand: ExpandIcon,
+    IconEye: IconEye
 };
 
 
@@ -46,5 +28,5 @@ export const profileIcons = {
     телефон: IconPhone,
     почта: IconEmail,
     адрес: IconLocation,
-    add: IconAdd  
+    add: IconAdd,
 };

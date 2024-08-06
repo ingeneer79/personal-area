@@ -20,14 +20,7 @@ const tableData: TableData[] = [
   {
     article: "2",
     name: "Название",
-    series: [
-      { date: "01.01.2023", number: "123456789" },
-      { date: "01.01.2023", number: "123456789" },
-      { date: "01.01.2023", number: "123456789" },
-      { date: "01.01.2023", number: "123456789" },
-      { date: "01.01.2023", number: "123456789" },
-      { date: "01.01.2023", number: "123456789" },
-    ],
+    series: [],
   },
   {
     article: "3",
