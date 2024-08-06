@@ -11,6 +11,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
 }) => {
   return (
     <Button
+      color=""
       className="p-0 mr-4"
       type="text"
       icon={icon ?? <DownloadIcon></DownloadIcon>}

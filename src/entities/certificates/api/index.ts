@@ -1,0 +1,1 @@
+export { getStm } from "./api";

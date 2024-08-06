@@ -119,6 +119,12 @@ export const constantsMap = {
                     href: '/certificates',
                 }                     
             ],
+            actions: {
+                downloadCertificates: 'Скачать сертификат (ы)',
+                viewCatalog: 'Просмотреть сертификат (ы)',
+                ExportToExcel: 'Выгрузить в EXCEL',
+                ExportWaybill: 'Выгрузить электронную накладную',
+            }
         },   
         stm: {
             mainText: 'СТМ',
