@@ -4,7 +4,6 @@ import "@/app/styles/index.css";
 import React, { PropsWithChildren } from "react";
 import { ConfigLayout } from "../../widgets/layouts/config-layout/ui";
 import { StoreProvider } from "./../providers/store-provider";
-import { SessionProvider } from "next-auth/react";
 import { SessionProviderWrapper } from "./../providers/session-provider-wrapper";
 import { MainLayout } from "@/widgets/layouts";
 

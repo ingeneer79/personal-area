@@ -1,6 +1,6 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import KeycloakProvider from "next-auth/providers/keycloak";
-import jwt_decode, { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { encrypt } from '../../../../src/shared/lib/encryptions';
 
 async function refreshAccessToken(token: any) {
