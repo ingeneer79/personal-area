@@ -1,6 +1,6 @@
 'use client'
 
-import Space from '@/shared/ui/space'
+
 import TypographyWrapper from '@/shared/ui/typography'
 import Button from '@/shared/ui/button'
 import React from 'react'
@@ -10,6 +10,7 @@ import { useAppSelector } from '@/shared/lib'
 import { getProfileIcon } from '@/shared/lib/utils'
 import { profileIcons } from '@/shared/model/icons'
 import { translateType } from '../model'
+import { Space } from 'antd'
 
 
 export const UserContactsPlank = () => {

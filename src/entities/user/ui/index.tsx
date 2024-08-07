@@ -8,7 +8,7 @@ import { StoreProvider } from "@/app/providers/store-provider";
 export function UserName() {
   const { userData } = useAppSelector(getUser);
   return userData ? (
-    <TypographyWrapper className="ml-3 mr-3 font-medium">
+    <TypographyWrapper className="ml-3 mr-3 font-medium w-full">
         {userData?.name}
     </TypographyWrapper>
   ) : 'loading';

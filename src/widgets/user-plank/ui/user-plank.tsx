@@ -16,7 +16,7 @@ export const UserPlank = ({ userImage, editCallBack }: Props) => {
   return (
     <Flex
       className="w-full rounded-2xl py-2 px-4 items-center"
-      style={{ backgroundColor: "var(--bg-color-gray)" }}
+      style={{ backgroundColor: "rgba(245, 245, 247, 1)" }}
     >
       <Image
         className="w-16 h-16 rounded-full object-cover mr-4"
