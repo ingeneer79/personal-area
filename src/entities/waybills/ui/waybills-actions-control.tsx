@@ -16,7 +16,7 @@ export const WaybillActionsControl: FC<WaybillActionsControlProps> = ({
   return (
     <Flex align="center" gap={"small"}>
       {buttons.map((button, index) => (
-        <Button key={index} type="text" onClick={() => button.onClick}>
+        <Button key={index} style={{ padding: "0", height: "fit-content" }} type="text" onClick={() => button.onClick}>
           <SettingsIcon />
         </Button>
       ))}

@@ -8,5 +8,46 @@
         "markingId": 1,
         "ownerId": 1,
         "markStatusId": 1
+    },
+    {
+        "id": "1",
+        "statusId": 1,
+        "waybillNumber": "12345",
+        "date": "2022-01-01",
+        "sum": 1000,
+        "markingId": 1,
+        "ownerId": 1,
+        "markStatusId": 1
+    },
+    {
+        "id": "4",
+        "statusId": 1,
+        "waybillNumber": "12345",
+        "date": "2022-01-01",
+        "sum": 1000,
+        "markingId": 1,
+        "ownerId": 1,
+        "markStatusId": 1
+    },
+    {
+        "id": "3",
+        "statusId": 1,
+        "waybillNumber": "12345",
+        "date": "2022-01-01",
+        "sum": 1000,
+        "markingId": 1,
+        "ownerId": 1,
+        "markStatusId": 1
+    },
+    {
+        "id": "2",
+        "statusId": 1,
+        "waybillNumber": "12345",
+        "date": "2022-01-01",
+        "sum": 1000,
+        "markingId": 1,
+        "ownerId": 1,
+        "markStatusId": 1
     }
+
 ]

@@ -1,4 +1,5 @@
 "use client";
+import "../../stm/ui/stm-table.css";
 import { Flex, Table } from "antd";
 
 import { useEffect, useState } from "react";
@@ -7,13 +8,14 @@ import { getCatalogFiltersSelectedValues } from "@/entities/catalog/ui/catalog-f
 import { WaybillObject } from "../model/types";
 import { WaybillActionsControl } from "./waybills-actions-control";
 import { getWaybills } from "../api";
-import style from 'styled-jsx/style';
-
 
 export const WayBillsTable = () => {
-  const selectedFilterValues = useAppSelector(getCatalogFiltersSelectedValues)
+  const selectedFilterValues = useAppSelector(getCatalogFiltersSelectedValues);
   const [data, setData] = useState<WaybillObject[]>([]);
   const [filteredData, setFilteredData] = useState<WaybillObject[]>([]);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<
+    Array<string | number>
+  >([]);
 
   const CatalogTableColumns = [
     {
@@ -30,9 +32,10 @@ export const WayBillsTable = () => {
       title: "Дата",
       dataIndex: "date",
       key: "date",
+      width: 90,
     },
     {
-      title: "Дата",
+      title: "Сумма",
       dataIndex: "sum",
       key: "sum",
     },
@@ -50,28 +53,31 @@ export const WayBillsTable = () => {
       title: "Cтатус маркировки",
       dataIndex: "markStatus",
       key: "markStatusId",
-    },        
+    },
     {
       title: "Действия",
       dataIndex: "actions",
       key: "actions",
-      width: 193,    
+      width: 193,
       render: (_text: string, record: WaybillObject, index: number) => {
         return (
-          <WaybillActionsControl buttons={[{
-            onClick: () => console.log('test')
-          },
-          {
-            onClick: () => console.log('test')
-          },
-          {
-            onClick: () => console.log('test')
-          }]} />
-        )
-      },    
+          <WaybillActionsControl
+            buttons={[
+              {
+                onClick: () => console.log("test"),
+              },
+              {
+                onClick: () => console.log("test"),
+              },
+              {
+                onClick: () => console.log("test"),
+              },
+            ]}
+          />
+        );
+      },
     },
-  
-  ];  
+  ];
   useEffect(() => {
     async function fetchData() {
       try {
@@ -86,31 +92,59 @@ export const WayBillsTable = () => {
   }, []);
 
   useEffect(() => {
-    
     let filteredDataNew = [...data];
 
     if (selectedFilterValues?.length) {
       filteredDataNew = data.filter((waybill: WaybillObject) => {
-        return selectedFilterValues.some((selectedFilterValue) => {          
+        return selectedFilterValues.some((selectedFilterValue) => {
           const fieldValue = (waybill as any)[selectedFilterValue.id];
           if (fieldValue) {
-            if (Array.isArray(selectedFilterValue.values) && selectedFilterValue.values.length) {
-              return selectedFilterValue.values.some((item: string) => String(item) === String(fieldValue));  
+            if (
+              Array.isArray(selectedFilterValue.values) &&
+              selectedFilterValue.values.length
+            ) {
+              return selectedFilterValue.values.some(
+                (item: string) => String(item) === String(fieldValue)
+              );
             }
 
-            if (typeof selectedFilterValue.values == "object" && selectedFilterValue.values) {
+            if (
+              typeof selectedFilterValue.values == "object" &&
+              selectedFilterValue.values
+            ) {
               // return fieldValue.getTime() < selectedFilterValue.values.getTime();
               return true;
             }
-  
-            return true;            
-          } 
-        })
+
+            return true;
+          }
+        });
       });
     }
 
     setFilteredData(filteredDataNew);
-  }, [data,  selectedFilterValues]);
+  }, [data, selectedFilterValues]);
 
-  return <Table dataSource={filteredData} columns={CatalogTableColumns} />;
+  const onSelectChange = (newSelectedRowKeys: any) => {
+    setSelectedRowKeys(newSelectedRowKeys);
+  };
+
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: onSelectChange,
+  };
+
+  return (
+    <div className="stm-table-wrapper">
+      <Table
+        dataSource={filteredData}
+        columns={CatalogTableColumns}
+        className="stm-table"
+        size="middle"
+        rowSelection={rowSelection}
+        rowKey={(record) => record.id}
+        pagination={false}
+      />
+    </div>
+  );
 };

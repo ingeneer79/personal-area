@@ -1,4 +1,5 @@
 "use client";
+import "../../stm/ui/stm-table.css";
 import { Table } from "antd";
 import { getPetitions } from "../api/api";
 import { PetitionObject } from "../model/types";
@@ -6,13 +7,16 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "@/shared/lib";
 
 import { FilterSelectedValue } from "@/shared/model/types";
-import { getPetitionsFiltersSearchValue, getPetitionsFiltersSelectedValues } from "./petitions-filter-with-search/model";
-
-
+import {
+  getPetitionsFiltersSearchValue,
+  getPetitionsFiltersSelectedValues,
+} from "./petitions-filter-with-search/model";
 
 export const PetitionsTable = () => {
-  const searchFilterValue = useAppSelector(getPetitionsFiltersSearchValue)
-  const selectedFilterValues = useAppSelector(getPetitionsFiltersSelectedValues)
+  const searchFilterValue = useAppSelector(getPetitionsFiltersSearchValue);
+  const selectedFilterValues = useAppSelector(
+    getPetitionsFiltersSelectedValues
+  );
   const [data, setData] = useState<PetitionObject[]>([]);
   const [filteredData, setFilteredData] = useState<PetitionObject[]>([]);
 
@@ -52,20 +56,19 @@ export const PetitionsTable = () => {
       dataIndex: "actPath",
       key: "actPath",
       render: (_text: string, record: PetitionObject, index: number) => {
-        return <></>
-      },         
-    },    
+        return <></>;
+      },
+    },
     {
       title: "Действия",
       dataIndex: "actions",
       key: "actions",
-      width: 300,    
+      width: 300,
       render: (_text: string, record: PetitionObject, index: number) => {
-        return <></>
-      },    
+        return <></>;
+      },
     },
-  
-  ];  
+  ];
   useEffect(() => {
     async function fetchData() {
       try {
@@ -80,37 +83,50 @@ export const PetitionsTable = () => {
   }, []);
 
   useEffect(() => {
-    
     let filteredDataNew = data.filter((order: PetitionObject) => {
-      let filterBySearchResult = null
+      let filterBySearchResult = null;
       if (searchFilterValue) {
         Object.entries(order).forEach(([_key, value]) => {
           if (String(value).includes(searchFilterValue)) {
             filterBySearchResult = order;
-          }          
-        })        
+          }
+        });
       } else {
-        filterBySearchResult = order
+        filterBySearchResult = order;
       }
-      return filterBySearchResult
-    })
+      return filterBySearchResult;
+    });
 
     if (selectedFilterValues?.length) {
       filteredDataNew = filteredDataNew.filter((order: PetitionObject) => {
-        return selectedFilterValues.some((selectedFilterValue: FilterSelectedValue) => {
-          if ((selectedFilterValue.values as string[]).length === 0) { 
-            return true 
+        return selectedFilterValues.some(
+          (selectedFilterValue: FilterSelectedValue) => {
+            if ((selectedFilterValue.values as string[]).length === 0) {
+              return true;
+            }
+            const fieldValue = (order as any)[selectedFilterValue.id];
+            if (fieldValue) {
+              return (selectedFilterValue.values as string[]).some(
+                (item: string) => String(item) === String(fieldValue)
+              );
+            }
           }
-          const fieldValue = (order as any)[selectedFilterValue.id];
-          if (fieldValue) {
-            return (selectedFilterValue.values as string[]).some((item: string) => String(item) === String(fieldValue));
-          } 
-        })
+        );
       });
     }
 
     setFilteredData(filteredDataNew);
   }, [data, searchFilterValue, selectedFilterValues]);
 
-  return <Table dataSource={filteredData} columns={PetitionsTableColumns} />;
+  return (
+    <div className="stm-table-wrapper">
+      <Table
+        dataSource={filteredData}
+        columns={PetitionsTableColumns}
+        className="stm-table"
+        size="middle"
+        pagination={false}
+      />
+    </div>
+  );
 };

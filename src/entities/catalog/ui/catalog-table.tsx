@@ -1,18 +1,20 @@
 "use client";
+import '../../stm/ui/stm-table.css'
 import { Table } from "antd";
 import { getCatalog } from "../api/api";
 import { CatalogObject } from "../model/types";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/shared/lib";
-import { getCatalogFiltersSearchValue, getCatalogFiltersSelectedValues } from "@/entities/catalog/ui/catalog-filter-with-search/model";
+import {
+  getCatalogFiltersSearchValue,
+  getCatalogFiltersSelectedValues,
+} from "@/entities/catalog/ui/catalog-filter-with-search/model";
 import { QuantityControl } from "./quantity-control";
 import { FilterSelectedValue } from "@/shared/model/types";
 
-
-
 export const CatalogTable = () => {
-  const searchFilterValue = useAppSelector(getCatalogFiltersSearchValue)
-  const selectedFilterValues = useAppSelector(getCatalogFiltersSelectedValues)
+  const searchFilterValue = useAppSelector(getCatalogFiltersSearchValue);
+  const selectedFilterValues = useAppSelector(getCatalogFiltersSelectedValues);
   const [data, setData] = useState<CatalogObject[]>([]);
   const [filteredData, setFilteredData] = useState<CatalogObject[]>([]);
 
@@ -77,20 +79,26 @@ export const CatalogTable = () => {
       title: "Кол-во",
       dataIndex: "quantity",
       key: "quantity",
-      width: 300,    
+      width: 300,
       render: (_text: string, record: CatalogObject, index: number) => {
-        return <QuantityControl quantity={Number(record.quantity)} onChange={(value) => {
-          if (value < 0) {
-            return
-          }
-          setFilteredData(filteredData.map((row, i) =>
-            i === index ? {...record, quantity: value} : row
-          ))
-        }}/>
-      },    
+        return (
+          <QuantityControl
+            quantity={Number(record.quantity)}
+            onChange={(value) => {
+              if (value < 0) {
+                return;
+              }
+              setFilteredData(
+                filteredData.map((row, i) =>
+                  i === index ? { ...record, quantity: value } : row
+                )
+              );
+            }}
+          />
+        );
+      },
     },
-  
-  ];  
+  ];
   useEffect(() => {
     async function fetchData() {
       try {
@@ -105,37 +113,44 @@ export const CatalogTable = () => {
   }, []);
 
   useEffect(() => {
-    
     let filteredDataNew = data.filter((order: CatalogObject) => {
-      let filterBySearchResult = null
+      let filterBySearchResult = null;
       if (searchFilterValue) {
         Object.entries(order).forEach(([_key, value]) => {
           if (String(value).includes(searchFilterValue)) {
             filterBySearchResult = order;
-          }          
-        })        
+          }
+        });
       } else {
-        filterBySearchResult = order
+        filterBySearchResult = order;
       }
-      return filterBySearchResult
-    })
+      return filterBySearchResult;
+    });
 
     if (selectedFilterValues?.length) {
       filteredDataNew = filteredDataNew.filter((order: CatalogObject) => {
-        return selectedFilterValues.some((selectedFilterValue: FilterSelectedValue) => {
-          if ((selectedFilterValue.values as string[]).length === 0) { 
-            return true 
+        return selectedFilterValues.some(
+          (selectedFilterValue: FilterSelectedValue) => {
+            if ((selectedFilterValue.values as string[]).length === 0) {
+              return true;
+            }
+            const fieldValue = (order as any)[selectedFilterValue.id];
+            if (fieldValue) {
+              return (selectedFilterValue.values as string[]).some(
+                (item: string) => String(item) === String(fieldValue)
+              );
+            }
           }
-          const fieldValue = (order as any)[selectedFilterValue.id];
-          if (fieldValue) {
-            return (selectedFilterValue.values as string[]).some((item: string) => String(item) === String(fieldValue));
-          } 
-        })
+        );
       });
     }
 
     setFilteredData(filteredDataNew);
   }, [data, searchFilterValue, selectedFilterValues]);
 
-  return <Table dataSource={filteredData} columns={CatalogTableColumns} />;
+  return (
+    <div className="stm-table-wrapper">
+      <Table dataSource={filteredData} columns={CatalogTableColumns} className="stm-table" size="middle" pagination={false}/>;
+    </div>
+  );
 };

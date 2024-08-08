@@ -13,9 +13,9 @@ export const QuantityControl: FC<QuantityControlProps> = ({quantity, onChange}) 
     const quantityValue = pad(quantity, 3);
     return (
         <Flex align="center" gap={"small"}>
-            <Button type="text" onClick={() => onChange(quantity - 1)}>-</Button>
+            <Button type="text" style={{padding: '4px', height: 'fit-content'}} onClick={() => onChange(quantity - 1)}>-</Button>
             <Typography>{quantityValue}</Typography>
-            <Button type="text" onClick={() => onChange(quantity + 1)}>+</Button>
+            <Button type="text" style={{padding: '4px', height: 'fit-content'}} onClick={() => onChange(quantity + 1)}>+</Button>
         </Flex>
     );
 };
