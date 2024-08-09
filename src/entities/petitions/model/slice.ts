@@ -19,7 +19,9 @@ export const petitionsSlice = createSlice({
         state.newPetition = action.payload
     },
     setNewPetitionModalOpen: (state, action: PayloadAction<boolean>) => {
-        state.newPetitionModalOpen = !action.payload
+        state.newPetitionModalOpen = action.payload
     }
   },
 });
+
+export const {setNewPetitionModalOpen} = petitionsSlice.actions
