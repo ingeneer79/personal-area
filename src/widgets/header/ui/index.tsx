@@ -1,5 +1,5 @@
 "use client";
-import { Button, Typography } from "antd";
+import { Button, Flex, Typography } from "antd";
 import { Layout } from "antd";
 
 import "./styles.module.scss";
@@ -85,7 +85,9 @@ export function MainHeader() {
       >
         {constantsMap.widgets.header.bag}
       </Button>
-      <UserName />
+      <Flex style={{ maxWidth:'fit-content' }}>
+        <UserName />
+      </Flex>
       {status === "authenticated" && (
         <Image src="/images/user.svg" width={48} height={48} alt="" />
       )}
