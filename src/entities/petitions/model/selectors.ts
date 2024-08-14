@@ -1,6 +1,7 @@
 import { RootState } from "@/app/store";
 
 export const selectPetitions = (state: RootState) => state.petitionsStore;
+export const newPetitionModalOpen = (state: RootState) => state.petitionsStore.newPetitionModalOpen;
 /*
 export const selectIngredientCountById =
   (ingredientId: string) => (state: RootState) => {
