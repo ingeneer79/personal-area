@@ -88,7 +88,7 @@ const NewPetitionModal = () => {
           onCancel={() => dispatch(setNewPetitionModalOpen(false))}
           centered
           footer={[
-            <Flex style={{ justifyContent: "start", gap: 12 }}>
+            <Flex key="newPetitionModalFooter" style={{ justifyContent: "start", gap: 12 }}>
               <Button
                 style={{ backgroundColor: "rgb(223, 90, 96)", color: "white" }}
                 icon={<IconClose />}

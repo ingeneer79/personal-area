@@ -88,7 +88,6 @@ export const WayBillsTable = () => {
       }
     }
     fetchData();
-    console.log(data);
   }, []);
 
   useEffect(() => {

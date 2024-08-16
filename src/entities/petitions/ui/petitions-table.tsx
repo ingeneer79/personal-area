@@ -79,7 +79,6 @@ export const PetitionsTable = () => {
       }
     }
     fetchData();
-    console.log(data);
   }, []);
 
   useEffect(() => {

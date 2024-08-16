@@ -33,7 +33,6 @@ export function CertificatesPage() {
       }
     }
     fetchData();
-    console.log(classifiers);
   }, []);
 
   useEffect(() => {

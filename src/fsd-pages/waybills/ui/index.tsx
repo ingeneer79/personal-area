@@ -31,7 +31,6 @@ export function WaybillsPage() {
       }
     }
     fetchData();
-    console.log(classifiers);
   }, []);
 
   useEffect(() => {

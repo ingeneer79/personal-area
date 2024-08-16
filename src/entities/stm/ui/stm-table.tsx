@@ -122,7 +122,6 @@ export const StmTable = () => {
       }
     }
     fetchData();
-    console.log(data);
   }, []);
 
   useEffect(() => {

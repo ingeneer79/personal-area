@@ -35,7 +35,6 @@ export function StmPage() {
       }
     }
     fetchData();
-    console.log(classifiers);
   }, []);
 
   useEffect(() => {

@@ -109,7 +109,6 @@ export const CatalogTable = () => {
       }
     }
     fetchData();
-    console.log(data);
   }, []);
 
   useEffect(() => {
