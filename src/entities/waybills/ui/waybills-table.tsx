@@ -145,5 +145,5 @@ export const WayBillsTable = () => {
         pagination={false}
       />
     </div>
-  );
+  )
 };

@@ -97,6 +97,6 @@ export function CatalogPage() {
         <CatalogTable />
       </Flex>
     </>
-  );
+  )
 }
 export default CatalogPage;

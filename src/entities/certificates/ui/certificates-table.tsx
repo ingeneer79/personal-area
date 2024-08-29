@@ -179,5 +179,5 @@ export const CertificatesTable = () => {
         pagination={false}
       />
     </div>
-  );
+  )
 };

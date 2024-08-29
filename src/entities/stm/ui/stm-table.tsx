@@ -192,5 +192,5 @@ export const StmTable = () => {
         pagination={false}
       />
     </div>
-  );
+  )
 };

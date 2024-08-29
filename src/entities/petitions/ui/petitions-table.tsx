@@ -127,5 +127,5 @@ export const PetitionsTable = () => {
         pagination={false}
       />
     </div>
-  );
+  )
 };

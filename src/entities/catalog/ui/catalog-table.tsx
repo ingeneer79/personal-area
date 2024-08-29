@@ -149,7 +149,7 @@ export const CatalogTable = () => {
 
   return (
     <div className="stm-table-wrapper">
-      <Table dataSource={filteredData} columns={CatalogTableColumns} className="stm-table" size="middle" pagination={false}/>;
+      <Table dataSource={filteredData} columns={CatalogTableColumns} className="stm-table" size="middle" pagination={false}/>
     </div>
-  );
-};
+  )
+}
