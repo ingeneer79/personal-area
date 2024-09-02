@@ -1,0 +1,65 @@
+variables:
+  CI_REGISTRY_IMAGE: personal-area-app:latest
+  CI_REGISTRY_BACKEND_IMAGE: personal-area-node-app:latest
+  REGISTRY_SERVER_ADDRESS: "192.168.79.14:5000"
+  PROD_SERVER_IP: "192.168.79.14"
+stages:
+  - build
+  - docker-build
+  - deploy
+
+build:
+  stage: build
+  image: node
+  script: 
+    - echo "Start building App"
+    - npm install
+    - npm build
+    - echo "Build successfully!"
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - build
+      - node_modules/
+
+
+docker-build-backend:
+  stage: docker-build
+  image: docker:latest
+  services: 
+    - name: docker:19.03.8-dind
+  #before_script:
+  #  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - cd ./server
+    - docker build --pull -t "$CI_REGISTRY_BACKEND_IMAGE" .
+    - docker push "$REGISTRY_SERVER_ADDRESS/$CI_REGISTRY_BACKEND_IMAGE"
+    - echo "Registry backend image:" $CI_REGISTRY_BACKEND_IMAGE
+
+docker-build-frontend:
+  stage: docker-build
+  image: docker:latest
+  services: 
+    - name: docker:19.03.8-dind
+  #before_script:
+  #  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$REGISTRY_SERVER_ADDRESS/$CI_REGISTRY_IMAGE"
+    - echo "Registry frontend image:" $CI_REGISTRY_IMAGE
+
+deploy-dev:
+  stage: deploy
+  image: kroniak/ssh-client
+  before_script:
+    - echo "deploying app"
+  script:
+
+    - chmod 400 $SSH_PRIVATE_KEY
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker pull $REGISTRY_SERVER_ADDRESS//personal-area-node-app:latest"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker stop personal-area-next-app || true && docker rm personal-area-node-app || true"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker run -p 4000:4000 -d --name personal-area-node-app $REGISTRY_SERVER_ADDRESS/personal-area-node-app:latest"
+
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker pull $REGISTRY_SERVER_ADDRESS//personal-area-next-app:latest"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker stop personal-area-next-app || true && docker rm personal-area-next-app || true"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker run -p 3000:3000 -d --name personal-area-next-app $REGISTRY_SERVER_ADDRESS/personal-area-next-app:latest"   
