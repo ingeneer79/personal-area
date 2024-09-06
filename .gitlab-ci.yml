@@ -1,8 +1,5 @@
 variables:
-  CI_REGISTRY_IMAGE: personal-area-app:latest
-  CI_REGISTRY_BACKEND_IMAGE: personal-area-node-app:latest
-  REGISTRY_SERVER_ADDRESS: "192.168.79.14:5000"
-  PROD_SERVER_IP: "192.168.79.113"
+  CI_REGISTRY_IMAGE: personal-area-app
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
@@ -27,19 +24,6 @@ build:
       - build
       - node_modules/
 
-
-#docker-build-backend:
-#  stage: docker-build
-#  image: docker:latest
-#  services: 
-#    - name: docker:19.03.8-dind
-  #before_script:
-  #  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-#  script:    
-#    - docker build --pull -t "$CI_REGISTRY_BACKEND_IMAGE" ./server
-#    - docker push "$REGISTRY_SERVER_ADDRESS/$CI_REGISTRY_BACKEND_IMAGE"
-#    - echo "Registry backend image:" $CI_REGISTRY_BACKEND_IMAGE
-
 docker-build-frontend:  
   image: docker:latest
   stage: docker-build
@@ -55,9 +39,40 @@ deploy-dev:
   image: kroniak/ssh-client
   before_script:
     - echo "deploying app"
+    ##
+    ## Install ssh-agent if not already installed, it is required by Docker.
+    ## (change apt-get to yum if you use an RPM-based image)
+    ##
+    - "command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )"
+
+    ##
+    ## Run ssh-agent (inside the build environment)
+    ##
+    - eval $(ssh-agent -s)
+
+    ##
+    ## Give the right permissions, otherwise ssh-add will refuse to add files
+    ## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
+    ##
+    - chmod 400 "$SSH_PRIVATE_KEY"
+    - ssh-add "$SSH_PRIVATE_KEY"
+
+    ##
+    ## Create the SSH directory and give it the right permissions
+    ##
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+
+    ##
+    ## Optionally, if you will be using any Git commands, set the user name and
+    ## and email.
+    ##
+    # - git config --global user.email "user@example.com"
+    # - git config --global user.name "User name"    
   script:
-    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY yashin@$PROD_SERVER_IP "docker pull $REGISTRY_SERVER_ADDRESS/$CI_REGISTRY_IMAGE"
-    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY yashin@$PROD_SERVER_IP "docker stop personal-area-next-app || true && docker rm personal-area-next-app || true"
-    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY yashin@$PROD_SERVER_IP "docker run -p 3000:3000 -d --name personal-area-next-app $REGISTRY_SERVER_ADDRESS/$CI_REGISTRY_IMAGE"   
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY yashins@$PROD_SERVER_IP "docker pull $REGISTRY_SERVER_ADDRESS/$CI_REGISTRY_IMAGE"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY yashins@$PROD_SERVER_IP "docker stop personal-area-next-app || true && docker rm $CI_REGISTRY_IMAGE || true"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY yashins@$PROD_SERVER_IP "docker run -p 3000:3000 -d --name $CI_REGISTRY_IMAGE $REGISTRY_SERVER_ADDRESS/$CI_REGISTRY_IMAGE"   
+
 
 
