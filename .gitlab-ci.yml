@@ -2,25 +2,30 @@ variables:
   CI_REGISTRY_IMAGE: personal-area-app:latest
   CI_REGISTRY_BACKEND_IMAGE: personal-area-node-app:latest
   REGISTRY_SERVER_ADDRESS: "192.168.79.14:5000"
-  PROD_SERVER_IP: "192.168.79.14"
+  PROD_SERVER_IP: "192.168.79.113"
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .next/cache/  
 stages:
-#  - build
+  - build
   - docker-build
   - deploy
 
-#build:
-#  stage: build
-#  image: node:20
-#  script: 
-#    - echo "Start building App"
-#    - npm install
-#    - npm run build
-#    - echo "Build successfully!"
-#  artifacts:
-#    expire_in: 1 hour
-#    paths:
-#      - build
-#      - node_modules/
+build:
+  stage: build
+  image: node:20
+  script: 
+    - echo "Start building App"
+    - npm install
+    - npm run build
+    - echo "Build successfully!"
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - build
+      - node_modules/
 
 
 #docker-build-backend:
@@ -36,21 +41,14 @@ stages:
 #    - echo "Registry backend image:" $CI_REGISTRY_BACKEND_IMAGE
 
 docker-build-frontend:  
+  image: docker:latest
   stage: docker-build
-  image: docker:24.0.5
-  services:
-  - docker:24.0.5-dind
-  variables:
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
   before_script:
-#    - doker info
-#    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker info
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
-    - docker push "$REGISTRY_SERVER_ADDRESS/$CI_REGISTRY_IMAGE"
-    - echo "Registry frontend image:" $CI_REGISTRY_IMAGE
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $REGISTRY_SERVER_ADDRESS -u $CI_REGISTRY_USER --password-stdin
+    - docker build --pull -t "$REGISTRY_SERVER_ADDRESS/$CI_REGISTRY_IMAGE" .
+    - docker push ${REGISTRY_SERVER_ADDRESS}/${CI_REGISTRY_IMAGE}
 
 deploy-dev:
   stage: deploy
@@ -58,12 +56,8 @@ deploy-dev:
   before_script:
     - echo "deploying app"
   script:
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY yashin@$PROD_SERVER_IP "docker pull $REGISTRY_SERVER_ADDRESS/$CI_REGISTRY_IMAGE"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY yashin@$PROD_SERVER_IP "docker stop personal-area-next-app || true && docker rm personal-area-next-app || true"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY yashin@$PROD_SERVER_IP "docker run -p 3000:3000 -d --name personal-area-next-app $REGISTRY_SERVER_ADDRESS/$CI_REGISTRY_IMAGE"   
 
-    - chmod 400 $SSH_PRIVATE_KEY
-    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker pull $REGISTRY_SERVER_ADDRESS/personal-area-node-app:latest"
-    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker stop personal-area-next-app || true && docker rm personal-area-node-app || true"
-    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker run -p 4000:4000 -d --name personal-area-node-app $REGISTRY_SERVER_ADDRESS/personal-area-node-app:latest"
 
-    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker pull $REGISTRY_SERVER_ADDRESS/personal-area-next-app:latest"
-    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker stop personal-area-next-app || true && docker rm personal-area-next-app || true"
-    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY root@$PROD_SERVER_IP "docker run -p 3000:3000 -d --name personal-area-next-app $REGISTRY_SERVER_ADDRESS/personal-area-next-app:latest"   
